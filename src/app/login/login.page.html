@@ -1,9 +1,21 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>login</ion-title>
+    <ion-title>TatlıYorum</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div id="loginContainer">
+    <ion-item>
+      <ion-label position="floating">Kullanıcı adı veya eposta</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Şifre</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-button (click)="login()" expand="block" fill="clear" shape="round">
+      Giriş Yap
+    </ion-button>
+  </div>
 </ion-content>
