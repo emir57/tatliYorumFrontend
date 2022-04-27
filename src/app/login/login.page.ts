@@ -13,6 +13,7 @@ import { StorageService } from '../services/storage.service';
 })
 export class LoginPage implements OnInit {
 
+  isLoad: boolean = true;
   loginForm: FormGroup
   email: string;
   constructor(
@@ -45,15 +46,17 @@ export class LoginPage implements OnInit {
   }
 
 
-  login() {
+  async login() {
     if (this.loginForm.valid) {
+      this.isLoad = false;
+      await this.loadingService.showLoading("Giriş yapılıyor lütfen bekleyiniz.")
       let user = this.loginForm.value;
       this.authService.login(user).subscribe(response => {
         if (response.success) {
           console.log(response)
-          this.messageService.showMessage(response.message,{});
+          this.messageService.showMessage(response.message, {});
         } else {
-          this.messageService.showMessage(response.message,{});
+          this.messageService.showMessage(response.message, {});
         }
       })
     }

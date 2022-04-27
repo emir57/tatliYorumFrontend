@@ -7,14 +7,16 @@
 <ion-content>
   <div id="loginContainer">
     <h2 class="ms-1">Giriş Yap</h2>
-    <ion-item>
-      <ion-label position="floating">Kullanıcı adı veya eposta</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Şifre</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
+    <form [formGroup]="loginForm">
+      <ion-item>
+        <ion-label position="floating">Kullanıcı adı veya eposta</ion-label>
+        <ion-input formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Şifre</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+    </form>
     <ion-button (click)="login()" expand="block" fill="clear" shape="round">
       Giriş Yap
     </ion-button>
