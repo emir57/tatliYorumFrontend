@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { ResponseDataModel } from 'src/models/responseDataModel';
 import { ResponseModel } from 'src/models/responseModel';
 import { User } from 'src/models/user';
 
@@ -20,7 +21,7 @@ export class AuthService {
   }
   login(user: User) {
     let url = `${this.baseUrl}/api/giris`;
-    return this.http.post<User>(url, user);
+    return this.http.post<ResponseDataModel<User>>(url, user);
   }
 
   setIsLogin(state: boolean) {
