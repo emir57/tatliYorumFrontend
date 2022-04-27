@@ -18,14 +18,14 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Şifre</ion-label>
-        <ion-input formControlName="password"></ion-input>
+        <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
       <small class="text-danger" *ngIf="(password.touched || password.dirty) && password.errors">
         <div *ngIf="(rePassword.errors.required)">Şifre boş olamaz</div>
       </small>
       <ion-item>
         <ion-label position="floating">Şifre Tekrar</ion-label>
-        <ion-input formControlName="rePassword"></ion-input>
+        <ion-input type="password" formControlName="rePassword"></ion-input>
       </ion-item>
       <small class="text-danger" *ngIf="(rePassword.touched || rePassword.dirty) && rePassword.errors">
         <div *ngIf="(rePassword.errors.required)">Şifre tekrarı boş olamaz</div>
