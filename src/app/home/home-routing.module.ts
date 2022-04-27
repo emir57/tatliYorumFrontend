@@ -9,15 +9,18 @@ const routes: Routes = [
   },
   {
     path: 'posts',
-    loadChildren: () => import('./posts/posts.module').then( m => m.PostsPageModule)
+    component: HomePage,
+    loadChildren: () => import('./posts/posts.module').then(m => m.PostsPageModule)
   },
   {
     path: 'post-add',
-    loadChildren: () => import('./post-add/post-add.module').then( m => m.PostAddPageModule)
+    component: HomePage,
+    loadChildren: () => import('./post-add/post-add.module').then(m => m.PostAddPageModule)
   },
   {
     path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
+    component: HomePage,
+    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
   }
 ];
 
@@ -25,4 +28,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class HomePageRoutingModule {}
+export class HomePageRoutingModule { }
