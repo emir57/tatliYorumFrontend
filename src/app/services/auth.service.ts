@@ -18,6 +18,10 @@ export class AuthService {
     let url = `${this.baseUrl}/api/kayit`;
     return this.http.post<ResponseModel>(url, user);
   }
+  login(user: User) {
+    let url = `${this.baseUrl}/api/giris`;
+    return this.http.post<User>(url, user);
+  }
 
   setIsLogin(state: boolean) {
     this.isLogin = state;
