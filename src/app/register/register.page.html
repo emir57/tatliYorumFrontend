@@ -23,6 +23,7 @@
       <ion-item>
         <ion-label position="floating">Şifre Tekrar</ion-label>
         <ion-input formControlName="rePassword"></ion-input>
+        <small class="text-danger" *ngIf="()"></small>
       </ion-item>
     </form>
     <ion-button (click)="register()" expand="block" fill="clear" shape="round">
