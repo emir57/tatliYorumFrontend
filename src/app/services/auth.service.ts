@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { ResponseModel } from 'src/models/responseModel';
 import { User } from 'src/models/user';
 
 @Injectable({
@@ -15,7 +16,7 @@ export class AuthService {
 
   register(user: User) {
     let url = `${this.baseUrl}/api/kayit`;
-    return this.http.post<string>(url, user);
+    return this.http.post<ResponseModel>(url, user);
   }
 
   setIsLogin(state: boolean) {
