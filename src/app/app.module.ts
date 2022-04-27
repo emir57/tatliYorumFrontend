@@ -19,7 +19,10 @@ import { ColorPickerModule } from 'ngx-color-picker';
     AppRoutingModule,
     ColorPickerModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    { provide: "baseUrl", useValue: "http://localhost:8082/tatliYorum" }
+  ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
