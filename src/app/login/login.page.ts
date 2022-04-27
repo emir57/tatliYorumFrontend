@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
@@ -13,6 +13,7 @@ import { StorageService } from '../services/storage.service';
 })
 export class LoginPage implements OnInit {
 
+  loginForm: FormGroup
   email: string;
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,7 +26,15 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.getEmail();
+    this.createForm();
 
+  }
+
+  createForm() {
+    this.loginForm = this.formBuilder.group({
+      username: ["", [Validators.required, Validators.maxLength(50)]],
+      password: ["", [Validators.required]]
+    })
   }
   getEmail() {
     this.activatedRoute.params.subscribe(param => {
