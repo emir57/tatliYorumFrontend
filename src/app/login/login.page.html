@@ -17,8 +17,10 @@
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
     </form>
-    <ion-button (click)="login()" expand="block" fill="clear" shape="round">
-      Giriş Yap
+    <ion-button [disabled]="!isLoad" [disabled]="!loginForm.valid" (click)="login()" expand="block" fill="clear" shape="round">
+      <span *ngIf="!isLoad" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>&nbsp;
+      <span *ngIf="isLoad">Giriş Yap</span>
+      <span *ngIf="!isLoad">Giriş Yapılıyor...</span>
     </ion-button>
     <br>
     <span>Hesabınız yok mu? <a routerLink="/register" style="text-decoration: none;">Kayıt ol</a></span>
