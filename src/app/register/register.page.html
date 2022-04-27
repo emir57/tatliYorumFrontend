@@ -7,22 +7,24 @@
 <ion-content>
   <div id="registerContainer">
     <h2 class="ms-1">Kayıt Ol</h2>
-    <ion-item>
-      <ion-label position="floating">Kullanıcı adı</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Eposta</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Şifre</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Şifre Tekrar</ion-label>
-      <ion-input></ion-input>
-    </ion-item>
+    <form [formGroup]="registerForm">
+      <ion-item>
+        <ion-label position="floating">Kullanıcı adı</ion-label>
+        <ion-input formControlName="username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Eposta</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Şifre</ion-label>
+        <ion-input formControlName="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Şifre Tekrar</ion-label>
+        <ion-input formControlName="rePassword"></ion-input>
+      </ion-item>
+    </form>
     <ion-button (click)="register()" expand="block" fill="clear" shape="round">
       Kayıt Ol
     </ion-button>
