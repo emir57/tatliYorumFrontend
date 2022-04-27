@@ -12,6 +12,10 @@
         <ion-label position="floating">Kullanıcı adı</ion-label>
         <ion-input formControlName="username"></ion-input>
       </ion-item>
+      <small class="text-danger" *ngIf="(username.touched || username.dirty) && username.errors">
+        <div *ngIf="(username.errors.required)">Kullanıcı adı boş olamaz</div>
+        <div *ngIf="(username.errors.maxlength)">Kullanıcı adı maksimum {{username.errors.maxlength.requiredLength}} karakter olabilir</div>
+      </small>
       <ion-item>
         <ion-label position="floating">Eposta</ion-label>
         <ion-input formControlName="email"></ion-input>
