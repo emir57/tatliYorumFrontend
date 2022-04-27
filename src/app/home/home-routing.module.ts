@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'post-add',
     loadChildren: () => import('./post-add/post-add.module').then( m => m.PostAddPageModule)
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
   }
 ];
 
