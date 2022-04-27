@@ -59,7 +59,7 @@ export class LoginPage implements OnInit {
         if (response.success) {
           this.messageService.showMessage(response.message, {});
           setTimeout(() => {
-            this.ro
+            this.router.navigateByUrl("/home/posts");
           }, 1000);
         } else {
           this.messageService.showMessage(response.message, {});
