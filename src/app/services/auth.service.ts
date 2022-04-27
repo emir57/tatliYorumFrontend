@@ -21,4 +21,7 @@ export class AuthService {
   setIsLogin(state: boolean) {
     this.isLogin = state;
   }
+  getIsLogin(): boolean {
+    return this.isLogin;
+  }
 }
