@@ -35,9 +35,9 @@ export class RegisterPage implements OnInit {
   }
 
 
-  register() {
+  async register() {
     if (this.registerForm.valid) {
-      this.loadingService.showLoading("Kayıt olunuyor lütfen bekleyiniz.");
+      await this.loadingService.showLoading("Kayıt olunuyor lütfen bekleyiniz.");
       this.isLoad = false;
       let userModel = this.registerForm.value;
       delete userModel.rePassword;
