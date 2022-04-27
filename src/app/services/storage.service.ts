@@ -23,6 +23,12 @@ export class StorageService {
     });
     return value;
   }
+
+  async removeName(key: KeyType) {
+    await Storage.remove({
+      key: key
+    });
+  }
 }
 export enum KeyType {
   User = "tatliYorum_user"
