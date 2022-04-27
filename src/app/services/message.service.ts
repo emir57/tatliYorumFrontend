@@ -10,7 +10,7 @@ export class MessageService {
     private toastController: ToastController
   ) { }
 
-  async showMessage(message: string) {
+  async showMessage(message: string, options: Partial<MessageOptions>) {
     const toast = await this.toastController.create({
       message: message,
       duration: 2000,
