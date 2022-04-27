@@ -10,9 +10,9 @@ export class MessageService {
     private toastController: ToastController
   ) { }
 
-  async showMessage() {
+  async showMessage(message: string) {
     const toast = await this.toastController.create({
-      message: 'Your settings have been saved.',
+      message: message,
       duration: 2000
     });
     toast.present();
