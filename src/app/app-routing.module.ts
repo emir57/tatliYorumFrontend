@@ -4,22 +4,22 @@ import { HomePage } from './home/home.page';
 
 const routes: Routes = [
   {
-    path: 'home',
-    component: HomePage,
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
-  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
   {
     path: 'register',
     loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'home',
+    component: HomePage,
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
 ];
 
