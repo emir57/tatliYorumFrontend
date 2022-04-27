@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/models/user';
 import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
@@ -16,7 +16,7 @@ export class RegisterPage implements OnInit {
   registerForm: FormGroup
   constructor(
     private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private loadingService: LoadingService,
     private authService: AuthService
   ) { }
@@ -41,10 +41,14 @@ export class RegisterPage implements OnInit {
       this.isLoad = false;
       let userModel = this.registerForm.value;
       delete userModel.rePassword;
-      this.authService.register(userModel).subscribe(async response=>{
+      this.authService.register(userModel).subscribe(async response => {
         this.isLoad = true;
         await this.loadingService.closeLoading();
-        console.log(response)
+        if (response.success) {
+          this.router.navigate(["/login", { email: userModel.email }])
+        } else {
+
+        }
       })
     }
   }
