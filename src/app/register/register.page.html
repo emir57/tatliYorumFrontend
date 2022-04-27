@@ -52,8 +52,9 @@
       <!-- RePassword End -->
     </form>
     <ion-button (click)="register()" expand="block" fill="clear" shape="round">
-      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>&nbsp;
-      <span>Kayıt Ol</span>
+      <span *ngIf="!isLoad" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>&nbsp;
+      <span *ngIf="isLoad">Kayıt Ol</span>
+      <span *ngIf="!isLoad">Kayıt Olunuyor...</span>
     </ion-button>
     <br>
     <span>Hesabın zaten var mı? <a routerLink="/login" style="text-decoration: none;">Giriş yap</a></span>

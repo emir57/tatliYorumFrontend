@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class RegisterPage implements OnInit {
 
+  isLoad: boolean = true;
   registerForm: FormGroup
   constructor(
     private formBuilder: FormBuilder,
@@ -39,16 +40,16 @@ export class RegisterPage implements OnInit {
     return password === confirmPassword ? null : { notSame: true };
   }
 
-  get username(){
+  get username() {
     return this.registerForm.get("username");
   }
-  get email(){
+  get email() {
     return this.registerForm.get("email");
   }
-  get password(){
+  get password() {
     return this.registerForm.get("password");
   }
-  get rePassword(){
+  get rePassword() {
     return this.registerForm.get("rePassword");
   }
 
