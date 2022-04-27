@@ -6,6 +6,14 @@ const routes: Routes = [
   {
     path: '',
     component: HomePage,
+  },
+  {
+    path: 'posts',
+    loadChildren: () => import('./posts/posts.module').then( m => m.PostsPageModule)
+  },
+  {
+    path: 'post-add',
+    loadChildren: () => import('./post-add/post-add.module').then( m => m.PostAddPageModule)
   }
 ];
 
