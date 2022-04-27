@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { LoadingService } from '../services/loading.service';
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,8 @@ export class RegisterPage implements OnInit {
   registerForm: FormGroup
   constructor(
     private formBuilder: FormBuilder,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private loadingService: LoadingService
   ) { }
 
   ngOnInit() {
@@ -32,6 +34,8 @@ export class RegisterPage implements OnInit {
 
   register() {
     if (this.registerForm.valid) {
+      this.loadingService.showLoading("Kayıt olunuyor lütfen bekleyiniz.");
+      this.isLoad = false;
 
     }
   }
