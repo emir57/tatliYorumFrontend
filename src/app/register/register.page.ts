@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -31,6 +31,12 @@ export class RegisterPage implements OnInit {
 
   register() {
 
+  }
+
+  checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
+    let password = group.get("password").value;
+    let confirmPassword = group.get("rePassword").value;
+    return password === confirmPassword ? null : { notSame: true };
   }
 
 }
