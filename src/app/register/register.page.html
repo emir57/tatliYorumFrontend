@@ -51,7 +51,7 @@
       </small>
       <!-- RePassword End -->
     </form>
-    <ion-button (click)="register()" expand="block" fill="clear" shape="round">
+    <ion-button [disabled]="!isLoad" [disabled]="!registerForm.valid" (click)="register()" expand="block" fill="clear" shape="round">
       <span *ngIf="!isLoad" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>&nbsp;
       <span *ngIf="isLoad">Kayıt Ol</span>
       <span *ngIf="!isLoad">Kayıt Olunuyor...</span>
