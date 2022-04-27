@@ -8,6 +8,7 @@
   <div id="registerContainer">
     <h2 class="ms-1">Kayıt Ol</h2>
     <form [formGroup]="registerForm">
+      <!-- Username Start -->
       <ion-item>
         <ion-label position="floating">Kullanıcı adı</ion-label>
         <ion-input formControlName="username"></ion-input>
@@ -16,6 +17,8 @@
         <div *ngIf="(username.errors.required)">Kullanıcı adı boş olamaz</div>
         <div *ngIf="(username.errors.maxlength)">Kullanıcı adı maksimum {{username.errors.maxlength.requiredLength}} karakter olabilir</div>
       </small>
+      <!-- Username End -->
+      <!-- Email Start -->
       <ion-item>
         <ion-label position="floating">Eposta</ion-label>
         <ion-input formControlName="email"></ion-input>
@@ -25,6 +28,8 @@
         <div *ngIf="(email.errors.email)">Geçersiz eposta</div>
         <div *ngIf="(email.errors.maxlength)">Eposta maksimum {{email.errors.maxlength.requiredLength}} karakter olabilir</div>
       </small>
+      <!-- Email End -->
+      <!-- Password Start -->
       <ion-item>
         <ion-label position="floating">Şifre</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
@@ -32,6 +37,8 @@
       <small class="text-danger" *ngIf="(password.touched || password.dirty) && password.errors">
         <div *ngIf="(password.errors.required)">Şifre boş olamaz</div>
       </small>
+      <!-- Passowrd End -->
+      <!-- RePassword Start -->
       <ion-item>
         <ion-label position="floating">Şifre Tekrar</ion-label>
         <ion-input type="password" formControlName="rePassword"></ion-input>
@@ -42,6 +49,7 @@
       <small class="text-danger" *ngIf="(rePassword.touched || rePassword.dirty) && registerForm.hasError('notSame')">
         <div>Şifreler uyuşmuyor</div>
       </small>
+      <!-- RePassword End -->
     </form>
     <ion-button (click)="register()" expand="block" fill="clear" shape="round">
       Kayıt Ol
