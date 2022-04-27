@@ -31,7 +31,9 @@ export class RegisterPage implements OnInit {
 
 
   register() {
+    if (this.registerForm.valid) {
 
+    }
   }
 
   checkPasswords: ValidatorFn = (group: AbstractControl): ValidationErrors | null => {
