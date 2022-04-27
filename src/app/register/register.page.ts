@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/models/user';
+import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
 
 @Component({
@@ -15,7 +17,8 @@ export class RegisterPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private activatedRoute: ActivatedRoute,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -36,7 +39,9 @@ export class RegisterPage implements OnInit {
     if (this.registerForm.valid) {
       this.loadingService.showLoading("Kayıt olunuyor lütfen bekleyiniz.");
       this.isLoad = false;
-
+      let userModel = this.registerForm.value;
+      delete userModel.rePassword;
+      this.authService.register()
     }
   }
 
