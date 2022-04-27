@@ -53,15 +53,16 @@ export class LoginPage implements OnInit {
       await this.loadingService.showLoading("Giriş yapılıyor lütfen bekleyiniz.")
       let user = this.loginForm.value;
       this.authService.login(user).subscribe(async response => {
-        this.isLoad = true;
-        await this.loadingService.closeLoading();
-        console.log(response)
         if (response.success) {
           this.messageService.showMessage(response.message, {});
-          setTimeout(() => {
+          setTimeout(async () => {
+            this.isLoad = true;
+            await this.loadingService.closeLoading();
             this.router.navigateByUrl("/home/posts");
           }, 1000);
         } else {
+          this.isLoad = true;
+          await this.loadingService.closeLoading();
           this.messageService.showMessage(response.message, {});
         }
       })
