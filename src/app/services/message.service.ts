@@ -13,8 +13,14 @@ export class MessageService {
   async showMessage(message: string) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000
+      duration: 2000,
+      position:
     });
     toast.present();
   }
+}
+export enum MessagePosition {
+  Top = "top",
+  Bottom = "bottom",
+  Middle = "middle"
 }
