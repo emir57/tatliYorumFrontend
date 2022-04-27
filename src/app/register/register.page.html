@@ -8,11 +8,19 @@
   <div id="registerContainer">
     <h2 class="ms-1">Kayıt Ol</h2>
     <ion-item>
-      <ion-label position="floating">Kullanıcı adı veya eposta</ion-label>
+      <ion-label position="floating">Kullanıcı adı</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Eposta</ion-label>
       <ion-input></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="floating">Şifre</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Şifre Tekrar</ion-label>
       <ion-input></ion-input>
     </ion-item>
     <ion-button (click)="register()" expand="block" fill="clear" shape="round">
