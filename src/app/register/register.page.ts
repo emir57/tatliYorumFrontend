@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/models/user';
 import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
+import { MessageService } from '../services/message.service';
 
 @Component({
   selector: 'app-register',
@@ -18,7 +19,8 @@ export class RegisterPage implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private loadingService: LoadingService,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -45,9 +47,10 @@ export class RegisterPage implements OnInit {
         this.isLoad = true;
         await this.loadingService.closeLoading();
         if (response.success) {
+          this.messageService.showMessage(response.message, {});
           this.router.navigate(["/login", { email: userModel.email }])
         } else {
-
+          this.messageService.showMessage(response.message, {});
         }
       })
     }
