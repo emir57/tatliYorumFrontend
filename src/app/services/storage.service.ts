@@ -16,6 +16,13 @@ export class StorageService {
       value: value
     })
   }
+
+  async checkName(key: KeyType): Promise<string> {
+    const { value } = await Storage.get({
+      key: key
+    });
+    return value;
+  }
 }
 export enum KeyType {
   User = "tatliYorum_user"
