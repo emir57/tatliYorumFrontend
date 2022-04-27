@@ -14,10 +14,14 @@ export class MessageService {
     const toast = await this.toastController.create({
       message: message,
       duration: 2000,
-      position:
+      position: "top"
     });
     toast.present();
   }
+}
+export class MessageOptions {
+  position: MessagePosition = MessagePosition.Top;
+  duration: number = 200;
 }
 export enum MessagePosition {
   Top = "top",
