@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
 import { MessageService } from '../services/message.service';
@@ -22,7 +22,8 @@ export class LoginPage implements OnInit {
     private messageService: MessageService,
     private storageService: StorageService,
     private loadingService: LoadingService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -57,6 +58,9 @@ export class LoginPage implements OnInit {
         console.log(response)
         if (response.success) {
           this.messageService.showMessage(response.message, {});
+          setTimeout(() => {
+            this.ro
+          }, 1000);
         } else {
           this.messageService.showMessage(response.message, {});
         }
