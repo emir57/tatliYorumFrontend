@@ -48,8 +48,13 @@ export class LoginPage implements OnInit {
   login() {
     if (this.loginForm.valid) {
       let user = this.loginForm.value;
-      this.authService.login(user).subscribe(response=>{
-        if(res)
+      this.authService.login(user).subscribe(response => {
+        if (response.success) {
+          console.log(response)
+          this.messageService.showMessage(response.message,{});
+        } else {
+          this.messageService.showMessage(response.message,{});
+        }
       })
     }
   }
