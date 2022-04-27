@@ -13,8 +13,8 @@ export class MessageService {
   async showMessage(message: string, options: Partial<MessageOptions>) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 2000,
-      position: "top"
+      duration: options.duration ?? 2000,
+      position: options.position ?? "top"
     });
     toast.present();
   }
