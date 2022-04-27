@@ -25,7 +25,7 @@ export class RegisterPage implements OnInit {
       email: ["", [Validators.required, Validators.email, Validators.maxLength(50)]],
       password: ["", [Validators.required]],
       rePassword: ["", [Validators.required]]
-    })
+    }, { validators: this.checkPasswords })
   }
 
 
