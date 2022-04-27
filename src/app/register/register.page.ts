@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -16,6 +16,16 @@ export class RegisterPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.createRegisterForm();
+  }
+
+  createRegisterForm() {
+    this.registerForm = this.formBuilder.group({
+      username: ["", [Validators.required, Validators.maxLength(20)]],
+      email: ["", [Validators.required, Validators.email, Validators.maxLength(50)]],
+      password: ["", [Validators.required]],
+      rePassword: ["", [Validators.required]]
+    })
   }
 
 
