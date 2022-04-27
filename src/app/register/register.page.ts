@@ -41,7 +41,11 @@ export class RegisterPage implements OnInit {
       this.isLoad = false;
       let userModel = this.registerForm.value;
       delete userModel.rePassword;
-      this.authService.register()
+      this.authService.register(userModel).subscribe(async response=>{
+        this.isLoad = true;
+        await this.loadingService.closeLoading();
+        console.log(response)
+      })
     }
   }
 
