@@ -9,17 +9,14 @@ const routes: Routes = [
   },
   {
     path: 'posts',
-    component: HomePage,
     loadChildren: () => import('./posts/posts.module').then(m => m.PostsPageModule)
   },
   {
     path: 'post-add',
-    component: HomePage,
     loadChildren: () => import('./post-add/post-add.module').then(m => m.PostAddPageModule)
   },
   {
     path: 'settings',
-    component: HomePage,
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
   }
 ];
