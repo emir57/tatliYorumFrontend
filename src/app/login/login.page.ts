@@ -51,9 +51,11 @@ export class LoginPage implements OnInit {
       this.isLoad = false;
       await this.loadingService.showLoading("Giriş yapılıyor lütfen bekleyiniz.")
       let user = this.loginForm.value;
-      this.authService.login(user).subscribe(response => {
+      this.authService.login(user).subscribe(async response => {
+        this.isLoad = true;
+        await this.loadingService.closeLoading();
+        console.log(response)
         if (response.success) {
-          console.log(response)
           this.messageService.showMessage(response.message, {});
         } else {
           this.messageService.showMessage(response.message, {});
