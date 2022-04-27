@@ -1,0 +1,7 @@
+{
+  "name": "tatliYorumFrontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
