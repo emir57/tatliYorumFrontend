@@ -17,4 +17,9 @@ export class LoadingService {
     })
     return await loading.present();
   }
+
+  async closeLoading(){
+    return await this.loadingController.dismiss();
+  }
+
 }
