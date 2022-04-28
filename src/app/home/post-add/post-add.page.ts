@@ -68,5 +68,10 @@ export class PostAddPage implements OnInit {
   getColorStyles() {
     return `color:${this.choosedTextColor};background:${this.choosedBackgroundColor}`;
   }
+  getAnimation() {
+    if (this.animation) {
+      return "animate:animation 5s infinite";
+    }
+  }
 
 }
