@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PostAddPageRoutingModule } from './post-add-routing.module';
 
 import { PostAddPage } from './post-add.page';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { PostAddPage } from './post-add.page';
     FormsModule,
     IonicModule,
     PostAddPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ColorPickerModule
   ],
   declarations: [PostAddPage]
 })
