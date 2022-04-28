@@ -1,9 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor() { }
+  constructor(
+    @Inject("baseUrl") private baseUrl: string
+  ) { }
 }
