@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { LoadingService } from 'src/app/services/loading.service';
 import { MessageService } from 'src/app/services/message.service';
+import { Post } from 'src/models/post';
 
 @Component({
   selector: 'app-post-add',
@@ -21,6 +22,14 @@ export class PostAddPage implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+
+  add() {
+    if (this.saveForm.valid) {
+      let post: Post = Object.assign({}, this.saveForm.value);
+      console.log(post)
+    }
   }
 
 }
