@@ -17,7 +17,7 @@ export class LoginPage implements OnInit {
   isLoad: boolean = true;
   loginForm: FormGroup
   email: string;
-  categories:Category[]=[{id:1,name:"Teknoloji"},{id:2,name:"Gündem"},]
+  categories: Category[] = [{ id: 1, name: "Teknoloji" }, { id: 2, name: "Gündem" },]
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
@@ -29,9 +29,9 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getCategories();
     this.getEmail();
     this.createForm();
-
   }
 
   createForm() {
@@ -39,6 +39,9 @@ export class LoginPage implements OnInit {
       username: ["", [Validators.required, Validators.maxLength(50)]],
       password: ["", [Validators.required]]
     })
+  }
+  getCategories() {
+
   }
   getEmail() {
     this.activatedRoute.params.subscribe(param => {
