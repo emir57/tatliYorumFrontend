@@ -15,6 +15,7 @@ import { User } from 'src/models/user';
 })
 export class PostAddPage implements OnInit {
 
+  choosedBackgroundColor: string;
   user: User
   saveForm: FormGroup;
   isLoad: boolean = true;
@@ -55,9 +56,8 @@ export class PostAddPage implements OnInit {
 
   add() {
     // if (this.saveForm.valid) {
-      let post: Post = Object.assign({}, this.saveForm.value);
-      console.log(post)
+    let post: Post = Object.assign({}, this.saveForm.value);
+    console.log(post)
     // }
   }
-
 }
