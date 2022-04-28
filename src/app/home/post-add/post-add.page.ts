@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingService } from 'src/app/services/loading.service';
 import { MessageService } from 'src/app/services/message.service';
 import { Post } from 'src/models/post';
@@ -22,8 +22,20 @@ export class PostAddPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.createForm();
   }
 
+  createForm() {
+    this.saveForm = this.formBuilder.group({
+      content: ["", [Validators.required]],
+      categoryId: ["", [Validators.required]],
+      userId: ["", [Validators.required]],
+      isAnimation: [false, [Validators.required]],
+      backgroundColor: ["", [Validators.required]],
+      textColor: ["", [Validators.required]],
+      secretUser: [false, [Validators.required]]
+    })
+  }
 
   add() {
     if (this.saveForm.valid) {
