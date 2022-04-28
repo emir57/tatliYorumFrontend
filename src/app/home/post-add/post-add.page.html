@@ -12,6 +12,13 @@
         <ion-label position="floating">İçerik</ion-label>
         <ion-input formControlName="content"></ion-input>
       </ion-item>
+      <ion-item>
+        <ion-label>Kategori</ion-label>
+        <ion-select formControlName="categoryId" placeholder="Kategori Seçiniz">
+          <ion-select-option *ngFor="let category of categories" [value]="category.id">{{category.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
     </form>
     <ion-button (click)="add()" expand="block" fill="clear" shape="round">
       Paylaş
