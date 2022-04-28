@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
 import { MessageService } from '../services/message.service';
-import { StorageService } from '../services/storage.service';
+import { KeyType, StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -55,6 +55,7 @@ export class LoginPage implements OnInit {
       this.authService.login(user).subscribe(async response => {
         if (response.success) {
           this.messageService.showMessage(response.message, {});
+          await this.storageService.setName(KeyType.User, JSON.stringify(response.data))
           setTimeout(async () => {
             this.isLoad = true;
             await this.loadingService.closeLoading();
