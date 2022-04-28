@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,8 +13,9 @@ import { PostAddPage } from './post-add.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    PostAddPageRoutingModule
+    PostAddPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [PostAddPage]
 })
-export class PostAddPageModule {}
+export class PostAddPageModule { }
