@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { ResponseDataModel } from 'src/models/responseDataModel';
 import { ResponseModel } from 'src/models/responseModel';
 import { Post } from "../../models/post";
 
@@ -25,5 +26,9 @@ export class PostService {
   update(post: Post) {
     let url = `${this.baseUrl}api/postupdate`;
     return this.http.post<ResponseModel>(url, post);
+  }
+  getById(postId: number) {
+    let url = `${this.baseUrl}api/getpost/${postId}`;
+    return this.http.get<ResponseDataModel<Post>>(url);
   }
 }
