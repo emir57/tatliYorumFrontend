@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoadingService } from 'src/app/services/loading.service';
 import { MessageService } from 'src/app/services/message.service';
+import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/models/post';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-post-add',
@@ -12,17 +14,24 @@ import { Post } from 'src/models/post';
 })
 export class PostAddPage implements OnInit {
 
+  user: User
   saveForm: FormGroup;
   isLoad: boolean = true;
   constructor(
     private formBuilder: FormBuilder,
+    private userService: UserService,
     private http: HttpClient,
     private messageService: MessageService,
     private loadingService: LoadingService
   ) { }
 
   ngOnInit() {
+    this.getUser();
     this.createForm();
+  }
+
+  async getUser() {
+    this.user = await this.userService.getUser();
   }
 
   createForm() {
