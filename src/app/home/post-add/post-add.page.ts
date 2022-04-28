@@ -38,7 +38,7 @@ export class PostAddPage implements OnInit {
     this.saveForm = this.formBuilder.group({
       content: ["", [Validators.required]],
       categoryId: ["", [Validators.required]],
-      userId: ["", [Validators.required]],
+      userId: [this.user.id, [Validators.required]],
       isAnimation: [false, [Validators.required]],
       backgroundColor: ["", [Validators.required]],
       textColor: ["", [Validators.required]],
