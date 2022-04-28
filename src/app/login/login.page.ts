@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Category } from 'src/models/category';
 import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
 import { MessageService } from '../services/message.service';
@@ -16,6 +17,7 @@ export class LoginPage implements OnInit {
   isLoad: boolean = true;
   loginForm: FormGroup
   email: string;
+  categories:Category[]=[{id:1,name:"Teknoloji"},{id:2,name:"Gündem"},]
   constructor(
     private activatedRoute: ActivatedRoute,
     private authService: AuthService,
