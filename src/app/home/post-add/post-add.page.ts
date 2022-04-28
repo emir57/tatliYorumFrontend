@@ -67,4 +67,5 @@ export class PostAddPage implements OnInit {
   getColorStyles() {
     return `color:${this.choosedTextColor};background:${this.choosedBackgroundColor}`;
   }
+
 }
