@@ -31,4 +31,8 @@ export class PostService {
     let url = `${this.baseUrl}api/posts/${postId}`;
     return this.http.get<ResponseDataModel<Post>>(url);
   }
+  getAll() {
+    let url = `${this.baseUrl}api/posts`;
+    return this.http.get<ResponseDataModel<Post[]>>(url);
+  }
 }
