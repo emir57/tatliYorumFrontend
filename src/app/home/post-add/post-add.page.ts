@@ -15,6 +15,7 @@ import { User } from 'src/models/user';
 })
 export class PostAddPage implements OnInit {
 
+  content: string;
   choosedBackgroundColor: string = "#EDF0F3";
   choosedTextColor: string = "#000000";
   user: User

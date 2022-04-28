@@ -10,7 +10,7 @@
       <input *ngIf="user" type="hidden" formControlName="userId" [(ngModel)]="user.id">
       <ion-item>
         <ion-label position="floating">İçerik</ion-label>
-        <ion-input formControlName="content"></ion-input>
+        <ion-input [(ngModel)]="content" formControlName="content"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Kategori</ion-label>
@@ -45,5 +45,13 @@
     <ion-button (click)="add()" expand="block" fill="clear" shape="round">
       Paylaş
     </ion-button>
+    <div style="padding:10px">
+      <div>
+        <ion-icon name="person-outline"></ion-icon>&nbsp;<span *ngIf="user">{{user.username}}</span>
+      </div>
+      <div>
+        {{content}}
+      </div>
+    </div>
   </div>
 </ion-content>
