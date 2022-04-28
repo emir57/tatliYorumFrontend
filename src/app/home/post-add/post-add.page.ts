@@ -15,7 +15,8 @@ import { User } from 'src/models/user';
 })
 export class PostAddPage implements OnInit {
 
-  choosedBackgroundColor: string;
+  choosedBackgroundColor: string = "#EDF0F3";
+  choosedTextColor: string = "#000000";
   user: User
   saveForm: FormGroup;
   isLoad: boolean = true;

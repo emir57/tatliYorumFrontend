@@ -37,7 +37,7 @@
         <ion-col size="6">
           <ion-item>
             <ion-label position="floating">Yazı Rengi</ion-label>
-            <ion-input formControlName="textColor"></ion-input>
+            <ion-input [(colorPicker)]="choosedTextColor" [(ngModel)]="choosedTextColor" formControlName="textColor"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
