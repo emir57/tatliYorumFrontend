@@ -62,4 +62,8 @@ export class PostAddPage implements OnInit {
     console.log(post)
     // }
   }
+
+  getColorStyles() {
+    return `color:${this.choosedTextColor};background:${this.choosedBackgroundColor}`;
+  }
 }
