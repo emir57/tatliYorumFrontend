@@ -25,7 +25,7 @@
       </ion-item>
       <ion-item>
         <ion-label>İsmimi Gizle</ion-label>
-        <ion-checkbox formControlName="secretUser"></ion-checkbox>
+        <ion-checkbox [(ngModel)]="secretUser" formControlName="secretUser"></ion-checkbox>
       </ion-item>
       <ion-row>
         <ion-col size="6">
@@ -47,7 +47,9 @@
     </ion-button>
     <div [style]="getColorStyles()" style="padding:10px">
       <div>
-        <ion-icon name="person-outline"></ion-icon>&nbsp;<span *ngIf="user">{{user.username}}</span>
+        <ion-icon name="person-outline"></ion-icon>&nbsp;
+        <span *ngIf="user && !secretUser">{{user.username}}</span>
+        <span *ngIf="secretUser">İsimsiz kullanıcı</span>
       </div>
       <div>
         {{content}}
