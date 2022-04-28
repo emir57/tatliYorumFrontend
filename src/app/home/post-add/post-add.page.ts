@@ -47,10 +47,10 @@ export class PostAddPage implements OnInit {
   }
 
   add() {
-    if (this.saveForm.valid) {
+    // if (this.saveForm.valid) {
       let post: Post = Object.assign({}, this.saveForm.value);
       console.log(post)
-    }
+    // }
   }
 
 }
