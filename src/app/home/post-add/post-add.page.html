@@ -7,7 +7,7 @@
 <ion-content>
   <div id="container">
     <form [formGroup]="saveForm">
-      <input type="hidden" formControlName="userId" [(ngModel)]="user.id">
+      <input *ngIf="user" type="hidden" formControlName="userId" [(ngModel)]="user.id">
       <ion-item>
         <ion-label position="floating">İçerik</ion-label>
         <ion-input formControlName="content"></ion-input>
