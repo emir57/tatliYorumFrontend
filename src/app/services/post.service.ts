@@ -18,4 +18,8 @@ export class PostService {
     let url = `${this.baseUrl}api/postadd`;
     return this.http.post<ResponseModel>(url, post);
   }
+  delete(postId: number) {
+    let url = `${this.baseUrl}api/postdelete/${postId}`;
+    return this.http.delete<ResponseModel>(url);
+  }
 }
