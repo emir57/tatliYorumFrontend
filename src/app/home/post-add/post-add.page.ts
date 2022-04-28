@@ -15,6 +15,7 @@ import { User } from 'src/models/user';
 })
 export class PostAddPage implements OnInit {
 
+  animation: boolean = false;
   secretUser: boolean = false;
   content: string;
   choosedBackgroundColor: string = "#EDF0F3";
