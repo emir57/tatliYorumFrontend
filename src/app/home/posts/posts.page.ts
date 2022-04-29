@@ -54,7 +54,7 @@ export class PostsPage implements OnInit {
     settingsPanel.fadeToggle();
   }
 
-  deletePost() {
+  deletePost(post: Post) {
 
   }
 
