@@ -26,6 +26,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 10px;
+}
+.postcard .left span:first-child {
+  padding: 5px;
+}
+.postcard .left span:last-child {
+  padding: 5px;
 }
 
 .topsection {
