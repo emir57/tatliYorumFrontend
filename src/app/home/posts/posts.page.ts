@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingService } from 'src/app/services/loading.service';
 import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/models/post';
+import { User } from 'src/models/user';
 declare var $: any;
 
 @Component({
@@ -11,13 +13,16 @@ declare var $: any;
 })
 export class PostsPage implements OnInit {
 
+  currentUser: User
   posts: Post[]
   constructor(
     private postService: PostService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.getCurrentUser();
     this.getPosts();
   }
 
@@ -28,6 +33,9 @@ export class PostsPage implements OnInit {
         this.posts = response.data;
       }
     })
+  }
+  async getCurrentUser() {
+    this.currentUser = await this.userService.getUser();
   }
 
   getColorStyles(post: Post) {
@@ -42,8 +50,12 @@ export class PostsPage implements OnInit {
 
 
   showSettings(post: Post) {
-    const settingsPanel = $("#postsetting"+post.id);
+    const settingsPanel = $("#postsetting" + post.id);
     settingsPanel.fadeToggle();
+  }
+
+  deletePost() {
+
   }
 
 }
