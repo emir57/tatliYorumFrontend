@@ -28,4 +28,14 @@ export class PostsPage implements OnInit {
     })
   }
 
+  getColorStyles(post: Post) {
+    let css = `
+    color:${post.textColor};
+    background:${post.backgroundColor};`
+    if (post.isAnimation) {
+      css += "animation:animation 5s infinite";
+    }
+    return css;
+  }
+
 }
