@@ -7,3 +7,13 @@
     filter: hue-rotate(360deg);
   }
 }
+
+
+.topsection {
+  display: flex;
+  justify-content: start;
+}
+
+.topsection span:last-child {
+  margin-left: auto;
+}
