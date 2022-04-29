@@ -6,7 +6,8 @@
 
 <ion-content>
   <div id="container">
-    <div class="postcard" *ngFor="let post of posts" [style]="getColorStyles(post)" style="padding:10px">
+    <div id="postcard{{post.id}}" class="postcard" *ngFor="let post of posts" [style]="getColorStyles(post)"
+      style="padding:10px">
       <div class="left">
         <span>
           <ion-icon name="chevron-up-outline"></ion-icon>
