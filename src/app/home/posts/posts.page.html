@@ -15,7 +15,7 @@
         <span *ngIf="post.secretUser">İsimsiz kullanıcı</span>
         <span>
           <ion-icon (click)="showSettings(post)" name="ellipsis-vertical-outline"></ion-icon>
-          <ul id="postsetting{{post.id}}" class="list-group">
+          <ul id="postsetting{{post.id}}" class="list-group postsetting">
             <li class="list-group-item text-warning"><ion-icon name="alert-outline"></ion-icon> Şikayet Et</li>
             <li class="list-group-item text-danger"><ion-icon name="trash-outline"></ion-icon> Sil</li>
           </ul>
