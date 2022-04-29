@@ -43,7 +43,7 @@ export class PostsPage implements OnInit {
 
   showSettings(post: Post) {
     const settingsPanel = $("#postsetting"+post.id);
-    settingsPanel.fadeIn();
+    settingsPanel.fadeToggle();
   }
 
 }
