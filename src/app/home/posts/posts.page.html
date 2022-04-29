@@ -14,7 +14,7 @@
         <span *ngIf="!post.secretUser">{{post.userId}}</span>
         <span *ngIf="post.secretUser">İsimsiz kullanıcı</span>
         <span>
-          <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+          <ion-icon (click)="showSettings(post)" name="ellipsis-vertical-outline"></ion-icon>
         </span>
       </div>
       <div>

@@ -39,4 +39,9 @@ export class PostsPage implements OnInit {
     return css;
   }
 
+
+  showSettings(post: Post) {
+
+  }
+
 }
