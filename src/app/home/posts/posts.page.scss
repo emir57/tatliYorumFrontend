@@ -22,6 +22,12 @@
   margin-top: 10px;
 }
 
+.postcard .left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .topsection {
   display: flex;
   justify-content: start;
@@ -31,7 +37,7 @@
   margin-left: auto;
 }
 
-.postsetting{
+.postsetting {
   display: none;
   position: absolute;
   right: 5%;
