@@ -5,5 +5,14 @@
 </ion-header>
 
 <ion-content>
-
+  <div *ngFor="let post of posts" [style]="getColorStyles()" style="padding:10px">
+    <div>
+      <ion-icon name="person-outline"></ion-icon>&nbsp;
+      <span *ngIf="user && !secretUser">{{user.username}}</span>
+      <span *ngIf="secretUser">İsimsiz kullanıcı</span>
+    </div>
+    <div>
+      {{content}}
+    </div>
+  </div>
 </ion-content>
