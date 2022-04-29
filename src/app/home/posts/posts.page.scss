@@ -16,6 +16,8 @@
 }
 
 .postcard {
+  display: flex;
+  justify-content: start;
   padding: 12px;
   margin-top: 10px;
 }
