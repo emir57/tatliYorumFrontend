@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertService } from 'src/app/services/alert.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
@@ -18,7 +19,8 @@ export class PostsPage implements OnInit {
   constructor(
     private postService: PostService,
     private loadingService: LoadingService,
-    private userService: UserService
+    private userService: UserService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -26,11 +28,13 @@ export class PostsPage implements OnInit {
     this.getPosts();
   }
 
-  getPosts() {
-    this.postService.getAll().subscribe(response => {
+  async getPosts() {
+    await this.loadingService.showLoading("Yükleniyor.");
+    this.postService.getAll().subscribe(async response => {
       console.log(response.data)
       if (response.success) {
         this.posts = response.data;
+        await this.loadingService.closeLoading();
       }
     })
   }
@@ -55,7 +59,16 @@ export class PostsPage implements OnInit {
   }
 
   deletePost(post: Post) {
+    post.isAnimation = false;
+    this.alertService.showAlertConfirm(
+      "Silme işlemi",
+      "Bu gönderinizi silmek istediğinizden eminmisiniz",
+      () => {
+        post.isAnimation = true;
+      },
+      () => {
 
+      })
   }
 
 }
