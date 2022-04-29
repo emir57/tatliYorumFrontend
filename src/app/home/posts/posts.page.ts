@@ -60,11 +60,21 @@ export class PostsPage implements OnInit {
 
   deletePost(post: Post) {
     post.isAnimation = false;
+    const postCard = $("#postcard" + post.id);
+    let interval = setInterval(() => {
+      setTimeout(() => {
+        postCard.addClass("bg-warning");
+      }, 1000);
+      setTimeout(() => {
+        postCard.removeClass("bg-warning");
+      }, 1500);
+    },500)
     this.alertService.showAlertConfirm(
       "Silme işlemi",
       "Bu gönderinizi silmek istediğinizden eminmisiniz",
       () => {
         post.isAnimation = true;
+        clearInterval(interval);
       },
       () => {
 
