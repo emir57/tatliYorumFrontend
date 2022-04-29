@@ -16,23 +16,23 @@ export class PostService {
 
 
   add(post: Post) {
-    let url = `${this.baseUrl}api/postadd`;
+    let url = `${this.baseUrl}/api/postadd`;
     return this.http.post<ResponseModel>(url, post);
   }
   delete(postId: number) {
-    let url = `${this.baseUrl}api/postdelete/${postId}`;
+    let url = `${this.baseUrl}/api/postdelete/${postId}`;
     return this.http.delete<ResponseModel>(url);
   }
   update(post: Post) {
-    let url = `${this.baseUrl}api/postupdate`;
+    let url = `${this.baseUrl}/api/postupdate`;
     return this.http.post<ResponseModel>(url, post);
   }
   getById(postId: number) {
-    let url = `${this.baseUrl}api/posts/${postId}`;
+    let url = `${this.baseUrl}/api/posts/${postId}`;
     return this.http.get<ResponseDataModel<Post>>(url);
   }
   getAll() {
-    let url = `${this.baseUrl}api/posts`;
+    let url = `${this.baseUrl}/api/posts`;
     return this.http.get<ResponseDataModel<Post[]>>(url);
   }
 }
