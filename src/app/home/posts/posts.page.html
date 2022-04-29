@@ -7,22 +7,37 @@
 <ion-content>
   <div id="container">
     <div class="postcard" *ngFor="let post of posts" [style]="getColorStyles(post)" style="padding:10px">
-      <div class="topsection">
+      <div class="left">
         <span>
-          <ion-icon name="person-outline"></ion-icon>
-        </span>&nbsp;
-        <span *ngIf="!post.secretUser">{{post.userId}}</span>
-        <span *ngIf="post.secretUser">İsimsiz kullanıcı</span>
+          <ion-icon name="chevron-up-outline"></ion-icon>
+        </span>
+        <span>0</span>
         <span>
-          <ion-icon (click)="showSettings(post)" name="ellipsis-vertical-outline"></ion-icon>
-          <ul id="postsetting{{post.id}}" class="list-group postsetting">
-            <li class="list-group-item text-warning"><ion-icon name="alert-outline"></ion-icon> Şikayet Et</li>
-            <li class="list-group-item text-danger"><ion-icon name="trash-outline"></ion-icon> Sil</li>
-          </ul>
+          <ion-icon name="chevron-down-outline"></ion-icon>
         </span>
       </div>
-      <div>
-        {{post.content}}
+      <div class="right">
+        <div class="topsection">
+          <span>
+            <ion-icon name="person-outline"></ion-icon>
+          </span>&nbsp;
+          <span *ngIf="!post.secretUser">{{post.userId}}</span>
+          <span *ngIf="post.secretUser">İsimsiz kullanıcı</span>
+          <span>
+            <ion-icon (click)="showSettings(post)" name="ellipsis-vertical-outline"></ion-icon>
+            <ul id="postsetting{{post.id}}" class="list-group postsetting">
+              <li class="list-group-item text-warning">
+                <ion-icon name="alert-outline"></ion-icon> Şikayet Et
+              </li>
+              <li class="list-group-item text-danger">
+                <ion-icon name="trash-outline"></ion-icon> Sil
+              </li>
+            </ul>
+          </span>
+        </div>
+        <div>
+          {{post.content}}
+        </div>
       </div>
     </div>
   </div>
