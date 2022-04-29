@@ -17,10 +17,15 @@ export class PostsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getPosts();
   }
 
   getPosts() {
-
+    this.postService.getAll().subscribe(response => {
+      if (response.success) {
+        this.posts = response.data;
+      }
+    })
   }
 
 }
