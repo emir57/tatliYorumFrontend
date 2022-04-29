@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoadingService } from 'src/app/services/loading.service';
 import { PostService } from 'src/app/services/post.service';
 import { Post } from 'src/models/post';
+declare var $: any;
 
 @Component({
   selector: 'app-posts',
@@ -41,7 +42,8 @@ export class PostsPage implements OnInit {
 
 
   showSettings(post: Post) {
-
+    const settingsPanel = $("#postsetting"+post.id);
+    settingsPanel.fadeIn();
   }
 
 }
