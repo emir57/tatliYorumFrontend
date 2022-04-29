@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
-import { ResponseDataModel } from 'src/models/responseDataModel';
+import { ResponseDataListModel, ResponseDataModel } from 'src/models/responseDataModel';
 import { ResponseModel } from 'src/models/responseModel';
 import { Post } from "../../models/post";
 
@@ -33,6 +33,6 @@ export class PostService {
   }
   getAll() {
     let url = `${this.baseUrl}/api/posts`;
-    return this.http.get<ResponseDataModel<Post[]>>(url);
+    return this.http.get<ResponseDataListModel<Post>>(url);
   }
 }

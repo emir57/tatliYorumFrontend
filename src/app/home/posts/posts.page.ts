@@ -22,6 +22,7 @@ export class PostsPage implements OnInit {
 
   getPosts() {
     this.postService.getAll().subscribe(response => {
+      console.log(response.data)
       if (response.success) {
         this.posts = response.data;
       }
