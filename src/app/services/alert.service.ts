@@ -10,31 +10,29 @@ export class AlertService {
     private alertController: AlertController
   ) { }
 
-
-  async showAlertConfirm() {
+  async showAlertConfirm(header: string, message: string, cancelCallBack: () => void, okayCallBack: () => void) {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Confirm!',
-      message: 'Message <strong>text</strong>!!!',
+      header: header,
+      message: message,
       buttons: [
         {
-          text: 'Cancel',
+          text: 'İptal',
           role: 'cancel',
           cssClass: 'secondary',
           id: 'cancel-button',
           handler: (blah) => {
-            console.log('Confirm Cancel: blah');
+            cancelCallBack();
           }
         }, {
-          text: 'Okay',
+          text: 'Tamam',
           id: 'confirm-button',
           handler: () => {
-            console.log('Confirm Okay');
+            okayCallBack();
           }
         }
       ]
     });
-
     await alert.present();
   }
 }
