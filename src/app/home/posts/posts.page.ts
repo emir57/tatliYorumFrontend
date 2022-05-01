@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/services/alert.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/models/post';
@@ -20,7 +21,8 @@ export class PostsPage implements OnInit {
     private postService: PostService,
     private loadingService: LoadingService,
     private userService: UserService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -54,12 +56,20 @@ export class PostsPage implements OnInit {
 
   addLike(postId: number) {
     this.postService.addLike(postId, this.currentUser.id).subscribe(response => {
-
+      if (response.success) {
+        this.messageService.showMessage(response.message,{position:MessagePosition.Top});
+      }else{
+        this.messageService.showMessage(response.message,{position:MessagePosition.Top});
+      }
     })
   }
   deleteLike(postId: number) {
     this.postService.deleteLike(postId, this.currentUser.id).subscribe(response => {
-
+      if (response.success) {
+        this.messageService.showMessage(response.message,{position:MessagePosition.Top});
+      }else{
+        this.messageService.showMessage(response.message,{position:MessagePosition.Top});
+      }
     })
   }
 
