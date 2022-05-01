@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertService } from 'src/app/services/alert.service';
+import { ApplicationService } from 'src/app/services/application.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
@@ -25,6 +26,7 @@ export class PostsPage implements OnInit {
     private userService: UserService,
     private alertService: AlertService,
     private messageService: MessageService,
+    private applicationService: ApplicationService
   ) { }
 
   ngOnInit() {
@@ -57,7 +59,7 @@ export class PostsPage implements OnInit {
     let css = `
     color:${post.textColor};
     background:${post.backgroundColor};`
-    if (post.isAnimation && this.applicationSettings.enableAnimation) {
+    if (post.isAnimation && this.applicationService.applicationSettings.enableAnimation) {
       css += "animation:animation 5s infinite";
     }
     return css;
