@@ -62,7 +62,7 @@ export class PostsPage implements OnInit {
     let css = `
     color:${post.textColor};
     background:${post.backgroundColor};`
-    if (post.isAnimation) {
+    if (post.isAnimation && this.applicationSettings.enableAnimation) {
       css += "animation:animation 5s infinite";
     }
     return css;
