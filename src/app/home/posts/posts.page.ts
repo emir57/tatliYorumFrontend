@@ -36,9 +36,10 @@ export class PostsPage implements OnInit {
       console.log(response.data)
       if (response.success) {
         this.posts = response.data;
-        this.posts.forEach(post=>{
-          this.postService.getLikes(post.id).subscribe(getLikeResponse=>{
-
+        this.posts.forEach(post => {
+          this.postService.getLikes(post.id).subscribe(getLikeResponse => {
+            post.likes = getLikeResponse.data.length ? 0 : getLikeResponse.data.length;
+            console.log(getLikeResponse.data)
           })
         })
         await this.loadingService.closeLoading();
@@ -73,6 +74,8 @@ export class PostsPage implements OnInit {
   deleteLike(postId: number) {
     this.postService.deleteLike(postId, this.currentUser.id).subscribe(response => {
       if (response.success) {
+        let postIndex = this.posts.findIndex(p => p.id === postId);
+        this.posts[postIndex].likes -= 1;
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       } else {
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });

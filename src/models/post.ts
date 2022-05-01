@@ -7,5 +7,5 @@ export interface Post {
   backgroundColor: string;
   textColor: string;
   secretUser: boolean;
-  likes?: number;
+  likes: number;
 }
