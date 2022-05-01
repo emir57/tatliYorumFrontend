@@ -28,4 +28,9 @@ export class CommentService {
     let url = `${this.baseUrl}/api/commentadd`;
     return this.http.post<ResponseModel>(url, postComment);
   }
+
+  update(postComment: PostComment) {
+    let url = `${this.baseUrl}/api/commentupdate`;
+    return this.http.post<ResponseModel>(url, postComment);
+  }
 }
