@@ -95,11 +95,11 @@ export class PostsPage implements OnInit {
     let interval = setInterval(() => {
       setTimeout(() => {
         postCard.addClass("bg-warning");
-      }, 1000);
+      }, 500);
       setTimeout(() => {
         postCard.removeClass("bg-warning");
-      }, 1500);
-    }, 500)
+      }, 1000);
+    }, 1000)
     this.alertService.showAlertConfirm(
       "Silme işlemi",
       "Bu gönderinizi silmek istediğinizden eminmisiniz",
