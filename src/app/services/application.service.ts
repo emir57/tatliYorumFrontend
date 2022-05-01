@@ -14,7 +14,7 @@ export class ApplicationService {
     this.getApplicationSettings();
   }
 
-  private async getApplicationSettings() {
+  async getApplicationSettings() {
     this.applicationSettings = JSON.parse(await this.storageService.checkName(KeyType.ApplicationSettings))
   }
 }
