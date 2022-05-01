@@ -35,4 +35,11 @@ export class PostService {
     let url = `${this.baseUrl}/api/posts`;
     return this.http.get<ResponseDataListModel<Post>>(url);
   }
+
+  like(postId: number) {
+
+  }
+  deleteLike(postId: number) {
+
+  }
 }
