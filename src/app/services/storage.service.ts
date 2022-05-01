@@ -31,5 +31,6 @@ export class StorageService {
   }
 }
 export enum KeyType {
-  User = "tatliYorum_user"
+  User = "tatliYorum_user",
+  ApplicationSettings = "tatliYorum_appSettings"
 }
