@@ -34,8 +34,8 @@ export class SettingsPage implements OnInit {
     }, 1000);
   }
 
-  logout() {
-    this.authService.
+  async logout() {
+    await this.authService.logout();
   }
 
 }
