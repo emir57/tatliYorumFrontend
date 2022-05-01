@@ -38,7 +38,7 @@ export class PostsPage implements OnInit {
         this.posts = response.data;
         this.posts.forEach(post => {
           this.postService.getLikes(post.id).subscribe(getLikeResponse => {
-            post.likes = getLikeResponse.data.length ? 0 : getLikeResponse.data.length;
+            post.likes = getLikeResponse.data.count;
             console.log(getLikeResponse.data)
           })
         })
