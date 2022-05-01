@@ -31,7 +31,6 @@ export class PostsPage implements OnInit {
 
   async ngOnInit() {
     await this.applicationService.getApplicationSettings();
-    console.log(this.applicationService.applicationSettings)
     this.getCurrentUser();
     this.getPosts();
   }
@@ -40,13 +39,11 @@ export class PostsPage implements OnInit {
   async getPosts() {
     await this.loadingService.showLoading("Yükleniyor.");
     this.postService.getAll().subscribe(async response => {
-      console.log(response.data)
       if (response.success) {
         this.posts = response.data;
         this.posts.forEach(post => {
           this.postService.getLikes(post.id).subscribe(getLikeResponse => {
             post.likes = getLikeResponse.data.count;
-            console.log(getLikeResponse.data)
           })
         })
         await this.loadingService.closeLoading();
