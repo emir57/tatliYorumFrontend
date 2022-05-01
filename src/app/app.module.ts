@@ -8,10 +8,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from "@angular/common/http";
 import { ColorPickerModule } from 'ngx-color-picker';
-import { CommentsPipe } from './comments.pipe';
 
 @NgModule({
-  declarations: [AppComponent, CommentsPipe],
+  declarations: [AppComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
