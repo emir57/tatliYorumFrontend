@@ -15,7 +15,11 @@ export class ApplicationService {
   }
 
   async getApplicationSettings() {
-    this.applicationSettings = JSON.parse(await this.storageService.checkName(KeyType.ApplicationSettings))
+    if (!(await this.storageService.checkName(KeyType.ApplicationSettings))) {
+      this.applicationSettings = { enableAnimation: true };
+    } else {
+      this.applicationSettings = JSON.parse(await this.storageService.checkName(KeyType.ApplicationSettings))
+    }
   }
   async setApplicationSettings(appSetting: ApplicationSettings) {
     await this.storageService.setName(KeyType.ApplicationSettings, JSON.stringify(appSetting));
