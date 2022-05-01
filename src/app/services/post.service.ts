@@ -37,9 +37,9 @@ export class PostService {
   }
 
   like(postId: number, userId: number) {
-
+    let url = `${this.baseUrl}/api/postlikes/${postId}/${userId}`;
   }
   deleteLike(postId: number, userId: number) {
-
+    let url = `${this.baseUrl}/api/deletepostlikes/${postId}/${userId}`
   }
 }
