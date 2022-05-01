@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { ResponseDataModel } from 'src/models/responseDataModel';
 import { ResponseModel } from 'src/models/responseModel';
 import { User } from 'src/models/user';
@@ -16,7 +17,8 @@ export class AuthService {
     @Inject("baseUrl") private baseUrl: string,
     private http: HttpClient,
     private storageService: StorageService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private router: Router
   ) { }
 
   register(user: User) {
@@ -40,6 +42,7 @@ export class AuthService {
     this.storageService.removeName(KeyType.User);
     setTimeout(async () => {
       await this.loadingService.closeLoading();
+      this.router.navigateByUrl("/login");
     }, 700);
   }
 }
