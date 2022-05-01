@@ -7,4 +7,5 @@ export interface Post {
   backgroundColor: string;
   textColor: string;
   secretUser: boolean;
+  like: number;
 }
