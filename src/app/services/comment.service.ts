@@ -33,4 +33,9 @@ export class CommentService {
     let url = `${this.baseUrl}/api/commentupdate`;
     return this.http.post<ResponseModel>(url, postComment);
   }
+
+  delete(commentId: number) {
+    let url = `${this.baseUrl}/api/commentdelete/${commentId}`;
+    return this.http.delete<ResponseModel>(url);
+  }
 }
