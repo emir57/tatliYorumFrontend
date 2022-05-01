@@ -47,7 +47,6 @@ export class PostAddPage implements OnInit {
   getCategories() {
     this.categoryService.getAll().subscribe(response => {
       if (response.success) {
-        console.log(response)
         this.categories = response.data;
       }
     })
