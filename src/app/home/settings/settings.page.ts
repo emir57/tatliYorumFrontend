@@ -24,6 +24,7 @@ export class SettingsPage implements OnInit {
   }
 
   async save() {
+    //TODO: refactoring. Output
     await this.applicationService.setApplicationSettings(this.applicationSettings);
     this.messageService.showMessage("Kaydetme başarılı lütfen bekleyiniz", { position: MessagePosition.Middle });
     setTimeout(() => {
