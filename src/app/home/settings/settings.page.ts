@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicationService } from 'src/app/services/application.service';
+import { ApplicationSettings } from 'src/models/applicationSettings';
 
 @Component({
   selector: 'app-settings',
@@ -8,12 +9,14 @@ import { ApplicationService } from 'src/app/services/application.service';
 })
 export class SettingsPage implements OnInit {
 
+  applicationSettings: ApplicationSettings;
   constructor(
     private applicationService: ApplicationService
   ) { }
 
   async ngOnInit() {
     await this.applicationService.getApplicationSettings();
+    this.applicationSettings = this.applicationService.applicationSettings;
   }
 
 }
