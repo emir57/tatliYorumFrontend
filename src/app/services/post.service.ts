@@ -36,10 +36,10 @@ export class PostService {
     return this.http.get<ResponseDataListModel<Post>>(url);
   }
 
-  like(postId: number) {
+  like(postId: number, userId: number) {
 
   }
-  deleteLike(postId: number) {
+  deleteLike(postId: number, userId: number) {
 
   }
 }
