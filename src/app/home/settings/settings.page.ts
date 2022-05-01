@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertService } from 'src/app/services/alert.service';
 import { ApplicationService } from 'src/app/services/application.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
@@ -17,7 +18,8 @@ export class SettingsPage implements OnInit {
     private applicationService: ApplicationService,
     private router: Router,
     private messageService: MessageService,
-    private authService: AuthService
+    private authService: AuthService,
+    private alertService: AlertService
   ) { }
 
   async ngOnInit() {
@@ -35,7 +37,11 @@ export class SettingsPage implements OnInit {
   }
 
   async logout() {
-    await this.authService.logout();
+    this.alertService.showAlertConfirm("Çıkış", "Çıkış yapmak istediğinizden emin misiniz?",
+      () => { },
+      async () => {
+        await this.authService.logout();
+      })
   }
 
 }
