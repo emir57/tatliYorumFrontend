@@ -29,7 +29,9 @@ export class PostsPage implements OnInit {
     private applicationService: ApplicationService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.applicationService.getApplicationSettings();
+    console.log(this.applicationService.applicationSettings)
     this.getCurrentUser();
     this.getPosts();
   }
