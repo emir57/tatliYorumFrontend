@@ -3,6 +3,8 @@ import { Inject, Injectable } from '@angular/core';
 import { ResponseDataModel } from 'src/models/responseDataModel';
 import { ResponseModel } from 'src/models/responseModel';
 import { User } from 'src/models/user';
+import { LoadingService } from './loading.service';
+import { KeyType, StorageService } from './storage.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +14,9 @@ export class AuthService {
   private isLogin: boolean = false;
   constructor(
     @Inject("baseUrl") private baseUrl: string,
-    private http: HttpClient
+    private http: HttpClient,
+    private storageService: StorageService,
+    private loadingService: LoadingService
   ) { }
 
   register(user: User) {
@@ -29,5 +33,13 @@ export class AuthService {
   }
   getIsLogin(): boolean {
     return this.isLogin;
+  }
+  async logout() {
+    await this.loadingService.showLoading("Çıkış yapılıyor..");
+    this.isLogin = false;
+    this.storageService.removeName(KeyType.User);
+    setTimeout(async () => {
+      await this.loadingService.closeLoading();
+    }, 700);
   }
 }
