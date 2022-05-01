@@ -18,6 +18,6 @@ export class ApplicationService {
     this.applicationSettings = JSON.parse(await this.storageService.checkName(KeyType.ApplicationSettings))
   }
   async setApplicationSettings(appSetting: ApplicationSettings) {
-    this.storageService.setName(KeyType.ApplicationSettings, JSON.stringify(appSetting));
+    await this.storageService.setName(KeyType.ApplicationSettings, JSON.stringify(appSetting));
   }
 }
