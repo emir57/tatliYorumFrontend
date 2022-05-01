@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApplicationService } from 'src/app/services/application.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { ApplicationSettings } from 'src/models/applicationSettings';
 
@@ -15,7 +16,8 @@ export class SettingsPage implements OnInit {
   constructor(
     private applicationService: ApplicationService,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private authService: AuthService
   ) { }
 
   async ngOnInit() {
@@ -30,6 +32,10 @@ export class SettingsPage implements OnInit {
     setTimeout(() => {
       window.location.reload();
     }, 1000);
+  }
+
+  logout() {
+    this.authService.
   }
 
 }
