@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApplicationSettings } from 'src/models/applicationSettings';
 import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
 import { MessageService } from '../services/message.service';
@@ -52,8 +53,10 @@ export class LoginPage implements OnInit {
       let user = this.loginForm.value;
       this.authService.login(user).subscribe(async response => {
         if (response.success) {
+          let appSetting: ApplicationSettings = { enableAnimation: true };
           this.messageService.showMessage(response.message, {});
-          await this.storageService.setName(KeyType.User, JSON.stringify(response.data))
+          await this.storageService.setName(KeyType.User, JSON.stringify(response.data));
+          await this.storageService.setName(KeyType.ApplicationSettings, JSON.stringify(appSetting));
           setTimeout(async () => {
             this.isLoad = true;
             await this.loadingService.closeLoading();
