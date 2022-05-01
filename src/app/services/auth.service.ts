@@ -5,6 +5,7 @@ import { ResponseDataModel } from 'src/models/responseDataModel';
 import { ResponseModel } from 'src/models/responseModel';
 import { User } from 'src/models/user';
 import { LoadingService } from './loading.service';
+import { MessagePosition, MessageService } from './message.service';
 import { KeyType, StorageService } from './storage.service';
 
 @Injectable({
@@ -18,7 +19,8 @@ export class AuthService {
     private http: HttpClient,
     private storageService: StorageService,
     private loadingService: LoadingService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) { }
 
   register(user: User) {
@@ -41,6 +43,7 @@ export class AuthService {
     this.isLogin = false;
     this.storageService.removeName(KeyType.User);
     setTimeout(async () => {
+      this.messageService.showMessage("Çıkış başarılı", { position: MessagePosition.Top });
       await this.loadingService.closeLoading();
       this.router.navigateByUrl("/login");
     }, 700);
