@@ -52,6 +52,17 @@ export class PostsPage implements OnInit {
     return css;
   }
 
+  addLike(postId: number) {
+    this.postService.addLike(postId, this.currentUser.id).subscribe(response => {
+
+    })
+  }
+  deleteLike(postId: number) {
+    this.postService.deleteLike(postId, this.currentUser.id).subscribe(response => {
+
+    })
+  }
+
 
   showSettings(post: Post) {
     const settingsPanel = $("#postsetting" + post.id);
@@ -68,7 +79,7 @@ export class PostsPage implements OnInit {
       setTimeout(() => {
         postCard.removeClass("bg-warning");
       }, 1500);
-    },500)
+    }, 500)
     this.alertService.showAlertConfirm(
       "Silme işlemi",
       "Bu gönderinizi silmek istediğinizden eminmisiniz",
