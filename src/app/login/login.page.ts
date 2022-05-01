@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationSettings } from 'src/models/applicationSettings';
+import { ApplicationService } from '../services/application.service';
 import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
 import { MessageService } from '../services/message.service';
@@ -24,7 +25,8 @@ export class LoginPage implements OnInit {
     private storageService: StorageService,
     private loadingService: LoadingService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private applicationService: ApplicationService
   ) { }
 
   ngOnInit() {
@@ -57,6 +59,7 @@ export class LoginPage implements OnInit {
           this.messageService.showMessage(response.message, {});
           await this.storageService.setName(KeyType.User, JSON.stringify(response.data));
           await this.storageService.setName(KeyType.ApplicationSettings, JSON.stringify(appSetting));
+          await this.applicationService.getApplicationSettings();
           setTimeout(async () => {
             this.isLoad = true;
             await this.loadingService.closeLoading();
