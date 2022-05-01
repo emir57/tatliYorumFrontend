@@ -1,9 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>settings</ion-title>
+    <ion-title>Seçenekler</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-item>
+    <ion-label>Animasyon</ion-label>
+    <ion-checkbox *ngIf="applicationSettings" [(ngModel)]="applicationSettings.enableAnimation"></ion-checkbox>
+  </ion-item>
+  <ion-button (click)="save()" expand="block" fill="clear" shape="round">
+    <ion-icon name="save-outline"></ion-icon>&nbsp;Kaydet
+  </ion-button>
 </ion-content>

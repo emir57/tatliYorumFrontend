@@ -19,4 +19,8 @@ export class SettingsPage implements OnInit {
     this.applicationSettings = this.applicationService.applicationSettings;
   }
 
+  save(){
+
+  }
+
 }
