@@ -39,7 +39,7 @@ export class PostService {
 
   getLikes(postId: number) {
     let url = `${this.baseUrl}/api/postlikes/${postId}`;
-    return this.http.get<ResponseDataListModel<PostLike>>(url);
+    return this.http.get<ResponseDataModel<number>>(url);
   }
   addLike(postId: number, userId: number) {
     let url = `${this.baseUrl}/api/addpostlikes`
