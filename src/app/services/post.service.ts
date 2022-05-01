@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { PostLike } from 'src/models/postLike';
 import { ResponseDataListModel, ResponseDataModel } from 'src/models/responseDataModel';
 import { ResponseModel } from 'src/models/responseModel';
 import { Post } from "../../models/post";
@@ -38,6 +39,7 @@ export class PostService {
 
   getLikes(postId: number, userId: number) {
     let url = `${this.baseUrl}/api/postlikes/${postId}/${userId}`;
+    return this.http.get<ResponseDataListModel<PostLike>>(url);
   }
   addLike(postId: number, userId: number) {
     let url = `${this.baseUrl}/api/addpostlikes/${postId}/${userId}`
