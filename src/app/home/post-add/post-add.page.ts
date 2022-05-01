@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
@@ -25,7 +26,7 @@ export class PostAddPage implements OnInit {
   user: User
   saveForm: FormGroup;
   isLoad: boolean = true;
-  categories: Category[] = [{ id: 1, name: "Teknoloji" }, { id: 2, name: "Gündem" },]
+  categories: Category[];
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
@@ -33,7 +34,8 @@ export class PostAddPage implements OnInit {
     private messageService: MessageService,
     private loadingService: LoadingService,
     private postService: PostService,
-    private router: Router
+    private router: Router,
+    private categoryService: CategoryService
   ) { }
 
   ngOnInit() {
@@ -43,7 +45,12 @@ export class PostAddPage implements OnInit {
   }
 
   getCategories() {
-
+    this.categoryService.getAll().subscribe(response => {
+      if (response.success) {
+        console.log(response)
+        this.categories = response.data;
+      }
+    })
   }
 
   async getUser() {
