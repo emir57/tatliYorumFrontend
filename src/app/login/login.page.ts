@@ -55,11 +55,11 @@ export class LoginPage implements OnInit {
       let user = this.loginForm.value;
       this.authService.login(user).subscribe(async response => {
         if (response.success) {
-          let appSetting: ApplicationSettings = { enableAnimation: true };
+          // let appSetting: ApplicationSettings = { enableAnimation: true };
           this.messageService.showMessage(response.message, {});
           await this.storageService.setName(KeyType.User, JSON.stringify(response.data));
-          await this.storageService.setName(KeyType.ApplicationSettings, JSON.stringify(appSetting));
-          await this.applicationService.getApplicationSettings();
+          // await this.storageService.setName(KeyType.ApplicationSettings, JSON.stringify(appSetting));
+          // await this.applicationService.getApplicationSettings();
           setTimeout(async () => {
             this.isLoad = true;
             await this.loadingService.closeLoading();
