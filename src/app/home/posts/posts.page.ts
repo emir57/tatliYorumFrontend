@@ -3,7 +3,9 @@ import { AlertService } from 'src/app/services/alert.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
+import { KeyType, StorageService } from 'src/app/services/storage.service';
 import { UserService } from 'src/app/services/user.service';
+import { ApplicationSettings } from 'src/models/applicationSettings';
 import { Post } from 'src/models/post';
 import { User } from 'src/models/user';
 declare var $: any;
@@ -15,6 +17,7 @@ declare var $: any;
 })
 export class PostsPage implements OnInit {
 
+  applicationSettings: ApplicationSettings;
   currentUser: User
   posts: Post[]
   constructor(
@@ -22,12 +25,17 @@ export class PostsPage implements OnInit {
     private loadingService: LoadingService,
     private userService: UserService,
     private alertService: AlertService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private storageService: StorageService
   ) { }
 
   ngOnInit() {
+    this.getApplicationSettings();
     this.getCurrentUser();
     this.getPosts();
+  }
+  async getApplicationSettings() {
+    this.applicationSettings = JSON.parse(await this.storageService.checkName(KeyType.ApplicationSettings))
   }
 
   async getPosts() {
