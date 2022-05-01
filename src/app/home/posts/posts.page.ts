@@ -17,7 +17,6 @@ declare var $: any;
 })
 export class PostsPage implements OnInit {
 
-  applicationSettings: ApplicationSettings;
   currentUser: User
   posts: Post[]
   constructor(
@@ -26,17 +25,13 @@ export class PostsPage implements OnInit {
     private userService: UserService,
     private alertService: AlertService,
     private messageService: MessageService,
-    private storageService: StorageService
   ) { }
 
   ngOnInit() {
-    this.getApplicationSettings();
     this.getCurrentUser();
     this.getPosts();
   }
-  async getApplicationSettings() {
-    this.applicationSettings = JSON.parse(await this.storageService.checkName(KeyType.ApplicationSettings))
-  }
+
 
   async getPosts() {
     await this.loadingService.showLoading("Yükleniyor.");
