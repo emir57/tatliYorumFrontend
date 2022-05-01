@@ -36,6 +36,11 @@ export class PostsPage implements OnInit {
       console.log(response.data)
       if (response.success) {
         this.posts = response.data;
+        this.posts.forEach(post=>{
+          this.postService.getLikes(post.id).subscribe(getLikeResponse=>{
+
+          })
+        })
         await this.loadingService.closeLoading();
       }
     })
@@ -57,18 +62,20 @@ export class PostsPage implements OnInit {
   addLike(postId: number) {
     this.postService.addLike(postId, this.currentUser.id).subscribe(response => {
       if (response.success) {
-        this.messageService.showMessage(response.message,{position:MessagePosition.Top});
-      }else{
-        this.messageService.showMessage(response.message,{position:MessagePosition.Top});
+        let postIndex = this.posts.findIndex(p => p.id === postId);
+        this.posts[postIndex].likes += 1;
+        this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+      } else {
+        this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       }
     })
   }
   deleteLike(postId: number) {
     this.postService.deleteLike(postId, this.currentUser.id).subscribe(response => {
       if (response.success) {
-        this.messageService.showMessage(response.message,{position:MessagePosition.Top});
-      }else{
-        this.messageService.showMessage(response.message,{position:MessagePosition.Top});
+        this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+      } else {
+        this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       }
     })
   }
