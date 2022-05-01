@@ -102,8 +102,8 @@ export class PostsPage implements OnInit {
       }, 500);
       setTimeout(() => {
         postCard.removeClass("bg-warning");
-      }, 1000);
-    }, 1000)
+      }, 1350);
+    }, 500)
     this.alertService.showAlertConfirm(
       "Silme işlemi",
       "Bu gönderinizi silmek istediğinizden eminmisiniz",
