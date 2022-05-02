@@ -19,11 +19,19 @@ export class CommentsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.post)
+    this.getComments();
   }
 
   async close() {
     await this.modalController.dismiss();
+  }
+
+  getComments() {
+    this.commentService.getAllByPostId(this.post.id).subscribe(response => {
+      if (response.success) {
+        this.comments = response.data;
+      }
+    })
   }
 
 }
