@@ -43,7 +43,10 @@
       </div>
     </span>
     <span id="docommentbox">
-
+      <ion-input #commentinput></ion-input>
+      <ion-button (click)="doComment()" expand="block" fill="clear" shape="round">
+        <ion-icon name="send-outline"></ion-icon>
+      </ion-button>
     </span>
   </div>
 </ion-content>

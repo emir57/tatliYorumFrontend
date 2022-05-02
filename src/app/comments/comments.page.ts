@@ -36,9 +36,13 @@ export class CommentsPage implements OnInit {
     })
   }
 
+  doComment() {
+
+  }
+
   getDate(dateString: string) {
     let date = new Date(dateString);
-    return `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
   }
 
 }
