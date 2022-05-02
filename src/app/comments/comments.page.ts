@@ -43,7 +43,7 @@ export class CommentsPage implements OnInit {
     let commentModel: PostComment = {
       id: 2,
       content: value.trim(),
-      createdDate: (new Date).toDateString(),
+      createdDate: (new Date).toString(),
       postId: this.post.id,
       userId: this.currentUser.id
     };
