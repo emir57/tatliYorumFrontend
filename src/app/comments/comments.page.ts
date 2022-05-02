@@ -17,6 +17,7 @@ export class CommentsPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.post)
   }
 
   async close() {
