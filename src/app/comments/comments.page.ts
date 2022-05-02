@@ -47,10 +47,14 @@ export class CommentsPage implements OnInit {
       postId: this.post.id,
       userId: this.currentUser.id
     };
-    this.comments.push(Object.assign({ username: this.currentUser.username }, commentModel))
+    if (value.trim().length > 0) {
+      this.comments.push(Object.assign({ username: this.currentUser.username }, commentModel))
+    }
     delete commentModel.id;
     this.commentService.add(commentModel).subscribe(response => {
       if (response.success) {
+        this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+      } else {
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       }
     })
