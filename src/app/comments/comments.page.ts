@@ -4,7 +4,7 @@ import { Post } from 'src/models/post';
 import { PostComment } from 'src/models/postComment';
 import { User } from 'src/models/user';
 import { CommentService } from '../services/comment.service';
-
+declare var $: any;
 @Component({
   selector: 'app-comments',
   templateUrl: './comments.page.html',
@@ -37,7 +37,15 @@ export class CommentsPage implements OnInit {
   }
 
   doComment() {
-
+    let value = $("#commentinput").val();
+    this.comments.push({
+      id: 2,
+      content: value.trim(),
+      createdDate: (new Date).toString(),
+      postId: this.post.id,
+      userId: this.currentUser.id,
+      username: this.currentUser.username
+    })
   }
 
   getDate(dateString: string) {
