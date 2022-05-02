@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Post } from 'src/models/post';
+import { PostComment } from 'src/models/postComment';
 import { CommentService } from '../services/comment.service';
 
 @Component({
@@ -11,6 +12,7 @@ import { CommentService } from '../services/comment.service';
 export class CommentsPage implements OnInit {
 
   @Input() post: Post;
+  comments: PostComment[]
   constructor(
     private modalController: ModalController,
     private commentService: CommentService
