@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { Post } from 'src/models/post';
 import { PostComment } from 'src/models/postComment';
 import { User } from 'src/models/user';
+import { AlertService } from '../services/alert.service';
 import { CommentService } from '../services/comment.service';
 import { MessagePosition, MessageService } from '../services/message.service';
 declare var $: any;
@@ -19,7 +20,8 @@ export class CommentsPage implements OnInit {
   constructor(
     private modalController: ModalController,
     private commentService: CommentService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -60,7 +62,15 @@ export class CommentsPage implements OnInit {
     })
   }
   deleteComment(comment: PostComment) {
-
+    this.alertService.showAlertConfirm("Yorum Siliniyor", "Bu yorumunuzu silmek istediğinizden emin misiniz?",
+      () => { },
+      () => {
+        this.commentService.delete(comment.id).subscribe(response => {
+          if (response.success) {
+            this.messageService.showMessage(response.message, { position: MessagePosition.Top })
+          }
+        })
+      })
   }
 
   getDate(dateString: string) {
