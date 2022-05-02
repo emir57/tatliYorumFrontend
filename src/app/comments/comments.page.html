@@ -39,7 +39,8 @@
           <span>
             <ion-icon name="person-outline"></ion-icon>
           </span>
-          <span>{{comment.username}}</span>
+          <span *ngIf="!comment.secretUser">{{comment.username}}</span>
+          <span *ngIf="comment.secretUser">İsimsiz Kullanıcı</span>
           <span *ngIf="comment.userId == currentUser.id" class="text-danger">
             <ion-icon (click)="deleteComment(comment)" name="trash-outline"></ion-icon>
           </span>
