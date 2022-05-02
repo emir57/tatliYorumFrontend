@@ -18,7 +18,7 @@
           <ion-icon name="heart-outline"></ion-icon>&nbsp;{{post.likes}}
         </span>
         &nbsp;
-        <span class="text-primary">
+        <span *ngIf="comments" class="text-primary">
           <ion-icon name="chatbubble-outline"></ion-icon>&nbsp;{{comments.length}}
         </span>
       </div>

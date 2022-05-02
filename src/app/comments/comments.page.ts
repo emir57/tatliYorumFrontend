@@ -15,7 +15,7 @@ export class CommentsPage implements OnInit {
 
   @Input() post: Post;
   @Input() currentUser: User;
-  comments: PostComment[] = [];
+  comments: PostComment[] = undefined;
   constructor(
     private modalController: ModalController,
     private commentService: CommentService,
@@ -43,7 +43,7 @@ export class CommentsPage implements OnInit {
     let commentModel: PostComment = {
       id: 2,
       content: value.trim(),
-      createdDate: (new Date).toString(),
+      createdDate: (new Date).toDateString(),
       postId: this.post.id,
       userId: this.currentUser.id
     };
@@ -57,6 +57,7 @@ export class CommentsPage implements OnInit {
   }
 
   getDate(dateString: string) {
+    console.log(dateString)
     let date = new Date(dateString);
     return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
   }
