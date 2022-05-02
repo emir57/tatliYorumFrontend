@@ -1,27 +1,31 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 #container {
   display: flex;
   flex-direction: column;
 }
-#container div {
+
+#container span {
   padding: 10px;
 }
 
-#container div:first-child {
+#container span:first-child {
   width: 100%;
   background-color: red;
   height: 25vh;
 }
-#container div:nth-child(2){
+
+#container span:nth-child(2) {
   width: 100%;
   background-color: blue;
   height: 60vh;
 }
-#container div:last-child{
+
+#container span:last-child {
   width: 100%;
   background-color: green;
   height: 8vh;
