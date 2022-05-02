@@ -38,14 +38,14 @@ export class CommentsPage implements OnInit {
 
   doComment() {
     let value = $("#commentinput").val();
-    this.comments.push({
+    let commentModel: PostComment = {
       id: 2,
       content: value.trim(),
       createdDate: (new Date).toString(),
       postId: this.post.id,
-      userId: this.currentUser.id,
-      username: this.currentUser.username
-    })
+      userId: this.currentUser.id
+    };
+    this.comments.push(Object.assign({ username: this.currentUser.username }, commentModel))
   }
 
   getDate(dateString: string) {
