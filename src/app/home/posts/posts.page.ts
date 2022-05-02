@@ -93,7 +93,7 @@ export class PostsPage implements OnInit {
   async showComments(post: Post) {
     const modal = await this.modalController.create({
       component: CommentsPage,
-      componentProps: { post: post }
+      componentProps: { post: post, currentUser: this.currentUser }
     })
 
     return await modal.present();
