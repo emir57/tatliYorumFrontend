@@ -46,6 +46,7 @@ export class CommentsPage implements OnInit {
       userId: this.currentUser.id
     };
     this.comments.push(Object.assign({ username: this.currentUser.username }, commentModel))
+    delete commentModel.id;
   }
 
   getDate(dateString: string) {
