@@ -5,4 +5,5 @@ export interface PostComment {
   content: string;
   createdDate: string;
   username?: string;
+  secretUser: boolean;
 }

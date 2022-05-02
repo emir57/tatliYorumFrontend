@@ -17,6 +17,7 @@ export class CommentsPage implements OnInit {
   @Input() post: Post;
   @Input() currentUser: User;
   comments: PostComment[] = undefined;
+  secretUser: boolean = false;
   constructor(
     private modalController: ModalController,
     private commentService: CommentService,
@@ -47,7 +48,7 @@ export class CommentsPage implements OnInit {
       content: value.trim(),
       createdDate: (new Date).toString(),
       postId: this.post.id,
-      userId: this.currentUser.id
+      userId: this.currentUser.id,
     };
     if (value.trim().length > 0) {
       this.comments.push(Object.assign({ username: this.currentUser.username }, commentModel))

@@ -22,6 +22,10 @@
           <ion-icon name="chatbubble-outline"></ion-icon>&nbsp;{{comments ? comments.length : 0}}
         </span>
       </div>
+      <ion-item>
+        <ion-label>İsmimi Gizle</ion-label>
+        <ion-checkbox slot="end" [(ngModel)]="secretUser"></ion-checkbox>
+      </ion-item>
     </span>
     <span id="commentsbox">
       <div class="alert alert-warning p-3 text-center" *ngIf="comments?.length == 0">
