@@ -12,7 +12,7 @@ import { CommentService } from '../services/comment.service';
 export class CommentsPage implements OnInit {
 
   @Input() post: Post;
-  comments: PostComment[]
+  comments: PostComment[] = [];
   constructor(
     private modalController: ModalController,
     private commentService: CommentService
