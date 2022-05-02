@@ -18,12 +18,15 @@
           <ion-icon name="heart-outline"></ion-icon>&nbsp;{{post.likes}}
         </span>
         &nbsp;
-        <span *ngIf="comments" class="text-primary">
-          <ion-icon name="chatbubble-outline"></ion-icon>&nbsp;{{comments.length}}
+        <span class="text-primary">
+          <ion-icon name="chatbubble-outline"></ion-icon>&nbsp;{{comments ? comments.length : 0}}
         </span>
       </div>
     </span>
     <span id="commentsbox">
+      <div *ngIf="comments">
+        Henüz yorum yok.
+      </div>
       <div class="commentcard" *ngFor="let comment of comments">
         <div *ngIf="comment.userId == currentUser.id" class="text-danger" style="position: absolute;right: 4%;top: 0;">
           <ion-icon name="trash-outline"></ion-icon>
