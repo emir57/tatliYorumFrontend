@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { CommentsPage } from 'src/app/comments/comments.page';
 import { AlertService } from 'src/app/services/alert.service';
 import { ApplicationService } from 'src/app/services/application.service';
+import { CommentService } from 'src/app/services/comment.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
@@ -29,7 +30,8 @@ export class PostsPage implements OnInit {
     private alertService: AlertService,
     private messageService: MessageService,
     private applicationService: ApplicationService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private commentService: CommentService
   ) { }
 
   async ngOnInit() {
@@ -47,6 +49,9 @@ export class PostsPage implements OnInit {
         this.posts.forEach(post => {
           this.postService.getLikes(post.id).subscribe(getLikeResponse => {
             post.likes = getLikeResponse.data.count;
+          })
+          this.commentService.getAllByPostId(post.id).subscribe(response=>{
+            post.commentCount = response.data.length;
           })
         })
         await this.loadingService.closeLoading();
@@ -66,7 +71,6 @@ export class PostsPage implements OnInit {
     }
     return css;
   }
-
   addLike(postId: number) {
     this.postService.addLike(postId, this.currentUser.id).subscribe(response => {
       if (response.success) {

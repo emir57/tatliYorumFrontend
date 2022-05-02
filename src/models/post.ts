@@ -8,4 +8,5 @@ export interface Post {
   textColor: string;
   secretUser: boolean;
   likes: number;
+  commentCount?: number;
 }
