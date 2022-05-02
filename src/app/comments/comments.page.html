@@ -14,15 +14,25 @@
     <span id="postinfobox">
       <div>{{post.content}}</div>
       <div>
-        <span class="text-danger"><ion-icon name="heart-outline"></ion-icon>&nbsp;{{post.likes}}</span>
+        <span class="text-danger">
+          <ion-icon name="heart-outline"></ion-icon>&nbsp;{{post.likes}}
+        </span>
         &nbsp;
-        <span class="text-primary"><ion-icon name="chatbubble-outline"></ion-icon>&nbsp;{{comments.length}}</span>
+        <span class="text-primary">
+          <ion-icon name="chatbubble-outline"></ion-icon>&nbsp;{{comments.length}}
+        </span>
       </div>
     </span>
     <span id="commentsbox">
       <div class="commentcard" *ngFor="let comment of comments">
-        <div>
-          <ion-icon name="person-outline"></ion-icon>&nbsp;{{comment.username}}
+        <div class="text-danger" style="position: absolute;right: 4%;top: 0;">
+          <ion-icon name="trash-outline"></ion-icon>
+        </div>
+        <div class="commentcardtop">
+          <span>
+            <ion-icon name="person-outline"></ion-icon>
+          </span>
+          <span>{{comment.username}}</span>
         </div>
         <div>
           {{comment.content}}

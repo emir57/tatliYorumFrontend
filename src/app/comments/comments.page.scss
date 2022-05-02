@@ -32,9 +32,20 @@
 }
 
 
-#postinfobox{
+#postinfobox {
   border-bottom: 3px solid #F0F3F4;
 }
-#commentsbox{
+
+#commentsbox {
   border-bottom: 3px solid #F0F3F4;
+}
+
+.commentcard {
+  position: relative;
+  padding: 5px;
+}
+.commentcardtop{
+  display: block;
+  width: 100%;
+  position: relative;
 }
