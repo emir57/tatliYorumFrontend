@@ -37,7 +37,6 @@ export class CommentsPage implements OnInit {
     this.commentService.getAllByPostId(this.post.id).subscribe(response => {
       if (response.success) {
         this.comments = response.data;
-        console.log(response.data)
       }
     })
   }
