@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { CommentsPage } from 'src/app/comments/comments.page';
 import { AlertService } from 'src/app/services/alert.service';
 import { ApplicationService } from 'src/app/services/application.service';
 import { LoadingService } from 'src/app/services/loading.service';
@@ -26,7 +28,8 @@ export class PostsPage implements OnInit {
     private userService: UserService,
     private alertService: AlertService,
     private messageService: MessageService,
-    private applicationService: ApplicationService
+    private applicationService: ApplicationService,
+    private modalController: ModalController
   ) { }
 
   async ngOnInit() {
@@ -85,6 +88,15 @@ export class PostsPage implements OnInit {
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       }
     })
+  }
+
+  async showComments(post: Post) {
+    const modal = await this.modalController.create({
+      component: CommentsPage,
+      componentProps: { post: post }
+    })
+
+    return await modal.present();
   }
 
 
