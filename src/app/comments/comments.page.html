@@ -24,7 +24,7 @@
       </div>
     </span>
     <span id="commentsbox">
-      <div *ngIf="comments">
+      <div *ngIf="comments?.length == 0">
         Henüz yorum yok.
       </div>
       <div class="commentcard" *ngFor="let comment of comments">
