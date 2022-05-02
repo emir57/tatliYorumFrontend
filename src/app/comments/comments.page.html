@@ -20,7 +20,14 @@
       </div>
     </span>
     <span id="commentsbox">
-
+      <div class="commentcard" *ngFor="let comment of comments">
+        <div>
+          <ion-icon name="person-outline"></ion-icon>&nbsp;{{comment.username}}
+        </div>
+        <div>
+          {{comment.content}}
+        </div>
+      </div>
     </span>
     <span id="docommentbox">
 
