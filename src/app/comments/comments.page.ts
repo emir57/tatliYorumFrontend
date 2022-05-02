@@ -67,6 +67,8 @@ export class CommentsPage implements OnInit {
       () => {
         this.commentService.delete(comment.id).subscribe(response => {
           if (response.success) {
+            let index = this.comments.findIndex(c => c.id === comment.id);
+            this.comments.splice(index, 1);
             this.messageService.showMessage(response.message, { position: MessagePosition.Top })
           }
         })

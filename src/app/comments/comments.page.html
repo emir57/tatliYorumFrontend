@@ -28,8 +28,8 @@
         Henüz yorum yok.
       </div>
       <div class="commentcard" *ngFor="let comment of comments">
-        <div *ngIf="comment.userId == currentUser.id" (click)="deleteComment(comment)" class="text-danger" style="position: absolute;right: 4%;top: 0;">
-          <ion-icon name="trash-outline"></ion-icon>
+        <div *ngIf="comment.userId == currentUser.id" class="text-danger" style="position: absolute;right: 4%;top: 0;">
+          <ion-icon (click)="deleteComment(comment)" name="trash-outline"></ion-icon>
         </div>
         <div style="position: absolute;right: 0;bottom: 0;padding:5px;">
           <span style="font-size: small;">{{getDate(comment.createdDate)}}</span>
