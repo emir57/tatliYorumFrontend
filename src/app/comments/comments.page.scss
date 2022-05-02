@@ -15,18 +15,23 @@
 
 #container span:first-child {
   width: 100%;
-  background-color: red;
+  // background-color: red;
   height: 25vh;
 }
 
 #container span:nth-child(2) {
   width: 100%;
-  background-color: blue;
+  // background-color: blue;
   height: 60vh;
 }
 
 #container span:last-child {
   width: 100%;
-  background-color: green;
+  // background-color: green;
   height: 8vh;
+}
+
+
+#postinfobox{
+  border-bottom: 3px solid #F0F3F4;
 }
