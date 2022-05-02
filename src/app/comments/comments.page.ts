@@ -59,6 +59,9 @@ export class CommentsPage implements OnInit {
       }
     })
   }
+  deleteComment(comment: PostComment) {
+
+  }
 
   getDate(dateString: string) {
     let date = new Date(dateString);
