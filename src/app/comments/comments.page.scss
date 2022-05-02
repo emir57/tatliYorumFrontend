@@ -13,8 +13,13 @@
   background-color: red;
   height: 25vh;
 }
-#container div:last-child{
+#container div:nth-child(2){
   width: 100%;
   background-color: blue;
   height: 60vh;
+}
+#container div:last-child{
+  width: 100%;
+  background-color: green;
+  height: 8vh;
 }
