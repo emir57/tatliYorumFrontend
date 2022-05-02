@@ -49,6 +49,7 @@ export class CommentsPage implements OnInit {
       createdDate: (new Date).toString(),
       postId: this.post.id,
       userId: this.currentUser.id,
+      secretUser: this.secretUser
     };
     if (value.trim().length > 0) {
       this.comments.push(Object.assign({ username: this.currentUser.username }, commentModel))
