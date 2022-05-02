@@ -4,6 +4,7 @@ import { Post } from 'src/models/post';
 import { PostComment } from 'src/models/postComment';
 import { User } from 'src/models/user';
 import { CommentService } from '../services/comment.service';
+import { MessagePosition, MessageService } from '../services/message.service';
 declare var $: any;
 @Component({
   selector: 'app-comments',
@@ -17,7 +18,8 @@ export class CommentsPage implements OnInit {
   comments: PostComment[] = [];
   constructor(
     private modalController: ModalController,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -47,6 +49,11 @@ export class CommentsPage implements OnInit {
     };
     this.comments.push(Object.assign({ username: this.currentUser.username }, commentModel))
     delete commentModel.id;
+    this.commentService.add(commentModel).subscribe(response => {
+      if (response.success) {
+        this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+      }
+    })
   }
 
   getDate(dateString: string) {
