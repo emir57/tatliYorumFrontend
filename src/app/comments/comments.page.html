@@ -42,9 +42,9 @@
         </div>
       </div>
     </span>
-    <span id="docommentbox">
-      <ion-input #commentinput></ion-input>
-      <ion-button (click)="doComment()" expand="block" fill="clear" shape="round">
+    <span id="docommentbox" style="display:flex;justify-content: start;align-items: center;">
+      <ion-input #commentinput style="max-width: 75%;"></ion-input>
+      <ion-button style="max-width: 25%;" (click)="doComment()" fill="clear" shape="round">
         <ion-icon name="send-outline"></ion-icon>
       </ion-button>
     </span>
