@@ -24,7 +24,7 @@
       </div>
     </span>
     <span id="commentsbox">
-      <div *ngIf="comments?.length == 0">
+      <div class="alert alert-warning p-3 text-center" *ngIf="comments?.length == 0">
         Henüz yorum yok.
       </div>
       <div class="commentcard" *ngFor="let comment of comments">
