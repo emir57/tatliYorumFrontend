@@ -26,7 +26,7 @@ export class PostsPage implements OnInit, AfterViewInit {
   currentUser: User
   posts: Post[]
   constructor(
-    private postService: PostService,
+    public postService: PostService,
     private loadingService: LoadingService,
     private userService: UserService,
     private alertService: AlertService,
@@ -62,8 +62,8 @@ export class PostsPage implements OnInit, AfterViewInit {
     await this.loadingService.showLoading("Yükleniyor.");
     this.postService.getAll().subscribe(async response => {
       if (response.success) {
-        this.posts = response.data;
-        this.posts.forEach(post => {
+        this.postService.posts = response.data;
+        this.postService.posts.forEach(post => {
           this.postService.getLikes(post.id).subscribe(getLikeResponse => {
             post.likes = getLikeResponse.data.count;
           })
