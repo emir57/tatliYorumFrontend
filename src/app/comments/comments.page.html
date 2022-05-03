@@ -31,7 +31,7 @@
       <div class="alert alert-warning p-3 text-center" *ngIf="comments?.length == 0">
         Henüz yorum yok.
       </div>
-      <div class="commentcard" *ngFor="let comment of comments">
+      <div id="commentCard{{comment.id}}" class="commentcard" *ngFor="let comment of comments">
         <div style="position: absolute;right: 0;bottom: 0;padding:5px;">
           <span style="font-size: small;">{{getDate(comment.createdDate)}}</span>
         </div>
