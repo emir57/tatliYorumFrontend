@@ -26,4 +26,8 @@ export class ComplaintService {
     let url = `${this.baseUrl}/api/complaintadd`;
     return this.http.post<ResponseModel>(url, complaintModel);
   }
+  delete(complaintId: number) {
+    let url = `${this.baseUrl}/api/complaintdelete/${complaintId}`;
+    return this.http.delete<ResponseModel>(url);
+  }
 }
