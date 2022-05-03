@@ -7,13 +7,18 @@
 <ion-content>
   <div id="container">
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content
-        pullingIcon="arrow-dropdown"
-        pullingText="Pull to refresh"
-        refreshingSpinner="circles"
-        refreshingText="Refreshing...">
+      <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+        refreshingText="Yükleniyor...">
       </ion-refresher-content>
     </ion-refresher>
+    <div style="width: 100%;height: 50px;" class="text-center">
+      <i id="refreshtext">Yenilemek için <span>aşağı</span> kaydırınız.
+        <div>
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </div>
+      </i>
+
+    </div>
     <div id="postcard{{post.id}}" class="postcard" *ngFor="let post of posts" [style]="getColorStyles(post)"
       style="padding:10px">
       <div class="left">
@@ -50,7 +55,8 @@
         <hr>
         <div>
           <a style="font-size: medium;" (click)="showComments(post)">
-            <ion-icon name="chatbubble-ellipses-outline"></ion-icon>&nbsp;{{post.commentCount}} Yorumun tamamını görüntüle
+            <ion-icon name="chatbubble-ellipses-outline"></ion-icon>&nbsp;{{post.commentCount}} Yorumun tamamını
+            görüntüle
           </a>
         </div>
       </div>

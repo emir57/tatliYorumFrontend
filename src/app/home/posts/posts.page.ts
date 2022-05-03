@@ -41,8 +41,15 @@ export class PostsPage implements OnInit {
   }
 
   async doRefresh(event) {
+    const text = $("#refreshtext");
+    text.hide();
     await this.getPosts();
-    event.target.complete();
+    setTimeout(() => {
+      event.target.complete();
+    }, 500);
+    setTimeout(() => {
+      text.fadeIn();
+    }, 1000);
   }
 
   async getPosts() {
