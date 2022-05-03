@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +7,11 @@ import { Injectable } from '@angular/core';
 export class ComplaintService {
 
   constructor(
+    @Inject("baseUrl") private baseUrl: string,
     private http: HttpClient
   ) { }
+
+  getAll() {
+    let url = ``;
+  }
 }
