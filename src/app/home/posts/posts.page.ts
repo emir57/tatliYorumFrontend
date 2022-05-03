@@ -158,7 +158,13 @@ export class PostsPage implements OnInit, AfterViewInit {
           postId: post.id,
           userId: this.currentUser.id
         };
-        this.complaintService.add(complaintModel)
+        this.complaintService.add(complaintModel).subscribe(response => {
+          if (response.success) {
+            this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+          } else {
+            this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+          }
+        })
       })
   }
 
