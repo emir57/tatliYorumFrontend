@@ -145,6 +145,13 @@ export class PostsPage implements OnInit, AfterViewInit {
 
       })
   }
+  complaintPost(post: Post) {
+    this.alertService.showAlertWithInput("Bu Gönderiyi Şikayet Et",
+      () => { },
+      (value) => {
+        console.log(value)
+      })
+  }
 
   downArrowAnimation() {
     const downArrow = $("#downarrow");
