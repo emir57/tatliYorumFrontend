@@ -35,4 +35,33 @@ export class AlertService {
     });
     await alert.present();
   }
+
+  async showAlertWithInput(header: string, cancelCallBack: () => void, successCallBack: (value) => void) {
+    const alert = await this.alertController.create({
+      header: header,
+      inputs: [
+        {
+          name: 'content',
+          type: 'text',
+          placeholder: 'Şikayet içeriği'
+        },
+      ],
+      buttons: [
+        {
+          text: 'İptal',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {
+            cancelCallBack();
+          }
+        }, {
+          text: 'Ok',
+          handler: (value) => {
+            successCallBack(value);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
 }
