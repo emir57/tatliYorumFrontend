@@ -59,21 +59,7 @@ export class PostsPage implements OnInit, AfterViewInit {
   }
 
   async getPosts() {
-    await this.loadingService.showLoading("Yükleniyor.");
-    this.postService.getAll().subscribe(async response => {
-      if (response.success) {
-        this.postService.posts = response.data;
-        this.postService.posts.forEach(post => {
-          this.postService.getLikes(post.id).subscribe(getLikeResponse => {
-            post.likes = getLikeResponse.data.count;
-          })
-          this.commentService.getAllByPostId(post.id).subscribe(response => {
-            post.commentCount = response.data.length;
-          })
-        })
-        await this.loadingService.closeLoading();
-      }
-    })
+    this.postService.getAll()
   }
   async getCurrentUser() {
     this.currentUser = await this.userService.getUser();

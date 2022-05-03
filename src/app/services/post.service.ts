@@ -4,6 +4,8 @@ import { PostLike } from 'src/models/postLike';
 import { ResponseDataListModel, ResponseDataModel } from 'src/models/responseDataModel';
 import { ResponseModel } from 'src/models/responseModel';
 import { Post } from "../../models/post";
+import { CommentService } from './comment.service';
+import { LoadingService } from './loading.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +15,9 @@ export class PostService {
   posts: Post[];
   constructor(
     @Inject("baseUrl") private baseUrl: string,
-    private http: HttpClient
+    private http: HttpClient,
+    private commentService: CommentService,
+    private loadingService: LoadingService
   ) { }
 
 
@@ -33,9 +37,23 @@ export class PostService {
     let url = `${this.baseUrl}/api/posts/${postId}`;
     return this.http.get<ResponseDataModel<Post>>(url);
   }
-  getAll() {
+  async getAll() {
+    await this.loadingService.showLoading("Yükleniyor.");
     let url = `${this.baseUrl}/api/posts`;
-    return this.http.get<ResponseDataListModel<Post>>(url);
+    this.http.get<ResponseDataListModel<Post>>(url).subscribe(async response => {
+      if (response.success) {
+        this.posts = response.data;
+        this.posts.forEach(post => {
+          this.getLikes(post.id).subscribe(getLikeResponse => {
+            post.likes = getLikeResponse.data.count;
+          })
+          this.commentService.getAllByPostId(post.id).subscribe(response => {
+            post.commentCount = response.data.length;
+          })
+        })
+        await this.loadingService.closeLoading();
+      }
+    })
   }
 
   getLikes(postId: number) {

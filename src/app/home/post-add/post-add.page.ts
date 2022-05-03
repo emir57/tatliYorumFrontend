@@ -75,6 +75,7 @@ export class PostAddPage implements OnInit {
         if (response.success) {
           this.messageService.showMessage(response.message, {});
           this.router.navigateByUrl("/home/posts");
+          this.postService.getAll();
         } else {
           this.messageService.showMessage(response.message, {});
         }
