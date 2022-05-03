@@ -40,6 +40,10 @@ export class PostsPage implements OnInit {
     this.getPosts();
   }
 
+  async doRefresh(event) {
+    await this.getPosts();
+    event.target.complete();
+  }
 
   async getPosts() {
     await this.loadingService.showLoading("Yükleniyor.");
@@ -50,7 +54,7 @@ export class PostsPage implements OnInit {
           this.postService.getLikes(post.id).subscribe(getLikeResponse => {
             post.likes = getLikeResponse.data.count;
           })
-          this.commentService.getAllByPostId(post.id).subscribe(response=>{
+          this.commentService.getAllByPostId(post.id).subscribe(response => {
             post.commentCount = response.data.length;
           })
         })

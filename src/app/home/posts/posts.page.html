@@ -6,6 +6,14 @@
 
 <ion-content>
   <div id="container">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+        pullingIcon="arrow-dropdown"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing...">
+      </ion-refresher-content>
+    </ion-refresher>
     <div id="postcard{{post.id}}" class="postcard" *ngFor="let post of posts" [style]="getColorStyles(post)"
       style="padding:10px">
       <div class="left">
