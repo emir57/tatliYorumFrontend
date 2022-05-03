@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CommentsPage } from 'src/app/comments/comments.page';
 import { AlertService } from 'src/app/services/alert.service';
@@ -19,7 +19,7 @@ declare var $: any;
   templateUrl: './posts.page.html',
   styleUrls: ['./posts.page.scss'],
 })
-export class PostsPage implements OnInit {
+export class PostsPage implements OnInit, AfterViewInit {
 
   currentUser: User
   posts: Post[]
@@ -33,11 +33,22 @@ export class PostsPage implements OnInit {
     private modalController: ModalController,
     private commentService: CommentService
   ) { }
-
   async ngOnInit() {
     await this.applicationService.getApplicationSettings();
     this.getCurrentUser();
     this.getPosts();
+  }
+
+  ngAfterViewInit(): void {
+    const downArrow = $("#downarrow");
+    setInterval(() => {
+      setTimeout(() => {
+        downArrow.fadeIn();
+      }, 500);
+      setTimeout(() => {
+        downArrow.fadeOut();
+      }, 1000);
+    }, 1000)
   }
 
   async doRefresh(event) {
