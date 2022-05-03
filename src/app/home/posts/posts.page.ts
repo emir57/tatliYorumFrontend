@@ -41,6 +41,7 @@ export class PostsPage implements OnInit, AfterViewInit {
 
   ngAfterViewInit(): void {
     const downArrow = $("#downarrow");
+    downArrow.fadeIn();
     setInterval(() => {
       setTimeout(() => {
         setTimeout(() => {
@@ -50,13 +51,13 @@ export class PostsPage implements OnInit, AfterViewInit {
             }, 500)
           }, 100);
         }, 100);
-        downArrow.fadeIn();
+        // downArrow.fadeIn();
       }, 500);
       setTimeout(() => {
         downArrow.animate({
           marginTop: "0px"
         }, 500)
-        downArrow.fadeOut();
+        // downArrow.fadeOut();
       }, 1000);
     }, 1000)
   }
