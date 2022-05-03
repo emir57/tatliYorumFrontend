@@ -145,7 +145,7 @@ export class PostsPage implements OnInit, AfterViewInit {
         clearInterval(interval);
       },
       () => {
-
+        clearInterval(interval);
       })
   }
   complaintPost(post: Post) {
