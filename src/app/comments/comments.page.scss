@@ -46,6 +46,8 @@
   padding: 5px;
   border: .7px solid #F2F3F4;
   border-radius: 9px;
+  transition: background 1s;
+  transition: color .5s;
 }
 .commentcardtop{
   display: block;
