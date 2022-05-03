@@ -64,9 +64,15 @@ export class CommentsPage implements OnInit {
     })
   }
   deleteComment(comment: PostComment) {
+    const commentBox = $("#commentCard" + comment.id);
+    commentBox.addClass("bg-warning");
+    commentBox.addClass("text-white");
     this.alertService.showAlertConfirm("Yorum Siliniyor", "Bu yorumunuzu silmek istediğinizden emin misiniz?",
-      () => { },
       () => {
+        removeClasses();
+      },
+      () => {
+        removeClasses();
         this.commentService.delete(comment.id).subscribe(response => {
           if (response.success) {
             let index = this.comments.findIndex(c => c.id === comment.id);
@@ -75,6 +81,10 @@ export class CommentsPage implements OnInit {
           }
         })
       })
+    function removeClasses() {
+      commentBox.removeClass("bg-warning");
+      commentBox.removeClass("text-white");
+    }
   }
 
   getDate(dateString: string) {
