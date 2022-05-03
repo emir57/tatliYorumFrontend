@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
+import { Complaint } from 'src/models/complaint';
 import { ResponseDataListModel } from 'src/models/responseDataModel';
-import { User } from 'src/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +15,6 @@ export class ComplaintService {
 
   getAll() {
     let url = `${this.baseUrl}/api/complaints`;
-    return this.http.get<ResponseDataListModel<User>>(url);
+    return this.http.get<ResponseDataListModel<Complaint>>(url);
   }
 }
