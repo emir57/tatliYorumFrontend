@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
@@ -74,7 +74,7 @@ export class PostAddPage implements OnInit {
       this.postService.add(post).subscribe(response => {
         if (response.success) {
           this.messageService.showMessage(response.message, {});
-          this.router.navigateByUrl("/home/posts")
+          this.router.navigateByUrl("/home/posts");
         } else {
           this.messageService.showMessage(response.message, {});
         }
