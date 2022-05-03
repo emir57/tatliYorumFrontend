@@ -43,9 +43,19 @@ export class PostsPage implements OnInit, AfterViewInit {
     const downArrow = $("#downarrow");
     setInterval(() => {
       setTimeout(() => {
+        setTimeout(() => {
+          setTimeout(() => {
+            downArrow.animate({
+              marginTop: "10px"
+            }, 500)
+          }, 100);
+        }, 100);
         downArrow.fadeIn();
       }, 500);
       setTimeout(() => {
+        downArrow.animate({
+          marginTop: "0px"
+        }, 500)
         downArrow.fadeOut();
       }, 1000);
     }, 1000)
