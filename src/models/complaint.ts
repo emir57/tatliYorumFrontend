@@ -1,5 +1,5 @@
 export interface Complaint {
-  id: number;
+  id?: number;
   postId: number;
   userId: number;
   content: string;
