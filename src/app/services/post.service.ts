@@ -10,6 +10,7 @@ import { Post } from "../../models/post";
 })
 export class PostService {
 
+  posts: Post[];
   constructor(
     @Inject("baseUrl") private baseUrl: string,
     private http: HttpClient
@@ -39,7 +40,7 @@ export class PostService {
 
   getLikes(postId: number) {
     let url = `${this.baseUrl}/api/postlikes/${postId}`;
-    return this.http.get<ResponseDataModel<{count:number}>>(url);
+    return this.http.get<ResponseDataModel<{ count: number }>>(url);
   }
   addLike(postId: number, userId: number) {
     let url = `${this.baseUrl}/api/addpostlikes`
