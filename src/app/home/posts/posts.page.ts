@@ -4,12 +4,14 @@ import { CommentsPage } from 'src/app/comments/comments.page';
 import { AlertService } from 'src/app/services/alert.service';
 import { ApplicationService } from 'src/app/services/application.service';
 import { CommentService } from 'src/app/services/comment.service';
+import { ComplaintService } from 'src/app/services/complaint.service';
 import { LoadingService } from 'src/app/services/loading.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
 import { KeyType, StorageService } from 'src/app/services/storage.service';
 import { UserService } from 'src/app/services/user.service';
 import { ApplicationSettings } from 'src/models/applicationSettings';
+import { Complaint } from 'src/models/complaint';
 import { Post } from 'src/models/post';
 import { User } from 'src/models/user';
 declare var $: any;
@@ -31,7 +33,8 @@ export class PostsPage implements OnInit, AfterViewInit {
     private messageService: MessageService,
     private applicationService: ApplicationService,
     private modalController: ModalController,
-    private commentService: CommentService
+    private commentService: CommentService,
+    private complaintService: ComplaintService
   ) { }
   async ngOnInit() {
     await this.applicationService.getApplicationSettings();
@@ -149,7 +152,13 @@ export class PostsPage implements OnInit, AfterViewInit {
     this.alertService.showAlertWithInput("Bu Gönderiyi Şikayet Et",
       () => { },
       (value) => {
-        console.log(value)
+        console.log(value.content);
+        let complaintModel: Complaint = {
+          content: value.content,
+          postId: post.id,
+          userId: this.currentUser.id
+        };
+        this.complaintService.add(complaintModel)
       })
   }
 
