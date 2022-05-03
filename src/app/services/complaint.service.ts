@@ -17,4 +17,8 @@ export class ComplaintService {
     let url = `${this.baseUrl}/api/complaints`;
     return this.http.get<ResponseDataListModel<Complaint>>(url);
   }
+  getAllByPostId(postId: number) {
+    let url = `${this.baseUrl}/api/complaints/${postId}`;
+    return this.http.get<ResponseDataListModel<Complaint>>(url);
+  }
 }
