@@ -40,26 +40,7 @@ export class PostsPage implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    const downArrow = $("#downarrow");
-    downArrow.fadeIn();
-    setInterval(() => {
-      setTimeout(() => {
-        setTimeout(() => {
-          setTimeout(() => {
-            downArrow.animate({
-              marginTop: "10px"
-            }, 500)
-          }, 100);
-        }, 100);
-        // downArrow.fadeIn();
-      }, 500);
-      setTimeout(() => {
-        downArrow.animate({
-          marginTop: "0px"
-        }, 500)
-        // downArrow.fadeOut();
-      }, 1000);
-    }, 1000)
+    this.downArrowAnimation();
   }
 
   async doRefresh(event) {
@@ -163,6 +144,29 @@ export class PostsPage implements OnInit, AfterViewInit {
       () => {
 
       })
+  }
+
+  downArrowAnimation() {
+    const downArrow = $("#downarrow");
+    downArrow.fadeIn();
+    setInterval(() => {
+      setTimeout(() => {
+        setTimeout(() => {
+          setTimeout(() => {
+            downArrow.animate({
+              marginTop: "10px"
+            }, 500)
+          }, 100);
+        }, 100);
+        // downArrow.fadeIn();
+      }, 500);
+      setTimeout(() => {
+        downArrow.animate({
+          marginTop: "0px"
+        }, 500)
+        // downArrow.fadeOut();
+      }, 1000);
+    }, 1000)
   }
 
 }
