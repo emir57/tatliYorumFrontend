@@ -74,10 +74,11 @@ export class PostsPage implements OnInit, AfterViewInit {
     }
     return css;
   }
-  addLike(postId: number) {
-    this.postService.addLike(postId, this.currentUser.id).subscribe(response => {
+  addLike(post: Post) {
+    if (post.likes === 0) return;
+    this.postService.addLike(post.id, this.currentUser.id).subscribe(response => {
       if (response.success) {
-        let postIndex = this.postService.posts.findIndex(p => p.id === postId);
+        let postIndex = this.postService.posts.findIndex(p => p.id === post.id);
         this.postService.posts[postIndex].likes += 1;
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       } else {
@@ -85,11 +86,11 @@ export class PostsPage implements OnInit, AfterViewInit {
       }
     })
   }
-  deleteLike(postId: number) {
-    if()
-    this.postService.deleteLike(postId, this.currentUser.id).subscribe(response => {
+  deleteLike(post: Post) {
+    if (post.likes === 0) return;
+    this.postService.deleteLike(post.id, this.currentUser.id).subscribe(response => {
       if (response.success) {
-        let postIndex = this.postService.posts.findIndex(p => p.id === postId);
+        let postIndex = this.postService.posts.findIndex(p => p.id === post.id);
         this.postService.posts[postIndex].likes -= 1;
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       } else {

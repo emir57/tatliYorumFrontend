@@ -6,14 +6,6 @@
 
 <ion-content>
   <div id="container">
-    <div id="postSortSettings">
-      <ion-button id="sortByLikeBtn" (click)="sortByLike()" fill="clear" shape="round">
-        <ion-icon name="heart-outline"></ion-icon>&nbsp;Beğeniye göre sırala
-      </ion-button>
-      <ion-button id="sortByDateBtn" (click)="sortByDate()" fill="clear" shape="round">
-        <ion-icon name="calendar-outline"></ion-icon>&nbsp;Tarihe göre sırala
-      </ion-button>
-    </div>
     <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
       <ion-refresher-content pullingIcon="" pullingText="" refreshingSpinner="circles" refreshingText="Yükleniyor...">
       </ion-refresher-content>
@@ -24,7 +16,14 @@
           <ion-icon name="chevron-down-outline"></ion-icon>
         </div>
       </i>
-
+    </div>
+    <div id="postSortSettings">
+      <ion-button id="sortByLikeBtn" (click)="sortByLike()" fill="clear" shape="round">
+        <ion-icon name="heart-outline"></ion-icon>&nbsp;Beğeniye göre sırala
+      </ion-button>
+      <ion-button id="sortByDateBtn" (click)="sortByDate()" fill="clear" shape="round">
+        <ion-icon name="calendar-outline"></ion-icon>&nbsp;Tarihe göre sırala
+      </ion-button>
     </div>
     <div id="postcard{{post.id}}" class="postcard" *ngFor="let post of postService.posts" [style]="getColorStyles(post)"
       style="padding:10px">
