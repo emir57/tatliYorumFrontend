@@ -187,4 +187,9 @@ export class PostsPage implements OnInit, AfterViewInit {
     }, 1000)
   }
 
+  getDate(dateString: string) {
+    let date = new Date(dateString);
+    return `${date.getDate()}.${date.getMonth()}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+  }
+
 }
