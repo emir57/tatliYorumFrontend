@@ -45,7 +45,7 @@
     <ion-button (click)="add()" expand="block">
       Paylaş
     </ion-button>
-    <div [style]="getColorStyles()" style="padding:10px">
+    <div [style]="getColorStyles()" style="padding:10px;border-radius: 10px;">
       <div>
         <ion-icon name="person-outline"></ion-icon>&nbsp;
         <span *ngIf="user && !secretUser">{{user.username}}</span>
