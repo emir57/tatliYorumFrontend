@@ -47,6 +47,8 @@ export class PostsPage implements OnInit, AfterViewInit {
   }
 
   async doRefresh(event) {
+    $("#sortByLikeBtn").removeClass("text-success");
+    $("#sortByDateBtn").removeClass("text-success");
     const text = $("#refreshtext");
     text.hide();
     await this.getPosts();
@@ -116,7 +118,7 @@ export class PostsPage implements OnInit, AfterViewInit {
   sortByDate() {
     $("#sortByDateBtn").addClass("text-success");
     $("#sortByLikeBtn").removeClass("text-success");
-    this.postService.posts.sort((x, y) => (new Date(x.createdDate)).getTime() - (new Date(y.createdDate)).getTime());
+    this.postService.posts.sort((x, y) => (new Date(y.createdDate)).getTime() - (new Date(x.createdDate)).getTime());
   }
 
   showSettings(post: Post) {
