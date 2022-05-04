@@ -71,6 +71,7 @@ export class PostAddPage implements OnInit {
   add() {
     if (this.saveForm.valid) {
       let post: Post = Object.assign({}, this.saveForm.value);
+      post.createdDate = (new Date()).toString();
       this.postService.add(post).subscribe(response => {
         if (response.success) {
           this.messageService.showMessage(response.message, {});
