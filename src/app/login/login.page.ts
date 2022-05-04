@@ -6,6 +6,7 @@ import { ApplicationService } from '../services/application.service';
 import { AuthService } from '../services/auth.service';
 import { LoadingService } from '../services/loading.service';
 import { MessageService } from '../services/message.service';
+import { RoleService } from '../services/role.service';
 import { KeyType, StorageService } from '../services/storage.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class LoginPage implements OnInit {
     private loadingService: LoadingService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private applicationService: ApplicationService
+    private applicationService: ApplicationService,
+    private roleService: RoleService
   ) { }
 
   ngOnInit() {
@@ -55,11 +57,9 @@ export class LoginPage implements OnInit {
       let user = this.loginForm.value;
       this.authService.login(user).subscribe(async response => {
         if (response.success) {
-          // let appSetting: ApplicationSettings = { enableAnimation: true };
           this.messageService.showMessage(response.message, {});
           await this.storageService.setName(KeyType.User, JSON.stringify(response.data));
-          // await this.storageService.setName(KeyType.ApplicationSettings, JSON.stringify(appSetting));
-          // await this.applicationService.getApplicationSettings();
+          this.roleService.checkIsAdmin();
           setTimeout(async () => {
             this.isLoad = true;
             await this.loadingService.closeLoading();
