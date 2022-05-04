@@ -106,6 +106,9 @@ export class PostsPage implements OnInit, AfterViewInit {
     return await modal.present();
   }
 
+  sortByLike() {
+
+  }
 
   showSettings(post: Post) {
     const settingsPanel = $("#postsetting" + post.id);
