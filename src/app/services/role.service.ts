@@ -17,9 +17,9 @@ export class RoleService {
   }
 
   async checkIsAdmin() {
-    this.loadingService.showLoading("İşlemler yapılıyor lütfen bekleyiniz.");
+    await this.loadingService.showLoading("İşlemler yapılıyor lütfen bekleyiniz.");
     let user: User = JSON.parse(await this.storageService.checkName(KeyType.User));
     this.isAdmin = user.isAdmin;
-    this.loadingService.closeLoading();
+    await this.loadingService.closeLoading();
   }
 }

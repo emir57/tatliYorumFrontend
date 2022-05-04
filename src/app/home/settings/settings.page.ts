@@ -29,6 +29,10 @@ export class SettingsPage implements OnInit {
     this.applicationSettings = this.applicationService.applicationSettings;
   }
 
+  goAdminPanel() {
+
+  }
+
   async save() {
     //TODO: refactoring. Output
     await this.applicationService.setApplicationSettings(this.applicationSettings);
