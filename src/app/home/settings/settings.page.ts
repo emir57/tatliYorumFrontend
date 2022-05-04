@@ -4,6 +4,7 @@ import { AlertService } from 'src/app/services/alert.service';
 import { ApplicationService } from 'src/app/services/application.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
+import { RoleService } from 'src/app/services/role.service';
 import { ApplicationSettings } from 'src/models/applicationSettings';
 
 @Component({
@@ -19,7 +20,8 @@ export class SettingsPage implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private authService: AuthService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    public roleService: RoleService
   ) { }
 
   async ngOnInit() {
