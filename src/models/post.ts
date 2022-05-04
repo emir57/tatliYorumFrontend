@@ -9,4 +9,5 @@ export interface Post {
   secretUser: boolean;
   likes: number;
   commentCount?: number;
+  createdDate: string;
 }
