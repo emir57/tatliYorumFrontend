@@ -86,6 +86,7 @@ export class PostsPage implements OnInit, AfterViewInit {
     })
   }
   deleteLike(postId: number) {
+    if()
     this.postService.deleteLike(postId, this.currentUser.id).subscribe(response => {
       if (response.success) {
         let postIndex = this.postService.posts.findIndex(p => p.id === postId);
@@ -189,7 +190,11 @@ export class PostsPage implements OnInit, AfterViewInit {
 
   getDate(dateString: string) {
     let date = new Date(dateString);
-    return `${date.getDate()}.${date.getMonth()+1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+  }
+
+  getDownArrowClass(post: Post) {
+    return post.likes == 0 ? `text-danger` : "";
   }
 
 }
