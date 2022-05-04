@@ -13,7 +13,7 @@
     <ion-icon name="save-outline"></ion-icon>&nbsp;Kaydet
   </ion-button>
   <hr>
-  <ion-button (click)="goAdminPanel()" expand="block" fill="clear" shape="round">
+  <ion-button *ngIf="roleService.isAdmin" (click)="goAdminPanel()" expand="block" fill="clear" shape="round">
     Admin Paneli
   </ion-button>
   <ion-button color="danger" (click)="logout()" expand="block" fill="clear" shape="round">
