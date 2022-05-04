@@ -25,6 +25,7 @@ export class SettingsPage implements OnInit {
   ) { }
 
   async ngOnInit() {
+    await this.roleService.checkIsAdmin();
     await this.applicationService.getApplicationSettings();
     this.applicationSettings = this.applicationService.applicationSettings;
   }
