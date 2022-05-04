@@ -77,8 +77,8 @@ export class PostsPage implements OnInit, AfterViewInit {
   addLike(postId: number) {
     this.postService.addLike(postId, this.currentUser.id).subscribe(response => {
       if (response.success) {
-        let postIndex = this.posts.findIndex(p => p.id === postId);
-        this.posts[postIndex].likes += 1;
+        let postIndex = this.postService.posts.findIndex(p => p.id === postId);
+        this.postService.posts[postIndex].likes += 1;
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       } else {
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
@@ -88,8 +88,8 @@ export class PostsPage implements OnInit, AfterViewInit {
   deleteLike(postId: number) {
     this.postService.deleteLike(postId, this.currentUser.id).subscribe(response => {
       if (response.success) {
-        let postIndex = this.posts.findIndex(p => p.id === postId);
-        this.posts[postIndex].likes -= 1;
+        let postIndex = this.postService.posts.findIndex(p => p.id === postId);
+        this.postService.posts[postIndex].likes -= 1;
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       } else {
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
