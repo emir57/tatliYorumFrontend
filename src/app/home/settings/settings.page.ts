@@ -31,7 +31,7 @@ export class SettingsPage implements OnInit {
   }
 
   goAdminPanel() {
-
+    this.router.navigateByUrl("/admin/home");
   }
 
   async save() {
