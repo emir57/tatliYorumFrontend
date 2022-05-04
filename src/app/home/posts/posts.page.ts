@@ -107,7 +107,7 @@ export class PostsPage implements OnInit, AfterViewInit {
   }
 
   sortByLike() {
-
+    this.postService.posts.sort((x, y) => y.likes - x.likes);
   }
   sortByDate() {
     this.postService.posts.sort((x, y) => (new Date(x.createdDate)).getTime() - (new Date(y.createdDate)).getTime());
