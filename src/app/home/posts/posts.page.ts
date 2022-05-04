@@ -77,7 +77,6 @@ export class PostsPage implements OnInit, AfterViewInit {
     return css;
   }
   addLike(post: Post) {
-    if (post.likes === 0) return;
     this.postService.addLike(post.id, this.currentUser.id).subscribe(response => {
       if (response.success) {
         let postIndex = this.postService.posts.findIndex(p => p.id === post.id);
