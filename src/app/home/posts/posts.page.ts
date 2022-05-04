@@ -107,11 +107,13 @@ export class PostsPage implements OnInit, AfterViewInit {
   }
 
   sortByLike() {
-    const btn = $("#sortByLikeBtn");
-    btn.addClass("text-success");
+    $("#sortByDateBtn").removeClass("text-success");
+    $("#sortByLikeBtn").addClass("text-success");
     this.postService.posts.sort((x, y) => y.likes - x.likes);
   }
   sortByDate() {
+    $("#sortByDateBtn").addClass("text-success");
+    $("#sortByLikeBtn").removeClass("text-success");
     this.postService.posts.sort((x, y) => (new Date(x.createdDate)).getTime() - (new Date(y.createdDate)).getTime());
   }
 
