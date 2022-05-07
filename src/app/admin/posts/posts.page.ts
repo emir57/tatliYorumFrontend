@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { AlertService } from 'src/app/services/alert.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/models/post';
 
 @Component({
@@ -16,6 +17,7 @@ export class PostsPage implements OnInit {
     public postService: PostService,
     private alertService: AlertService,
     private modalController: ModalController,
+    private userService:UserService
   ) { }
 
   ngOnInit() {
@@ -24,6 +26,10 @@ export class PostsPage implements OnInit {
 
   getPosts() {
     this.postService.getAll();
+  }
+
+  getUser(userId: number) {
+
   }
 
 }
