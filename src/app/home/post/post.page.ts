@@ -1,10 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CommentsPage } from 'src/app/comments/comments.page';
+import { AlertService } from 'src/app/services/alert.service';
 import { ApplicationService } from 'src/app/services/application.service';
+import { ComplaintService } from 'src/app/services/complaint.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
+import { Complaint } from 'src/models/complaint';
 import { Post } from 'src/models/post';
 import { User } from 'src/models/user';
 declare var $: any;
@@ -24,7 +27,9 @@ export class PostPage implements OnInit {
     private modalController: ModalController,
     private messageService: MessageService,
     private userService: UserService,
-    private applicationService: ApplicationService
+    private applicationService: ApplicationService,
+    private complaintService: ComplaintService,
+    private alertService: AlertService
   ) { }
 
   async ngOnInit() {
@@ -81,6 +86,25 @@ export class PostPage implements OnInit {
   showSettings() {
     const settingsPanel = $("#postsetting" + this.post.id);
     settingsPanel.fadeToggle();
+  }
+  complaintPost() {
+    this.alertService.showAlertWithInput("Bu Gönderiyi Şikayet Et",
+      () => { },
+      (value) => {
+        console.log(value.content);
+        let complaintModel: Complaint = {
+          content: value.content,
+          postId: this.post.id,
+          userId: this.currentUser.id
+        };
+        this.complaintService.add(complaintModel).subscribe(response => {
+          if (response.success) {
+            this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+          } else {
+            this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+          }
+        })
+      })
   }
 
   async showComments(post: Post) {

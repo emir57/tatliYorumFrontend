@@ -27,7 +27,7 @@
           <span>
             <ion-icon (click)="showSettings()" name="ellipsis-vertical-outline"></ion-icon>
             <ul id="postsetting{{post.id}}" class="list-group postsetting">
-              <li *ngIf="post.userId != currentUser.id" (click)="complaintPost(post)"
+              <li *ngIf="post.userId != currentUser.id" (click)="complaintPost()"
                 class="list-group-item text-warning">
                 <ion-icon name="alert-outline"></ion-icon> Şikayet Et
               </li>
