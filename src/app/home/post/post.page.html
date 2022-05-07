@@ -25,7 +25,7 @@
           <span *ngIf="!post.secretUser">{{post.userId}}</span>
           <span *ngIf="post.secretUser">İsimsiz kullanıcı</span>
           <span>
-            <ion-icon (click)="showSettings(post)" name="ellipsis-vertical-outline"></ion-icon>
+            <ion-icon (click)="showSettings()" name="ellipsis-vertical-outline"></ion-icon>
             <ul id="postsetting{{post.id}}" class="list-group postsetting">
               <li *ngIf="post.userId != currentUser.id" (click)="complaintPost(post)"
                 class="list-group-item text-warning">

@@ -77,6 +77,10 @@ export class PostPage implements OnInit {
   getDownArrowClass() {
     return this.post.likes == 0 ? `text-danger` : "";
   }
+  showSettings() {
+    const settingsPanel = $("#postsetting" + this.post.id);
+    settingsPanel.fadeToggle();
+  }
 
   async showComments(post: Post) {
     const modal = await this.modalController.create({
