@@ -8,5 +8,16 @@
 </ion-header>
 
 <ion-content>
-
+  <div id="container">
+    <ion-list>
+      <ion-item *ngFor="let complaint of complaints">
+        <ion-label>{{complaint.content}}</ion-label>
+        <ion-buttons slot="end">
+          <ion-button color="danger" (click)="deleteComplaint(complaint)">
+            <ion-icon slot="end" name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
