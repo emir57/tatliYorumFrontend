@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface Post {
   id: number;
   content: string;
@@ -10,4 +12,5 @@ export interface Post {
   likes: number;
   commentCount?: number;
   createdDate: string;
+  user?: User;
 }

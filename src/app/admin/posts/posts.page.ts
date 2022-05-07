@@ -17,7 +17,7 @@ export class PostsPage implements OnInit {
     public postService: PostService,
     private alertService: AlertService,
     private modalController: ModalController,
-    private userService:UserService
+    private userService: UserService
   ) { }
 
   ngOnInit() {
