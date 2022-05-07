@@ -12,7 +12,7 @@
     <ion-card *ngFor="let post of postService.posts">
       <ion-card-header>
         <ion-card-subtitle></ion-card-subtitle>
-        <ion-card-title></ion-card-title>
+        <ion-card-title *ngIf="post.user">{{post.user.username}}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
