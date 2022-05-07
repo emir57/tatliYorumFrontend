@@ -56,6 +56,7 @@ export class PostEditPage implements OnInit {
       this.postService.update(post).subscribe(response => {
         if (response.success) {
           this.messageService.showMessage(response.message, {});
+          this.modalController.dismiss();
         } else {
           this.messageService.showMessage(response.message, {});
         }
