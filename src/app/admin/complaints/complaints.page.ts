@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AlertService } from 'src/app/services/alert.service';
 import { ComplaintService } from 'src/app/services/complaint.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
@@ -15,7 +16,8 @@ export class ComplaintsPage implements OnInit {
   constructor(
     private complaintService: ComplaintService,
     private alertService: AlertService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) { }
 
   ngOnInit() {
