@@ -32,7 +32,8 @@ export class PostPage implements OnInit {
     private applicationService: ApplicationService,
     private complaintService: ComplaintService,
     private alertService: AlertService,
-    public roleService: RoleService
+    public roleService: RoleService,
+    private commentService: CommentService
   ) { }
 
   async ngOnInit() {
@@ -50,6 +51,11 @@ export class PostPage implements OnInit {
         this.postService.getLikes(this.postId).subscribe(response => {
           if (response.success) {
             this.post.likes = response.data.count;
+          }
+        })
+        this.commentService.getAllByPostId(this.post.id).subscribe(response => {
+          if (response.success) {
+            this.post.commentCount = response.data.length;
           }
         })
       }
