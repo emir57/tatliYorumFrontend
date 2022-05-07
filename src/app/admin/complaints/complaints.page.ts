@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ComplaintService } from 'src/app/services/complaint.service';
+import { Complaint } from 'src/models/complaint';
 
 @Component({
   selector: 'app-complaints',
@@ -7,9 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ComplaintsPage implements OnInit {
 
-  constructor() { }
+  complaints: Complaint[] = []
+  constructor(
+    private complaintService: ComplaintService
+  ) { }
 
   ngOnInit() {
+    this.getComplaints();
+  }
+
+  getComplaints() {
+    this.complaintService.getAll().subscribe(response => {
+      if (response.success) {
+        this.complaints = response.data;
+      }
+    })
   }
 
 }
