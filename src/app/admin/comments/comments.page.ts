@@ -49,4 +49,17 @@ export class CommentsPage implements OnInit {
     return await modal.present();
   }
 
+  deleteComment(comment: PostComment) {
+    this.alertService.showAlertConfirm("Silme işlemi", "Bu yorumu silmek istediğinizden emin misiniz?",
+      () => { },
+      () => {
+
+      })
+  }
+
+  deleteCommentInArray(commentId: number) {
+    let index = this.comments.findIndex(x => x.id === commentId);
+    this.comments.splice(index, 1);
+  }
+
 }
