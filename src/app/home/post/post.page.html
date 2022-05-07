@@ -6,7 +6,7 @@
 
 <ion-content>
   <div id="container">
-    <div id="postcard{{post.id}}" class="postcard" [style]="getColorStyles()"
+    <div *ngIf="post" id="postcard{{post.id}}" class="postcard" [style]="getColorStyles()"
       style="padding:10px">
       <div class="left">
         <span (click)="addLike(post)">
