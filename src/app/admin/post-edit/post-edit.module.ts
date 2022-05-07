@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PostEditPageRoutingModule } from './post-edit-routing.module';
 
 import { PostEditPage } from './post-edit.page';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { PostEditPage } from './post-edit.page';
     FormsModule,
     IonicModule,
     PostEditPageRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ColorPickerModule
   ],
   declarations: [PostEditPage]
 })
