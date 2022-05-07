@@ -56,7 +56,15 @@ export class CommentsPage implements OnInit {
     this.alertService.showAlertConfirm("Silme işlemi", "Bu yorumu silmek istediğinizden emin misiniz?",
       () => { card.removeClass("bg-warning text-white"); },
       () => {
-
+        card.removeClass("bg-warning text-white");
+        this.commentService.delete(comment.id).subscribe(response => {
+          if (response.success) {
+            this.deleteCommentInArray(comment.id);
+            this.messageService.showMessage(response.message, {});
+          } else {
+            this.messageService.showMessage(response.message, {});
+          }
+        })
       })
   }
 
