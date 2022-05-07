@@ -35,8 +35,10 @@ export class PostsPage implements OnInit {
 
   }
   deletePost(post: Post) {
+    const postCard = $("#post" + post.id);
+    postCard.addClass("bg-warning");
     this.alertService.showAlertConfirm("Silme işlemi", "Bu gönderiyi silmek istediğinizden emin misiniz?",
-      () => { },
+      () => { postCard.removeClass("bg-warning");},
       () => {
         this.postService.delete(post.id).subscribe(response => {
           if (response.success) {
