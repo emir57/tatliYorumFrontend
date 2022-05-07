@@ -1,4 +1,7 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Inject, Injectable } from '@angular/core';
+import { ResponseDataModel } from 'src/models/responseDataModel';
+import { ResponseModel } from 'src/models/responseModel';
 import { User } from 'src/models/user';
 import { KeyType, StorageService } from './storage.service';
 
@@ -8,11 +11,18 @@ import { KeyType, StorageService } from './storage.service';
 export class UserService {
 
   constructor(
-    private storageService: StorageService
+    @Inject("baseUrl") private baseUrl: string,
+    private storageService: StorageService,
+    private httpClient: HttpClient
   ) { }
 
   async getUser() {
     let user: User = JSON.parse(await this.storageService.checkName(KeyType.User))
     return user;
+  }
+
+  getUserById(userId: number) {
+    let url = `${this.baseUrl}/api/getuserbyid?id=${userId}`;
+    return this.httpClient.get<ResponseDataModel<User>>(url);
   }
 }
