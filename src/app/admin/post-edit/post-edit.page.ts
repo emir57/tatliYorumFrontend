@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { MessageService } from 'src/app/services/message.service';
+import { PostService } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-post-edit',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostEditPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modalController: ModalController,
+    private messageService: MessageService,
+    private postService: PostService
+  ) { }
 
   ngOnInit() {
+  }
+
+  async close(){
+    await this.modalController.dismiss();
   }
 
 }
