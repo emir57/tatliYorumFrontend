@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { AlertService } from 'src/app/services/alert.service';
+import { CommentService } from 'src/app/services/comment.service';
+import { PostService } from 'src/app/services/post.service';
+import { Post } from 'src/models/post';
 
 @Component({
   selector: 'app-posts',
@@ -7,9 +12,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostsPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    public postService: PostService,
+    private alertService: AlertService,
+    private modalController: ModalController,
+  ) { }
 
   ngOnInit() {
+    this.getPosts();
+  }
+
+  getPosts() {
+    this.postService.getAll();
   }
 
 }
