@@ -106,6 +106,28 @@ export class PostPage implements OnInit {
         })
       })
   }
+  deletePost() {
+    this.post.isAnimation = false;
+    const postCard = $("#postcard" + this.post.id);
+    let interval = setInterval(() => {
+      setTimeout(() => {
+        postCard.addClass("bg-warning");
+      }, 500);
+      setTimeout(() => {
+        postCard.removeClass("bg-warning");
+      }, 1350);
+    }, 500)
+    this.alertService.showAlertConfirm(
+      "Silme işlemi",
+      "Bu gönderinizi silmek istediğinizden eminmisiniz",
+      () => {
+        this.post.isAnimation = true;
+        clearInterval(interval);
+      },
+      () => {
+        clearInterval(interval);
+      })
+  }
 
   async showComments(post: Post) {
     const modal = await this.modalController.create({
