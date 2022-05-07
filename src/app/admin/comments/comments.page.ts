@@ -60,6 +60,10 @@ export class CommentsPage implements OnInit {
       })
   }
 
+  editComment(comment: PostComment) {
+
+  }
+
   deleteCommentInArray(commentId: number) {
     let index = this.comments.findIndex(x => x.id === commentId);
     this.comments.splice(index, 1);
