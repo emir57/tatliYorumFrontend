@@ -6,6 +6,7 @@ import { MessagePosition, MessageService } from 'src/app/services/message.servic
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/models/post';
+import { PostEditPage } from '../post-edit/post-edit.page';
 declare var $: any;
 
 @Component({
@@ -32,9 +33,19 @@ export class PostsPage implements OnInit {
   }
 
   async editPost(post: Post) {
-    // const modal = await this.modalController.create({
-    //   component:
-    // })
+    const postCard = $("#post"+post.id);
+    postCard.addClass("bg-danger");
+    const modal = await this.modalController.create({
+      component: PostEditPage,
+      componentProps: { post: post }
+    });
+    modal.onDidDismiss().then(()=>{
+      setTimeout(() => {
+        postCard.removeClass("bg-danger");
+      }, 700);
+    })
+
+    return await modal.present();
   }
   deletePost(post: Post) {
     const postCard = $("#post" + post.id);
