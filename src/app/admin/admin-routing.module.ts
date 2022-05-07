@@ -27,6 +27,10 @@ const routes: Routes = [
   {
     path: 'post-edit',
     loadChildren: () => import('./post-edit/post-edit.module').then( m => m.PostEditPageModule)
+  },
+  {
+    path: 'comments',
+    loadChildren: () => import('./comments/comments.module').then( m => m.CommentsPageModule)
   }
 ];
 
