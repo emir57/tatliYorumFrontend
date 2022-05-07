@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { CommentService } from 'src/app/services/comment.service';
 import { PostComment } from 'src/models/postComment';
@@ -25,7 +25,7 @@ export class CommentEditPage implements OnInit {
 
   createForm() {
     this.saveForm = this.formBuilder.group({
-      content: [this.comment.content]
+      content: ["", [Validators.required, Validators.maxLength(255)]]
     })
   }
 
