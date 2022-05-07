@@ -20,6 +20,13 @@ export class CommentEditPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.createForm();
+  }
+
+  createForm() {
+    this.saveForm = this.formBuilder.group({
+      content: [this.comment.content]
+    })
   }
 
   async close() {
