@@ -46,6 +46,7 @@ export class PostsPage implements OnInit {
           } else {
             this.messageService.showMessage(response.message, { position: MessagePosition.Top });
           }
+          postCard.removeClass("bg-warning");
         })
       })
   }
