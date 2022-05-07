@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
   selector: 'app-comment-edit',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentEditPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modalController: ModalController,
+    private commentService: CommentService
+  ) { }
 
   ngOnInit() {
+  }
+
+  async close() {
+    await this.modalController.dismiss();
   }
 
 }
