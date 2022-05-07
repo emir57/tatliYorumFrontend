@@ -31,23 +31,31 @@ export class PostsPage implements OnInit {
     this.postService.getAll();
   }
 
-  editPost(post: Post) {
-
+  async editPost(post: Post) {
+    // const modal = await this.modalController.create({
+    //   component:
+    // })
   }
   deletePost(post: Post) {
     const postCard = $("#post" + post.id);
     postCard.addClass("bg-warning");
     this.alertService.showAlertConfirm("Silme işlemi", "Bu gönderiyi silmek istediğinizden emin misiniz?",
-      () => { postCard.removeClass("bg-warning");},
+      () => { postCard.removeClass("bg-warning"); },
       () => {
         this.postService.delete(post.id).subscribe(response => {
           if (response.success) {
             this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+            this.deletePostInArray(post.id);
           } else {
             this.messageService.showMessage(response.message, { position: MessagePosition.Top });
           }
           postCard.removeClass("bg-warning");
         })
       })
+
+  }
+  deletePostInArray(postId: number) {
+    let index = this.postService.posts.findIndex(x => x.id === postId);
+    this.postService.posts.splice(index, 1);
   }
 }
