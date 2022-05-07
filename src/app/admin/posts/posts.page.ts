@@ -27,9 +27,4 @@ export class PostsPage implements OnInit {
   getPosts() {
     this.postService.getAll();
   }
-
-  getUser(userId: number) {
-
-  }
-
 }
