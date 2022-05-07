@@ -6,6 +6,7 @@ import { CommentService } from 'src/app/services/comment.service';
 import { MessageService } from 'src/app/services/message.service';
 import { UserService } from 'src/app/services/user.service';
 import { PostComment } from 'src/models/postComment';
+declare var $: any;
 
 @Component({
   selector: 'app-comments',
@@ -50,9 +51,10 @@ export class CommentsPage implements OnInit {
   }
 
   deleteComment(comment: PostComment) {
-    const card = $("#commentCard" + comment.id);
+    const card = $("#comment" + comment.id);
+    card.addClass("bg-warning text-white");
     this.alertService.showAlertConfirm("Silme işlemi", "Bu yorumu silmek istediğinizden emin misiniz?",
-      () => { },
+      () => { card.removeClass("bg-warning text-white"); },
       () => {
 
       })
