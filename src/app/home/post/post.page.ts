@@ -74,6 +74,9 @@ export class PostPage implements OnInit {
     }
     return css;
   }
+  getDownArrowClass() {
+    return this.post.likes == 0 ? `text-danger` : "";
+  }
 
   async showComments(post: Post) {
     const modal = await this.modalController.create({
