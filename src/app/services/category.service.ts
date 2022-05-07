@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { Category } from 'src/models/category';
-import { ResponseDataListModel } from 'src/models/responseDataModel';
+import { ResponseDataListModel, ResponseDataModel } from 'src/models/responseDataModel';
 import { ResponseModel } from 'src/models/responseModel';
 
 @Injectable({
@@ -18,6 +18,10 @@ export class CategoryService {
   getAll() {
     let url = `${this.baseUrl}/api/categories`;
     return this.http.get<ResponseDataListModel<Category>>(url);
+  }
+  getById(categoryId: number) {
+    let url = `${this.baseUrl}/api/categories/${categoryId}`;
+    return this.http.get<ResponseDataModel<Category>>(url);
   }
   add(category: Category) {
     let url = `${this.baseUrl}/api/categoryadd`;

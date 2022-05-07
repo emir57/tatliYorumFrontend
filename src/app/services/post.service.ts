@@ -4,6 +4,7 @@ import { PostLike } from 'src/models/postLike';
 import { ResponseDataListModel, ResponseDataModel } from 'src/models/responseDataModel';
 import { ResponseModel } from 'src/models/responseModel';
 import { Post } from "../../models/post";
+import { CategoryService } from './category.service';
 import { CommentService } from './comment.service';
 import { LoadingService } from './loading.service';
 import { UserService } from './user.service';
@@ -19,7 +20,8 @@ export class PostService {
     private http: HttpClient,
     private commentService: CommentService,
     private loadingService: LoadingService,
-    private userService: UserService
+    private userService: UserService,
+    private categoryService: CategoryService
   ) { }
 
 
@@ -57,6 +59,7 @@ export class PostService {
               post.user = response.data;
             }
           })
+          this.categoryService
         })
         await this.loadingService.closeLoading();
       }
