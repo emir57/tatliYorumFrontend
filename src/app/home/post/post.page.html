@@ -1,9 +1,56 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>post</ion-title>
+    <ion-title>Gönderi</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div id="container">
+    <div id="postcard{{post.id}}" class="postcard" *ngFor="let post of postService.posts" [style]="getColorStyles(post)"
+      style="padding:10px">
+      <div class="left">
+        <span (click)="addLike(post)">
+          <ion-icon name="chevron-up-outline"></ion-icon>
+        </span>
+        <span>{{post.likes}}</span>
+        <span (click)="deleteLike(post)" [ngClass]="getDownArrowClass(post)">
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </span>
+      </div>
+      <div class="right">
+        <div class="topsection">
+          <span>
+            <ion-icon name="person-outline"></ion-icon>
+          </span>&nbsp;
+          <span *ngIf="!post.secretUser">{{post.userId}}</span>
+          <span *ngIf="post.secretUser">İsimsiz kullanıcı</span>
+          <span>
+            <ion-icon (click)="showSettings(post)" name="ellipsis-vertical-outline"></ion-icon>
+            <ul id="postsetting{{post.id}}" class="list-group postsetting">
+              <li *ngIf="post.userId != currentUser.id" (click)="complaintPost(post)"
+                class="list-group-item text-warning">
+                <ion-icon name="alert-outline"></ion-icon> Şikayet Et
+              </li>
+              <li *ngIf="post.userId == currentUser.id" (click)="deletePost(post)" class="list-group-item text-danger">
+                <ion-icon name="trash-outline"></ion-icon> Sil
+              </li>
+            </ul>
+          </span>
+        </div>
+        <div>
+          {{post.content}}
+        </div>
+        <hr>
+        <div>
+          <a style="font-size: small;" (click)="showComments(post)">
+            <ion-icon name="chatbubble-ellipses-outline"></ion-icon>&nbsp;{{post.commentCount}} Yorumun tamamını
+            görüntüle
+          </a>
+        </div>
+        <div style="display: flex;justify-content: end;margin: 5px;padding: 2px;">
+          <span>{{getDate(post.createdDate)}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
