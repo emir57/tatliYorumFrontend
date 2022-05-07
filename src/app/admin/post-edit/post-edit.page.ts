@@ -44,11 +44,16 @@ export class PostEditPage implements OnInit {
   }
 
   getCategories() {
-    this.categoryService.getAll().subscribe(response=>{
-      if(response.success){
+    this.categoryService.getAll().subscribe(response => {
+      if (response.success) {
         this.categories = response.data;
       }
     })
+  }
+  edit() {
+    if (this.saveForm.valid) {
+
+    }
   }
 
   async close() {
