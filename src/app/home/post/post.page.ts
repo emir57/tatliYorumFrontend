@@ -7,6 +7,7 @@ import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/models/post';
 import { User } from 'src/models/user';
+declare var $: any;
 
 @Component({
   selector: 'app-post',
