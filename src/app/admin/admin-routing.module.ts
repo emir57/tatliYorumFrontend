@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'comments',
     loadChildren: () => import('./comments/comments.module').then( m => m.CommentsPageModule)
+  },
+  {
+    path: 'comment-edit',
+    loadChildren: () => import('./comment-edit/comment-edit.module').then( m => m.CommentEditPageModule)
   }
 ];
 

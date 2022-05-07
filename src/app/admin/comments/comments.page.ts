@@ -68,8 +68,10 @@ export class CommentsPage implements OnInit {
       })
   }
 
-  editComment(comment: PostComment) {
-
+  async editComment(comment: PostComment) {
+    // const modal = await this.modalController.create({
+    //   component:
+    // })
   }
 
   deleteCommentInArray(commentId: number) {
