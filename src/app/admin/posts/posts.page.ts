@@ -34,14 +34,14 @@ export class PostsPage implements OnInit {
 
   async editPost(post: Post) {
     const postCard = $("#post"+post.id);
-    postCard.addClass("bg-danger");
+    postCard.addClass("bg-danger text-white");
     const modal = await this.modalController.create({
       component: PostEditPage,
       componentProps: { post: post }
     });
     modal.onDidDismiss().then(()=>{
       setTimeout(() => {
-        postCard.removeClass("bg-danger");
+        postCard.removeClass("bg-danger text-white");
       }, 700);
     })
 
