@@ -42,7 +42,7 @@ export class PostsPage implements OnInit {
     modal.onDidDismiss().then(()=>{
       setTimeout(() => {
         postCard.removeClass("bg-danger text-white");
-      }, 700);
+      }, 500);
     })
 
     return await modal.present();
