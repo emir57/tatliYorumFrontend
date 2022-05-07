@@ -6,6 +6,7 @@ import { MessagePosition, MessageService } from 'src/app/services/message.servic
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/models/post';
+declare var $: any;
 
 @Component({
   selector: 'app-posts',
