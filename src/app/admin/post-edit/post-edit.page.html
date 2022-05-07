@@ -14,7 +14,7 @@
     <form [formGroup]="saveForm">
       <ion-item>
         <ion-label position="floating">İçerik</ion-label>
-        <ion-input [(ngModel)]="content" formControlName="content"></ion-input>
+        <ion-input [(ngModel)]="post.content" formControlName="content"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>Kategori</ion-label>
@@ -25,24 +25,24 @@
       </ion-item>
       <ion-item>
         <ion-label>Animasyon</ion-label>
-        <ion-toggle [(ngModel)]="animation" formControlName="isAnimation"></ion-toggle>
+        <ion-toggle [(ngModel)]="post.isAnimation" formControlName="isAnimation"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label>İsmimi Gizle</ion-label>
-        <ion-toggle [(ngModel)]="secretUser" formControlName="secretUser"></ion-toggle>
+        <ion-toggle [(ngModel)]="post.secretUser" formControlName="secretUser"></ion-toggle>
       </ion-item>
       <ion-row>
         <ion-col size="6">
           <ion-item>
             <ion-label position="floating">Arkaplan Rengi</ion-label>
-            <ion-input [(colorPicker)]="choosedBackgroundColor" [(ngModel)]="choosedBackgroundColor"
+            <ion-input [(colorPicker)]="post.backgroundColor" [(ngModel)]="post.backgroundColor"
               formControlName="backgroundColor"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col size="6">
           <ion-item>
             <ion-label position="floating">Yazı Rengi</ion-label>
-            <ion-input cpPositionOffset="-60%" [(colorPicker)]="choosedTextColor" [(ngModel)]="choosedTextColor"
+            <ion-input cpPositionOffset="-60%" [(colorPicker)]="post.textColor" [(ngModel)]="post.textColor"
               formControlName="textColor"></ion-input>
           </ion-item>
         </ion-col>
