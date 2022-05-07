@@ -30,6 +30,10 @@ export class ComplaintsPage implements OnInit {
     })
   }
 
+  goPost(complaint: Complaint) {
+
+  }
+
   deleteComplaint(complaint: Complaint) {
     this.alertService.showAlertConfirm("Silme işlemi", "Bu şikayeti silmek istediğinizden emin misiniz?",
       () => { },
