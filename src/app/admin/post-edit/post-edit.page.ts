@@ -27,13 +27,14 @@ export class PostEditPage implements OnInit {
 
   createForm() {
     this.saveForm = this.formBuilder.group({
-      content: ["", [Validators.required]],
-      categoryId: ["", [Validators.required]],
-      userId: ["", [Validators.required]],
-      isAnimation: [false, [Validators.required]],
-      backgroundColor: ["", [Validators.required]],
-      textColor: ["", [Validators.required]],
-      secretUser: [false, [Validators.required]]
+      id: [this.post.id],
+      content: [this.post.content, [Validators.required]],
+      categoryId: [this.post.categoryId, [Validators.required]],
+      userId: [this.post.userId, [Validators.required]],
+      isAnimation: [this.post.isAnimation, [Validators.required]],
+      backgroundColor: [this.post.backgroundColor, [Validators.required]],
+      textColor: [this.post.textColor, [Validators.required]],
+      secretUser: [this.post.secretUser, [Validators.required]]
     })
   }
 
