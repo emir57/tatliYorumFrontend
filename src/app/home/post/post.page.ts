@@ -47,9 +47,9 @@ export class PostPage implements OnInit {
     this.postService.getById(this.postId).subscribe(response => {
       if (response.success) {
         this.post = response.data;
-        this.commentService.getAllByPostId(this.post.id).subscribe(response => {
+        this.postService.getLikes(this.postId).subscribe(response => {
           if (response.success) {
-            this.post.likes = response.data.length;
+            this.post.likes = response.data.count;
           }
         })
       }
