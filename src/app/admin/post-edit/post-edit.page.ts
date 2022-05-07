@@ -52,7 +52,14 @@ export class PostEditPage implements OnInit {
   }
   edit() {
     if (this.saveForm.valid) {
-
+      let post: Post = this.saveForm.value;
+      this.postService.update(post).subscribe(response => {
+        if (response.success) {
+          this.messageService.showMessage(response.message, {});
+        } else {
+          this.messageService.showMessage(response.message, {});
+        }
+      })
     }
   }
 
