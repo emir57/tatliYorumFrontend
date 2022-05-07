@@ -6,6 +6,7 @@ import { CommentService } from 'src/app/services/comment.service';
 import { MessageService } from 'src/app/services/message.service';
 import { UserService } from 'src/app/services/user.service';
 import { PostComment } from 'src/models/postComment';
+import { CommentEditPage } from '../comment-edit/comment-edit.page';
 declare var $: any;
 
 @Component({
@@ -69,9 +70,15 @@ export class CommentsPage implements OnInit {
   }
 
   async editComment(comment: PostComment) {
-    // const modal = await this.modalController.create({
-    //   component:
-    // })
+    const card = $("#comment"+comment.id);
+    card.addClass("bg-danger text-white")
+    const modal = await this.modalController.create({
+      component: CommentEditPage,
+      componentProps: { comment: comment }
+    })
+    modal.onDidDismiss().then(()=>card.removeClass("bg-danger text-white"))
+
+    return await modal.present();
   }
 
   deleteCommentInArray(commentId: number) {
