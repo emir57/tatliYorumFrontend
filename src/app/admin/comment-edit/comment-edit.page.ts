@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CommentService } from 'src/app/services/comment.service';
+import { PostComment } from 'src/models/postComment';
 
 @Component({
   selector: 'app-comment-edit',
@@ -9,6 +10,7 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class CommentEditPage implements OnInit {
 
+  @Input() comment: PostComment;
   constructor(
     private modalController: ModalController,
     private commentService: CommentService
@@ -19,6 +21,10 @@ export class CommentEditPage implements OnInit {
 
   async close() {
     await this.modalController.dismiss();
+  }
+
+  edit() {
+
   }
 
 }
