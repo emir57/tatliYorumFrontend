@@ -76,7 +76,11 @@ export class CommentsPage implements OnInit {
       component: CommentEditPage,
       componentProps: { comment: comment }
     })
-    modal.onDidDismiss().then(()=>card.removeClass("bg-danger text-white"))
+    modal.onDidDismiss().then(()=>{
+      setTimeout(() => {
+        card.removeClass("bg-danger text-white")
+      }, 500);
+    })
 
     return await modal.present();
   }
