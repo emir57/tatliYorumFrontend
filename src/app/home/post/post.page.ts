@@ -3,7 +3,9 @@ import { ModalController } from '@ionic/angular';
 import { CommentsPage } from 'src/app/comments/comments.page';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
+import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/models/post';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-post',
@@ -14,13 +16,16 @@ export class PostPage implements OnInit {
 
   @Input() postId: number;
   post: Post;
+  currentUser: User;
   constructor(
     private postService: PostService,
     private modalController: ModalController,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
+    this.getCurrentUser();
     this.getPost();
   }
 
@@ -30,6 +35,9 @@ export class PostPage implements OnInit {
         this.post = response.data;
       }
     })
+  }
+  async getCurrentUser() {
+    this.currentUser = await this.userService.getUser();
   }
   addLike(post: Post) {
     this.postService.addLike(post.id, this.currentUser.id).subscribe(response => {
