@@ -138,4 +138,8 @@ export class PostPage implements OnInit {
     return await modal.present();
   }
 
+  getDate() {
+    let date = new Date(this.post.createdDate);
+    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
+  }
 }
