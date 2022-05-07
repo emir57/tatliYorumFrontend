@@ -27,4 +27,11 @@ export class PostsPage implements OnInit {
   getPosts() {
     this.postService.getAll();
   }
+
+  editPost(post: Post) {
+
+  }
+  deletePost(post: Post) {
+
+  }
 }

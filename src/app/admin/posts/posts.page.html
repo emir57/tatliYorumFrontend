@@ -20,10 +20,10 @@
         <p><span class="text-info">{{post.likes}}</span> Toplam Beğeni</p>
         <p style="display: flex;justify-content: space-around;">
           <ion-buttons slot="start">
-            <ion-button (click)="editPost()">
+            <ion-button (click)="editPost(post)">
               <ion-icon name="create-outline"></ion-icon>
             </ion-button>
-            <ion-button (click)="deletePost()">
+            <ion-button (click)="deletePost(post)">
               <ion-icon name="trash"></ion-icon>
             </ion-button>
           </ion-buttons>
