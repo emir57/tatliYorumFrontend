@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ModalController } from '@ionic/angular';
+import { PostPage } from 'src/app/home/post/post.page';
 import { AlertService } from 'src/app/services/alert.service';
 import { ComplaintService } from 'src/app/services/complaint.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
@@ -17,7 +19,8 @@ export class ComplaintsPage implements OnInit {
     private complaintService: ComplaintService,
     private alertService: AlertService,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -32,8 +35,13 @@ export class ComplaintsPage implements OnInit {
     })
   }
 
-  goPost(complaint: Complaint) {
+  async goPost(complaint: Complaint) {
+    const modal = await this.modalController.create({
+      component: PostPage,
+      componentProps: { postId: complaint.postId }
+    })
 
+    return await modal.present();
   }
 
   deleteComplaint(complaint: Complaint) {
