@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CommentsPage } from 'src/app/comments/comments.page';
+import { ApplicationService } from 'src/app/services/application.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
@@ -21,10 +22,12 @@ export class PostPage implements OnInit {
     private postService: PostService,
     private modalController: ModalController,
     private messageService: MessageService,
-    private userService: UserService
+    private userService: UserService,
+    private applicationService: ApplicationService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.applicationService.getApplicationSettings();
     this.getCurrentUser();
     this.getPost();
   }
