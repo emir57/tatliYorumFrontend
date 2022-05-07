@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { PostPage } from 'src/app/home/post/post.page';
 import { AlertService } from 'src/app/services/alert.service';
 import { CommentService } from 'src/app/services/comment.service';
 import { MessageService } from 'src/app/services/message.service';
@@ -31,12 +32,21 @@ export class CommentsPage implements OnInit {
       if (response.success) {
         this.comments = response.data;
         this.comments.forEach(comment => {
-          this.userService.getUserById(comment.userId).subscribe(r=>{
+          this.userService.getUserById(comment.userId).subscribe(r => {
             comment.user = r.data;
           })
         })
       }
     })
+  }
+
+  async goPost(postId: number) {
+    const modal = await this.modalController.create({
+      component: PostPage,
+      componentProps: { postId: postId }
+    });
+
+    return await modal.present();
   }
 
 }

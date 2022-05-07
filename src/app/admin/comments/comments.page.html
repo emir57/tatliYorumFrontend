@@ -18,6 +18,9 @@
         <p>{{comment.content}}</p>
         <p style="display: flex;justify-content: space-around;align-items: center;">
           <ion-buttons slot="start">
+            <ion-button color="tertiary" (click)="goPost(comment.postId)">
+              <ion-icon name="send-outline"></ion-icon>
+            </ion-button>
             <ion-button (click)="editComment(post)">
               <ion-icon name="create-outline"></ion-icon>
             </ion-button>
