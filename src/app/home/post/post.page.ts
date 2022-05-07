@@ -7,6 +7,7 @@ import { CommentService } from 'src/app/services/comment.service';
 import { ComplaintService } from 'src/app/services/complaint.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
+import { RoleService } from 'src/app/services/role.service';
 import { UserService } from 'src/app/services/user.service';
 import { Complaint } from 'src/models/complaint';
 import { Post } from 'src/models/post';
@@ -31,7 +32,7 @@ export class PostPage implements OnInit {
     private applicationService: ApplicationService,
     private complaintService: ComplaintService,
     private alertService: AlertService,
-    private commentService: CommentService
+    public roleService: RoleService
   ) { }
 
   async ngOnInit() {
@@ -39,7 +40,6 @@ export class PostPage implements OnInit {
     this.getCurrentUser();
     this.getPost();
   }
-
   async close() {
     await this.modalController.dismiss();
   }
