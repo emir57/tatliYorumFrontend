@@ -3,6 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { CommentsPage } from 'src/app/comments/comments.page';
 import { AlertService } from 'src/app/services/alert.service';
 import { ApplicationService } from 'src/app/services/application.service';
+import { CommentService } from 'src/app/services/comment.service';
 import { ComplaintService } from 'src/app/services/complaint.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
@@ -29,7 +30,8 @@ export class PostPage implements OnInit {
     private userService: UserService,
     private applicationService: ApplicationService,
     private complaintService: ComplaintService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private commentService: CommentService
   ) { }
 
   async ngOnInit() {
@@ -45,6 +47,11 @@ export class PostPage implements OnInit {
     this.postService.getById(this.postId).subscribe(response => {
       if (response.success) {
         this.post = response.data;
+        this.commentService.getAllByPostId(this.post.id).subscribe(response => {
+          if (response.success) {
+            this.post.likes = response.data.length;
+          }
+        })
       }
     })
   }
