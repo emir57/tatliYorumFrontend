@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PostService } from 'src/app/services/post.service';
+import { Post } from 'src/models/post';
 
 @Component({
   selector: 'app-post',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostPage implements OnInit {
 
-  constructor() { }
+  @Input() postId: number;
+  post: Post;
+  constructor(
+    private postService: PostService
+  ) { }
 
   ngOnInit() {
+    this.getPost();
+  }
+
+  getPost() {
+    this.postService.getById(this.postId).subscribe(response => {
+      if (response.success) {
+        this.post = response.data;
+      }
+    })
   }
 
 }
