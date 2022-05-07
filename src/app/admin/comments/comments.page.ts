@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostComment } from 'src/models/postComment';
 
 @Component({
   selector: 'app-comments',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsPage implements OnInit {
 
+  comments: PostComment[];
   constructor() { }
 
   ngOnInit() {

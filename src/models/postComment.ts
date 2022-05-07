@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface PostComment {
   id: number;
   postId: number;
@@ -6,4 +8,5 @@ export interface PostComment {
   createdDate: string;
   username?: string;
   secretUser: boolean;
+  user?: User;
 }
