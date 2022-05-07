@@ -50,6 +50,7 @@ export class CommentsPage implements OnInit {
   }
 
   deleteComment(comment: PostComment) {
+    const card = $("#commentCard" + comment.id);
     this.alertService.showAlertConfirm("Silme işlemi", "Bu yorumu silmek istediğinizden emin misiniz?",
       () => { },
       () => {
