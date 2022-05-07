@@ -59,7 +59,11 @@ export class PostService {
               post.user = response.data;
             }
           })
-          this.categoryService
+          this.categoryService.getById(post.categoryId).subscribe(response => {
+            if (response.success) {
+              post.category = response.data;
+            }
+          })
         })
         await this.loadingService.closeLoading();
       }
