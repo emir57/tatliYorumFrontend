@@ -32,11 +32,11 @@
           <span>
             <ion-icon (click)="showSettings()" name="ellipsis-vertical-outline"></ion-icon>
             <ul id="postsetting{{post.id}}" class="list-group postsetting">
-              <li *ngIf="post.userId != currentUser.id" (click)="complaintPost()"
+              <li *ngIf="post.userId != currentUser.id && !roleService.checkIsAdmin" (click)="complaintPost()"
                 class="list-group-item text-warning">
                 <ion-icon name="alert-outline"></ion-icon> Şikayet Et
               </li>
-              <li *ngIf="post.userId == currentUser.id" (click)="deletePost()" class="list-group-item text-danger">
+              <li *ngIf="post.userId == currentUser.id || roleService.checkIsAdmin" (click)="deletePost()" class="list-group-item text-danger">
                 <ion-icon name="trash-outline"></ion-icon> Sil
               </li>
             </ul>
