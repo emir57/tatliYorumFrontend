@@ -20,8 +20,13 @@
   justify-content: start;
   padding: 12px;
   margin-top: 10px;
+  margin-bottom: 10px;
   border-radius: 10px;
   transition: all .5s;
+}
+
+.postcard:last-child {
+  margin-bottom: 50px;
 }
 
 .postcard .left {
