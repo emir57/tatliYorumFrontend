@@ -1,3 +1,4 @@
+import { Category } from "./category";
 import { User } from "./user";
 
 export interface Post {
@@ -13,4 +14,5 @@ export interface Post {
   commentCount?: number;
   createdDate: string;
   user?: User;
+  category?: Category;
 }
