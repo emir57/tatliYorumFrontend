@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -13,8 +13,9 @@ import { CommentEditPage } from './comment-edit.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CommentEditPageRoutingModule
+    CommentEditPageRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [CommentEditPage]
 })
-export class CommentEditPageModule {}
+export class CommentEditPageModule { }
