@@ -6,6 +6,7 @@ import { ResponseModel } from 'src/models/responseModel';
 import { Post } from "../../models/post";
 import { CommentService } from './comment.service';
 import { LoadingService } from './loading.service';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class PostService {
     @Inject("baseUrl") private baseUrl: string,
     private http: HttpClient,
     private commentService: CommentService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private userService: UserService
   ) { }
 
 
@@ -49,6 +51,11 @@ export class PostService {
           })
           this.commentService.getAllByPostId(post.id).subscribe(response => {
             post.commentCount = response.data.length;
+          })
+          this.userService.getUserById(post.userId).subscribe(response => {
+            if (response.success) {
+              post.user = response.data;
+            }
           })
         })
         await this.loadingService.closeLoading();
