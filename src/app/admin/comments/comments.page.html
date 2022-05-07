@@ -9,10 +9,10 @@
 
 <ion-content>
   <div id="container">
-    <ion-card class="postCard" id="post{{post.id}}" *ngFor="let comment of comments">
+    <ion-card class="commentCard" id="post{{comment.id}}" *ngFor="let comment of comments">
       <ion-card-header>
-        <ion-card-subtitle *ngIf="post.category">{{post.category.name}}</ion-card-subtitle>
-        <ion-card-title *ngIf="post.user">{{post.user.username}}</ion-card-title>
+        <ion-card-subtitle></ion-card-subtitle>
+        <ion-card-title *ngIf="comment.user">{{comment.user.username}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
         <p>{{comment.content}}</p>
