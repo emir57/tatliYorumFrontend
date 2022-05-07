@@ -22,7 +22,7 @@ export class UserService {
   }
 
   getUserById(userId: number) {
-    let url = `${this.baseUrl}/api/getuserbyid?id=${userId}`;
+    let url = `${this.baseUrl}/api/users/${userId}`;
     return this.httpClient.get<ResponseDataModel<User>>(url);
   }
 }
