@@ -33,13 +33,13 @@ export class PostsPage implements OnInit {
   }
 
   async editPost(post: Post) {
-    const postCard = $("#post"+post.id);
+    const postCard = $("#post" + post.id);
     postCard.addClass("bg-danger text-white");
     const modal = await this.modalController.create({
       component: PostEditPage,
       componentProps: { post: post }
     });
-    modal.onDidDismiss().then(()=>{
+    modal.onDidDismiss().then(() => {
       setTimeout(() => {
         postCard.removeClass("bg-danger text-white");
       }, 500);
@@ -68,5 +68,12 @@ export class PostsPage implements OnInit {
   deletePostInArray(postId: number) {
     let index = this.postService.posts.findIndex(x => x.id === postId);
     this.postService.posts.splice(index, 1);
+  }
+
+  getBgColor(color: string) {
+    return `background:${color};`;
+  }
+  getTextColor(color: string) {
+    return `color:${color};`;
   }
 }

@@ -18,7 +18,16 @@
         <p>{{post.content}}</p>
         <p><span class="text-primary">{{post.commentCount}}</span> Toplam Yorum</p>
         <p><span class="text-info">{{post.likes}}</span> Toplam Beğeni</p>
-        <p style="display: flex;justify-content: space-around;">
+        <br>
+        <p style="display: flex;justify-content: space-between;">
+          <span>
+            Arkaplan rengi<div class="color" [style]="getBgColor(post.backgroundColor)"></div>
+          </span>
+          <span>
+            Yazı rengi<div class="color" [style]="getTextColor(post.textColor)"></div>
+          </span>
+        </p>
+        <p style="display: flex;justify-content: space-around;align-items: center;">
           <ion-buttons slot="start">
             <ion-button (click)="editPost(post)">
               <ion-icon name="create-outline"></ion-icon>
