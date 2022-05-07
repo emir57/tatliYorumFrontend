@@ -65,6 +65,15 @@ export class PostPage implements OnInit {
       }
     })
   }
+  getColorStyles() {
+    let css = `
+    color:${this.post.textColor};
+    background:${this.post.backgroundColor};`
+    if (this.post.isAnimation && this.applicationService.applicationSettings.enableAnimation) {
+      css += "animation:animation 5s infinite";
+    }
+    return css;
+  }
 
   async showComments(post: Post) {
     const modal = await this.modalController.create({
