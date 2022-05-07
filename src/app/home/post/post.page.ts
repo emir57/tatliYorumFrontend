@@ -38,6 +38,9 @@ export class PostPage implements OnInit {
     this.getPost();
   }
 
+  async close() {
+    await this.modalController.dismiss();
+  }
   getPost() {
     this.postService.getById(this.postId).subscribe(response => {
       if (response.success) {
