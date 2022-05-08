@@ -3,6 +3,7 @@ import { AlertService } from 'src/app/services/alert.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { MessageService } from 'src/app/services/message.service';
 import { Category } from 'src/models/category';
+declare var $: any;
 
 @Component({
   selector: 'app-categories',
