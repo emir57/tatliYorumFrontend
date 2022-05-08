@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CategoryService } from 'src/app/services/category.service';
 import { MessageService } from 'src/app/services/message.service';
@@ -11,6 +11,7 @@ import { MessageService } from 'src/app/services/message.service';
 })
 export class CategoryAddPage implements OnInit {
 
+  saveForm: FormGroup;
   constructor(
     private messageService: MessageService,
     private router: Router,
@@ -19,6 +20,17 @@ export class CategoryAddPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.createForm();
+  }
+
+  createForm() {
+    this.saveForm = this.formBuilder.group({
+      name: ["", [Validators.required, Validators.maxLength(20)]]
+    })
+  }
+
+  add() {
+
   }
 
 }
