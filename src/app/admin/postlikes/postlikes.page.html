@@ -17,6 +17,14 @@
       <ion-card-content>
         <p>PostId: <span class="text-primary">{{postLike.postId}}</span></p>
         <p>UserId: <span class="text-primary">{{postLike.userId}}</span></p>
+        <br>
+        <p style="display: flex;justify-content: space-around;align-items: center;">
+          <ion-buttons slot="start">
+            <ion-button color="danger" (click)="deletePostLike(postLike)">
+              <ion-icon name="trash"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </p>
       </ion-card-content>
     </ion-card>
   </div>
