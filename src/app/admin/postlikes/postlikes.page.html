@@ -8,5 +8,16 @@
 </ion-header>
 
 <ion-content>
-
+  <div id="container">
+    <ion-card *ngFor="let postLike of postLikes">
+      <ion-card-header>
+        <ion-card-subtitle></ion-card-subtitle>
+        <ion-card-title></ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>PostId <span class="text-primary">{{postLike.postId}}</span></p>
+        <p>UserId <span class="text-primary">{{postLike.userId}}</span></p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>
