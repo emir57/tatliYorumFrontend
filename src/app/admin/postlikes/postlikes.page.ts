@@ -29,5 +29,8 @@ export class PostlikesPage implements OnInit {
   goPost(postLike: PostLike) {
 
   }
+  deletePostLike(postLike: PostLike) {
+
+  }
 
 }
