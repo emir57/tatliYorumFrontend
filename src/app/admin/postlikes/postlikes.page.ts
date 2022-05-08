@@ -15,6 +15,15 @@ export class PostlikesPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.getPostLikes();
+  }
+
+  getPostLikes() {
+    this.postLikeService.getAll().subscribe(response => {
+      if (response.success) {
+        this.postLikes = response.data;
+      }
+    })
   }
 
 }
