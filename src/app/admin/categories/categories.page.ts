@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { AlertService } from 'src/app/services/alert.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { MessageService } from 'src/app/services/message.service';
 import { Category } from 'src/models/category';
+import { CategoryEditPage } from '../category-edit/category-edit.page';
 declare var $: any;
 
 @Component({
@@ -16,7 +18,8 @@ export class CategoriesPage implements OnInit {
   constructor(
     private categoryService: CategoryService,
     private alertService: AlertService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -31,8 +34,20 @@ export class CategoriesPage implements OnInit {
     })
   }
 
-  editCategory(category: Category) {
+  async editCategory(category: Category) {
+    const card = $("#category" + category.id);
+    card.addClass("bg-danger text-white");
+    const modal = await this.modalController.create({
+      component: CategoryEditPage,
+      componentProps: { category: category }
+    })
+    modal.onDidDismiss().then(()=>{
+      setTimeout(() => {
+        card.removeClass("bg-danger text-white");
+      }, 600);
+    })
 
+    return await modal.present();
   }
   deleteCategory(category: Category) {
     const card = $("#category" + category.id);
