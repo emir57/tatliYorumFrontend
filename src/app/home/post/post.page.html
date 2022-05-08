@@ -27,7 +27,7 @@
           <span>
             <ion-icon name="person-outline"></ion-icon>
           </span>&nbsp;
-          <span *ngIf="!post.secretUser">{{post.user.username}}</span>
+          <span *ngIf="!post.secretUser && post.user">{{post.user.username}}</span>
           <span *ngIf="post.secretUser">İsimsiz kullanıcı</span>
           <span>
             <ion-icon (click)="showSettings()" name="ellipsis-vertical-outline"></ion-icon>
