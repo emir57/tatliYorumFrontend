@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { CategoryService } from 'src/app/services/category.service';
+import { MessageService } from 'src/app/services/message.service';
 import { Category } from 'src/models/category';
 
 @Component({
@@ -14,7 +16,9 @@ export class CategoryEditPage implements OnInit {
   saveForm: FormGroup
   constructor(
     private modalController: ModalController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private categoryService: CategoryService,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -34,7 +38,17 @@ export class CategoryEditPage implements OnInit {
 
   edit() {
     if (this.saveForm.valid) {
-
+      let category: Category = this.saveForm.value;
+      this.categoryService.update(category).subscribe(async response => {
+        if (response.success) {
+          this.messageService.showMessage(response.message, {});
+          setTimeout(async () => {
+            await this.modalController.dismiss();
+          }, 100);
+        } else {
+          this.messageService.showMessage(response.message, {});
+        }
+      })
     }
   }
 
