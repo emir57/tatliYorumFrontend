@@ -59,11 +59,16 @@ export class PostlikesPage implements OnInit {
         this.postLikeService.delete(postLike.id).subscribe(response => {
           if (response.success) {
             this.messageService.showMessage(response.message, {});
+            this.deletePostLikeInArray(postLike.id);
           } else {
             this.messageService.showMessage(response.message, {});
           }
         })
       })
+  }
+  deletePostLikeInArray(id: number) {
+    let index = this.postLikes.findIndex(x => x.id === id);
+    this.postLikes.splice(index, 1);
   }
 
 }
