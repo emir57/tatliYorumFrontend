@@ -11,6 +11,7 @@
 
 <ion-content>
   <div id="container">
+    <div *ngIf="!post" class="alert alert-warning">Böyle bir gönderi mevcut değil!</div>
     <div *ngIf="post" id="postcard{{post.id}}" class="postcard" [style]="getColorStyles()"
       style="padding:10px">
       <div class="left">
