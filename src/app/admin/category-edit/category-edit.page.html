@@ -17,7 +17,7 @@
         <ion-input formControlName="name"></ion-input>
       </ion-item>
     </form>
-    <ion-button (click)="edit()" expand="block" shape="round">
+    <ion-button [disabled]="!saveForm.valid" (click)="edit()" expand="block" shape="round">
       Kaydet
     </ion-button>
   </div>
