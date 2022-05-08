@@ -43,7 +43,7 @@ export class CategoryEditPage implements OnInit {
         if (response.success) {
           this.messageService.showMessage(response.message, {});
           setTimeout(async () => {
-            await this.modalController.dismiss();
+            await this.modalController.dismiss(true);
           }, 100);
         } else {
           this.messageService.showMessage(response.message, {});

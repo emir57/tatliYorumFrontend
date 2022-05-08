@@ -41,11 +41,13 @@ export class CategoriesPage implements OnInit {
       component: CategoryEditPage,
       componentProps: { category: category }
     })
-    modal.onDidDismiss().then(()=>{
+    modal.onDidDismiss().then(async (e) => {
       setTimeout(() => {
         card.removeClass("bg-danger text-white");
-        this.getCategories();
       }, 400);
+      if (e.data === true) {
+        this.getCategories();
+      }
     })
 
     return await modal.present();
