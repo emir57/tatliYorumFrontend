@@ -1,9 +1,19 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>categoryAdd</ion-title>
+    <ion-title>Kategori Ekle</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <div id="container">
+    <form [formGroup]="saveForm">
+      <ion-item>
+        <ion-label position="floating">Kategori İsmi</ion-label>
+        <ion-input formControlName="name"></ion-input>
+      </ion-item>
+    </form>
+    <ion-button [disabled]="!saveForm.valid" (click)="add()" expand="block" shape="round">
+      Ekle
+    </ion-button>
+  </div>
 </ion-content>
