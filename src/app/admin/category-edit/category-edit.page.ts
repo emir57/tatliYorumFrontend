@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { Category } from 'src/models/category';
 
 @Component({
   selector: 'app-category-edit',
@@ -8,11 +10,22 @@ import { ModalController } from '@ionic/angular';
 })
 export class CategoryEditPage implements OnInit {
 
+  @Input() category: Category
+  saveForm: FormGroup
   constructor(
-    private modalController: ModalController
+    private modalController: ModalController,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
+    this.createForm();
+  }
+
+  createForm() {
+    this.saveForm = this.formBuilder.group({
+      id: [this.category.id],
+      name: [this.category.name]
+    })
   }
 
   async close() {
