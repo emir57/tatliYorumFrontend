@@ -15,12 +15,13 @@
         <ion-card-title>{{category.name}}</ion-card-title>
       </ion-card-header>
       <ion-card-content>
+        <p></p>
         <p style="display: flex;justify-content: space-around;align-items: center;">
           <ion-buttons slot="start">
-            <ion-button (click)="editPost(post)">
+            <ion-button (click)="editCategory(category)">
               <ion-icon name="create-outline"></ion-icon>
             </ion-button>
-            <ion-button color="danger" (click)="deletePost(post)">
+            <ion-button color="danger" (click)="deleteCategory(category)">
               <ion-icon name="trash"></ion-icon>
             </ion-button>
           </ion-buttons>
