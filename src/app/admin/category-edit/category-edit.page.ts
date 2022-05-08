@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Category } from 'src/models/category';
 
@@ -24,7 +24,7 @@ export class CategoryEditPage implements OnInit {
   createForm() {
     this.saveForm = this.formBuilder.group({
       id: [this.category.id],
-      name: [this.category.name]
+      name: [this.category.name, [Validators.required, Validators.maxLength(20)]]
     })
   }
 
