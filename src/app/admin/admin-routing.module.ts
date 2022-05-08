@@ -43,6 +43,10 @@ const routes: Routes = [
   {
     path: 'category-add',
     loadChildren: () => import('./category-add/category-add.module').then( m => m.CategoryAddPageModule)
+  },
+  {
+    path: 'postlikes',
+    loadChildren: () => import('./postlikes/postlikes.module').then( m => m.PostlikesPageModule)
   }
 ];
 
