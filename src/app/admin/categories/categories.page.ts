@@ -30,4 +30,11 @@ export class CategoriesPage implements OnInit {
     })
   }
 
+  editCategory(category: Category) {
+
+  }
+  deleteCategory(category: Category) {
+
+  }
+
 }
