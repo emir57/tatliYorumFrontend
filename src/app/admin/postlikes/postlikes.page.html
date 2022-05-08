@@ -15,7 +15,12 @@
         <ion-card-title></ion-card-title>
       </ion-card-header>
       <ion-card-content>
-        <p>PostId: <span class="text-primary">{{postLike.postId}}</span></p>
+        <p>PostId:
+          <span class="text-primary">{{postLike.postId}}</span>
+          <ion-button (click)="goPost(postLike)" fill="clear" shape="round">
+            Gönderiye Git
+          </ion-button>
+        </p>
         <p>UserId: <span class="text-primary">{{postLike.userId}}</span></p>
         <br>
         <p style="display: flex;justify-content: space-around;align-items: center;">
