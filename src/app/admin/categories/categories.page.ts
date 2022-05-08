@@ -35,7 +35,16 @@ export class CategoriesPage implements OnInit {
 
   }
   deleteCategory(category: Category) {
-
+    const card = $("#category" + category.id);
+    card.addClass("bg-warning text-white");
+    this.alertService.showAlertConfirm("Silme işlemi",
+      `"${category.name}" bu kategoriyi silmek istediğinizden emin misiniz?`,
+      () => {
+        card.removeClass("bg-warning text-white");
+      },
+      () => {
+        card.removeClass("bg-warning text-white");
+      })
   }
 
 }
