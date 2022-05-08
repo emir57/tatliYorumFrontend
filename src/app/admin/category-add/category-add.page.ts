@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+import { CategoryService } from 'src/app/services/category.service';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-category-add',
@@ -7,7 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryAddPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private messageService: MessageService,
+    private router: Router,
+    private categoryService: CategoryService,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
   }
