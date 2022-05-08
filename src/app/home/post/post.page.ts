@@ -58,6 +58,11 @@ export class PostPage implements OnInit {
             this.post.commentCount = response.data.length;
           }
         })
+        this.userService.getUserById(this.post.userId).subscribe(response => {
+          if (response.success) {
+            this.post.user = response.data;
+          }
+        })
       }
     })
   }
