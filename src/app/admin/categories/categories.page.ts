@@ -44,7 +44,7 @@ export class CategoriesPage implements OnInit {
     modal.onDidDismiss().then(()=>{
       setTimeout(() => {
         card.removeClass("bg-danger text-white");
-      }, 600);
+      }, 400);
     })
 
     return await modal.present();
