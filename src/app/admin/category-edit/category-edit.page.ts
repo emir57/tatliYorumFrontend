@@ -32,4 +32,10 @@ export class CategoryEditPage implements OnInit {
     await this.modalController.dismiss();
   }
 
+  edit() {
+    if (this.saveForm.valid) {
+
+    }
+  }
+
 }
