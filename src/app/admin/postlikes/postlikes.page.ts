@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PostLikeService } from 'src/app/services/post-like.service';
+import { PostLike } from 'src/models/postLike';
 
 @Component({
   selector: 'app-postlikes',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostlikesPage implements OnInit {
 
-  constructor() { }
+  postLikes: PostLike[];
+  constructor(
+    private postLikeService: PostLikeService
+  ) { }
 
   ngOnInit() {
   }
