@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/services/user.service';
+import { User } from 'src/models/user';
 
 @Component({
   selector: 'app-post-card',
@@ -7,8 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PostCardComponent implements OnInit {
 
-  constructor() { }
+  currentUser: User;
+  constructor(
+    private userService: UserService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getCurrentUser();
+  }
+
+  async getCurrentUser() {
+    this.currentUser = await this.userService.getUser();
+  }
 
 }
