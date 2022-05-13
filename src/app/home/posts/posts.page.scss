@@ -15,54 +15,6 @@
   margin-top: 5%;
 }
 
-.postcard {
-  display: flex;
-  justify-content: start;
-  padding: 12px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  border-radius: 10px;
-  transition: all .5s;
-}
-
-.postcard:last-child {
-  margin-bottom: 50px;
-}
-
-.postcard .left {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-}
-
-.postcard .left span:first-child {
-  padding: 5px;
-}
-
-.postcard .left span:last-child {
-  padding: 5px;
-}
-
-.postcard .right {
-  padding: 10px;
-}
-
-.topsection {
-  display: flex;
-  justify-content: start;
-}
-
-.topsection span:last-child {
-  margin-left: auto;
-}
-
-.postsetting {
-  display: none;
-  position: absolute;
-  right: 5%;
-}
-
 #postSortSettings {
   display: flex;
   justify-content: center;
