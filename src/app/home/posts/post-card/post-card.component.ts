@@ -1,7 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AlertService } from 'src/app/services/alert.service';
+import { ComplaintService } from 'src/app/services/complaint.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
+import { Complaint } from 'src/models/complaint';
 import { Post } from 'src/models/post';
 import { User } from 'src/models/user';
 declare var $: any;
@@ -18,7 +21,9 @@ export class PostCardComponent implements OnInit {
   constructor(
     private userService: UserService,
     private postService: PostService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private alertService: AlertService,
+    private complaintService: ComplaintService
   ) { }
 
   ngOnInit() {
@@ -54,6 +59,48 @@ export class PostCardComponent implements OnInit {
     })
   }
 
+  deletePost(post: Post) {
+    post.isAnimation = false;
+    const postCard = $("#postcard" + post.id);
+    let interval = setInterval(() => {
+      setTimeout(() => {
+        postCard.addClass("bg-warning");
+      }, 500);
+      setTimeout(() => {
+        postCard.removeClass("bg-warning");
+      }, 1350);
+    }, 500)
+    this.alertService.showAlertConfirm(
+      "Silme işlemi",
+      "Bu gönderinizi silmek istediğinizden eminmisiniz",
+      () => {
+        post.isAnimation = true;
+        clearInterval(interval);
+      },
+      () => {
+        clearInterval(interval);
+      })
+  }
+  complaintPost(post: Post) {
+    this.alertService.showAlertWithInput("Bu Gönderiyi Şikayet Et",
+      () => { },
+      (value) => {
+        console.log(value.content);
+        let complaintModel: Complaint = {
+          content: value.content,
+          postId: post.id,
+          userId: this.currentUser.id
+        };
+        this.complaintService.add(complaintModel).subscribe(response => {
+          if (response.success) {
+            this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+          } else {
+            this.messageService.showMessage(response.message, { position: MessagePosition.Top });
+          }
+        })
+      })
+  }
+
   showSettings(post: Post) {
     const settingsPanel = $("#postsetting" + post.id);
     settingsPanel.fadeToggle();
@@ -62,6 +109,7 @@ export class PostCardComponent implements OnInit {
   getDownArrowClass(post: Post) {
     return post.likes == 0 ? `text-danger` : "";
   }
+
   getDate(dateString: string) {
     let date = new Date(dateString);
     return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
