@@ -70,6 +70,8 @@ export class LoginPage implements OnInit {
           await this.loadingService.closeLoading();
           this.messageService.showMessage(response.message, {});
         }
+      }, responseErr => {
+        this.isLoad = true;
       })
     }
   }
