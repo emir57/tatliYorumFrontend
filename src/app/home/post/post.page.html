@@ -12,6 +12,6 @@
 <ion-content>
   <div id="container">
     <div *ngIf="!post" class="alert alert-warning">Böyle bir gönderi mevcut değil!</div>
-
+    <app-post-card [post]="post"></app-post-card>
   </div>
 </ion-content>
