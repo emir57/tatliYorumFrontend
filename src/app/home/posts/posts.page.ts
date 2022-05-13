@@ -77,15 +77,6 @@ export class PostsPage implements OnInit, AfterViewInit {
     return css;
   }
 
-  async showComments(post: Post) {
-    const modal = await this.modalController.create({
-      component: CommentsPage,
-      componentProps: { post: post, currentUser: this.currentUser }
-    })
-
-    return await modal.present();
-  }
-
   sortByLike() {
     $("#sortByDateBtn").removeClass("text-success");
     $("#sortByLikeBtn").addClass("text-success");

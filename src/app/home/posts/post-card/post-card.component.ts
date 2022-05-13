@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { CommentsPage } from 'src/app/comments/comments.page';
 import { AlertService } from 'src/app/services/alert.service';
 import { ComplaintService } from 'src/app/services/complaint.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
@@ -23,7 +25,8 @@ export class PostCardComponent implements OnInit {
     private postService: PostService,
     private messageService: MessageService,
     private alertService: AlertService,
-    private complaintService: ComplaintService
+    private complaintService: ComplaintService,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -44,6 +47,15 @@ export class PostCardComponent implements OnInit {
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       }
     })
+  }
+
+  async showComments(post: Post) {
+    const modal = await this.modalController.create({
+      component: CommentsPage,
+      componentProps: { post: post, currentUser: this.currentUser }
+    })
+
+    return await modal.present();
   }
 
   deleteLike(post: Post) {
