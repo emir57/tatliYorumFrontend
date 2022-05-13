@@ -58,5 +58,9 @@ export class PostCardComponent implements OnInit {
     const settingsPanel = $("#postsetting" + post.id);
     settingsPanel.fadeToggle();
   }
+  
+  getDownArrowClass(post: Post) {
+    return post.likes == 0 ? `text-danger` : "";
+  }
 
 }

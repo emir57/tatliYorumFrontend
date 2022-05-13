@@ -166,9 +166,4 @@ export class PostsPage implements OnInit, AfterViewInit {
     let date = new Date(dateString);
     return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
   }
-
-  getDownArrowClass(post: Post) {
-    return post.likes == 0 ? `text-danger` : "";
-  }
-
 }
