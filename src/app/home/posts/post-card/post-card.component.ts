@@ -31,8 +31,8 @@ export class PostCardComponent implements OnInit {
     private applicationService: ApplicationService
   ) { }
 
-  ngOnInit() {
-    this.getCurrentUser();
+  async ngOnInit() {
+    await this.getCurrentUser();
   }
 
   async getCurrentUser() {
