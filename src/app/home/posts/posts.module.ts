@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PostsPageRoutingModule } from './posts-routing.module';
 
 import { PostsPage } from './posts.page';
+import { PostCardModule } from './post-card/post-card.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PostsPageRoutingModule
+    PostsPageRoutingModule,
+    PostCardModule
   ],
   declarations: [PostsPage]
 })
