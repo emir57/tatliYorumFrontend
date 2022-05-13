@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { CommentsPage } from 'src/app/comments/comments.page';
 import { AlertService } from 'src/app/services/alert.service';
+import { ApplicationService } from 'src/app/services/application.service';
 import { ComplaintService } from 'src/app/services/complaint.service';
 import { MessagePosition, MessageService } from 'src/app/services/message.service';
 import { PostService } from 'src/app/services/post.service';
@@ -26,7 +27,8 @@ export class PostCardComponent implements OnInit {
     private messageService: MessageService,
     private alertService: AlertService,
     private complaintService: ComplaintService,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private applicationService: ApplicationService
   ) { }
 
   ngOnInit() {
@@ -47,6 +49,16 @@ export class PostCardComponent implements OnInit {
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       }
     })
+  }
+
+  getColorStyles(post: Post) {
+    let css = `
+    color:${post.textColor};
+    background:${post.backgroundColor};`
+    if (post.isAnimation && this.applicationService.applicationSettings.enableAnimation) {
+      css += "animation:animation 5s infinite";
+    }
+    return css;
   }
 
   async showComments(post: Post) {

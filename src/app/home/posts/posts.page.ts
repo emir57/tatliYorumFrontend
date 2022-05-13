@@ -67,16 +67,6 @@ export class PostsPage implements OnInit, AfterViewInit {
     this.currentUser = await this.userService.getUser();
   }
 
-  getColorStyles(post: Post) {
-    let css = `
-    color:${post.textColor};
-    background:${post.backgroundColor};`
-    if (post.isAnimation && this.applicationService.applicationSettings.enableAnimation) {
-      css += "animation:animation 5s infinite";
-    }
-    return css;
-  }
-
   sortByLike() {
     $("#sortByDateBtn").removeClass("text-success");
     $("#sortByLikeBtn").addClass("text-success");
