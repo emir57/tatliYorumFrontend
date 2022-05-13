@@ -1,4 +1,4 @@
-<div id="postcard{{post.id}}" class="postcard" *ngFor="let post of postService.posts" [style]="getColorStyles(post)"
+<div id="postcard{{post.id}}" class="postcard" *ngIf="post" [style]="getColorStyles(post)"
       style="padding:10px">
       <div class="left">
         <span (click)="addLike(post)">
