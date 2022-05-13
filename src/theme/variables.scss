@@ -74,6 +74,14 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** my custom purple **/
+  --ion-color-purple: #884EA0;
+  --ion-color-purple-rgb: 136, 78, 160;
+  --ion-color-purple-contrast: #000000;
+  --ion-color-purple-contrast-rgb: 0, 0, 0;
+  --ion-color-purple-shade: #884EA0;
+  --ion-color-purple-tint: #884EA0;
 }
 
 @media (prefers-color-scheme: dark) {
