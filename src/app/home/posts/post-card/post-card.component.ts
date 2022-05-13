@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { UserService } from 'src/app/services/user.service';
+import { Post } from 'src/models/post';
 import { User } from 'src/models/user';
 
 @Component({
@@ -10,6 +11,7 @@ import { User } from 'src/models/user';
 export class PostCardComponent implements OnInit {
 
   currentUser: User;
+  @Input() post: Post;
   constructor(
     private userService: UserService
   ) { }
