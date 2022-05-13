@@ -76,29 +76,6 @@ export class PostsPage implements OnInit, AfterViewInit {
     }
     return css;
   }
-  addLike(post: Post) {
-    this.postService.addLike(post.id, this.currentUser.id).subscribe(response => {
-      if (response.success) {
-        let postIndex = this.postService.posts.findIndex(p => p.id === post.id);
-        this.postService.posts[postIndex].likes += 1;
-        this.messageService.showMessage(response.message, { position: MessagePosition.Top });
-      } else {
-        this.messageService.showMessage(response.message, { position: MessagePosition.Top });
-      }
-    })
-  }
-  deleteLike(post: Post) {
-    if (post.likes === 0) return;
-    this.postService.deleteLike(post.id, this.currentUser.id).subscribe(response => {
-      if (response.success) {
-        let postIndex = this.postService.posts.findIndex(p => p.id === post.id);
-        this.postService.posts[postIndex].likes -= 1;
-        this.messageService.showMessage(response.message, { position: MessagePosition.Top });
-      } else {
-        this.messageService.showMessage(response.message, { position: MessagePosition.Top });
-      }
-    })
-  }
 
   async showComments(post: Post) {
     const modal = await this.modalController.create({
@@ -118,11 +95,6 @@ export class PostsPage implements OnInit, AfterViewInit {
     $("#sortByDateBtn").addClass("text-success");
     $("#sortByLikeBtn").removeClass("text-success");
     this.postService.posts.sort((x, y) => (new Date(y.createdDate)).getTime() - (new Date(x.createdDate)).getTime());
-  }
-
-  showSettings(post: Post) {
-    const settingsPanel = $("#postsetting" + post.id);
-    settingsPanel.fadeToggle();
   }
 
   deletePost(post: Post) {

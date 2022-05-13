@@ -4,6 +4,7 @@ import { PostService } from 'src/app/services/post.service';
 import { UserService } from 'src/app/services/user.service';
 import { Post } from 'src/models/post';
 import { User } from 'src/models/user';
+declare var $: any;
 
 @Component({
   selector: 'app-post-card',
@@ -51,6 +52,11 @@ export class PostCardComponent implements OnInit {
         this.messageService.showMessage(response.message, { position: MessagePosition.Top });
       }
     })
+  }
+
+  showSettings(post: Post) {
+    const settingsPanel = $("#postsetting" + post.id);
+    settingsPanel.fadeToggle();
   }
 
 }
