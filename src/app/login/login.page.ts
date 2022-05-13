@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -70,7 +71,10 @@ export class LoginPage implements OnInit {
           await this.loadingService.closeLoading();
           this.messageService.showMessage(response.message, {});
         }
-      }, responseErr => {
+      }, (responseErr: Response) => {
+        if (responseErr.status === 0) {
+          this.messageService.showMessage("Sunucuya bağlanılamadı!", {});
+        }
         this.isLoad = true;
       })
     }
