@@ -58,9 +58,13 @@ export class PostCardComponent implements OnInit {
     const settingsPanel = $("#postsetting" + post.id);
     settingsPanel.fadeToggle();
   }
-  
+
   getDownArrowClass(post: Post) {
     return post.likes == 0 ? `text-danger` : "";
+  }
+  getDate(dateString: string) {
+    let date = new Date(dateString);
+    return `${date.getDate()}.${date.getMonth() + 1}.${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}`
   }
 
 }
