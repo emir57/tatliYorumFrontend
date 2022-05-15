@@ -10,6 +10,21 @@
       <ion-refresher-content pullingIcon="" pullingText="" refreshingSpinner="circles" refreshingText="Yükleniyor...">
       </ion-refresher-content>
     </ion-refresher>
+    <div style="width: 100%;height: 50px;padding: 0 10px 0 10px;" class="text-center">
+      <i id="refreshtext">Yenilemek için <span>aşağı</span> kaydırınız.
+        <div id="downarrow" style="display: none;">
+          <ion-icon name="chevron-down-outline"></ion-icon>
+        </div>
+      </i>
+    </div>
+    <div id="postSortSettings">
+      <ion-button id="sortByLikeBtn" (click)="sortByLike()" fill="clear" shape="round">
+        <ion-icon name="heart-outline"></ion-icon>&nbsp;Beğeniye göre sırala
+      </ion-button>
+      <ion-button id="sortByDateBtn" (click)="sortByDate()" fill="clear" shape="round">
+        <ion-icon name="calendar-outline"></ion-icon>&nbsp;Tarihe göre sırala
+      </ion-button>
+    </div>
     <app-post-card [post]="post" *ngFor="let post of postService.posts"></app-post-card>
   </div>
 </ion-content>
