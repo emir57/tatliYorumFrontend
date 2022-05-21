@@ -1,9 +1,11 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>users</ion-title>
+    <ion-title>Tüm Kullanıcılar</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+<div id="container">
+  <div *ngFor="let user of users">{{user.username}}</div>
+</div>
 </ion-content>
