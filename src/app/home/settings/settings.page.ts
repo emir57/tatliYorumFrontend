@@ -36,7 +36,9 @@ export class SettingsPage implements OnInit {
 
   async save() {
     await this.applicationService.setApplicationSettings(this.applicationSettings);
-    this.messageService.showMessage("Kaydetme başarılı lütfen bekleyiniz", { position: MessagePosition.Middle });
+    setTimeout(() => {
+      this.messageService.showMessage("Kaydetme başarılı", { position: MessagePosition.Middle });
+    }, 0);
   }
 
   async logout() {
