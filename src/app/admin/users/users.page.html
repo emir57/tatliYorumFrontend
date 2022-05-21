@@ -20,8 +20,8 @@
       </ion-card-header>
 
       <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb a mountain or spend a week in the woods. Wash your spirit clean.
+        Admin: <ion-label *ngIf="user.isAdmin" color="success">Evet</ion-label>
+        <ion-label *ngIf="!user.isAdmin" color="danger">Hayır</ion-label>
       </ion-card-content>
     </ion-card>
   </div>
