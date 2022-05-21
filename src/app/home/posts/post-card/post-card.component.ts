@@ -33,6 +33,7 @@ export class PostCardComponent implements OnInit {
 
   async ngOnInit() {
     await this.getCurrentUser();
+    await this.applicationService.getApplicationSettings();
   }
 
   async getCurrentUser() {
