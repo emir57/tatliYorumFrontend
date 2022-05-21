@@ -22,7 +22,7 @@
         <ion-icon name="heart-outline"></ion-icon>&nbsp;Beğeniye göre sırala
       </ion-button>
       <ion-button id="sortByDateBtn" (click)="sortByDate()" fill="clear" shape="round">
-        <ion-icon name="calendar-outline"></ion-icon>&nbsp;Tarihe göre sırala
+        <ion-icon name="calendar-outline"></ion-icon>&nbsp;Güncelliğe göre sırala
       </ion-button>
     </div>
     <app-post-card [post]="post" *ngFor="let post of postService.posts"></app-post-card>
