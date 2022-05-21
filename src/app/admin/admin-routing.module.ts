@@ -47,6 +47,10 @@ const routes: Routes = [
   {
     path: 'postlikes',
     loadChildren: () => import('./postlikes/postlikes.module').then( m => m.PostlikesPageModule)
+  },
+  {
+    path: 'users',
+    loadChildren: () => import('./users/users.module').then( m => m.UsersPageModule)
   }
 ];
 
