@@ -28,7 +28,7 @@ export class PostCardComponent implements OnInit {
     private alertService: AlertService,
     private complaintService: ComplaintService,
     private modalController: ModalController,
-    private applicationService: ApplicationService
+    public applicationService: ApplicationService
   ) { }
 
   async ngOnInit() {
