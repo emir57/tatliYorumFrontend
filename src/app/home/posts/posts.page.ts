@@ -100,4 +100,8 @@ export class PostsPage implements OnInit, AfterViewInit {
       }, 1000);
     }, 1100)
   }
+
+  getDate(date: Date) {
+    return `${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  }
 }
