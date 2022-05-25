@@ -98,6 +98,6 @@ export class PostsPage implements OnInit, AfterViewInit {
         }, 500)
         // downArrow.fadeOut();
       }, 1000);
-    }, 1000)
+    }, 1100)
   }
 }
