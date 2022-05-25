@@ -10,7 +10,7 @@
 <ion-content>
   <div id="container">
     <ion-list>
-      <ion-item *ngFor="let complaint of complaints">
+      <ion-item id="complaint{{complaint.id}}" *ngFor="let complaint of complaints">
         <ion-label>{{complaint.content}}</ion-label>
         <ion-buttons slot="end">
           <ion-button (click)="goPost(complaint)" expand="block" fill="clear" shape="round">
