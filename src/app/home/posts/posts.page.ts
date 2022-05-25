@@ -23,6 +23,7 @@ declare var $: any;
 })
 export class PostsPage implements OnInit, AfterViewInit {
 
+  currentDate: string;
   currentUser: User
   posts: Post[]
   constructor(
@@ -37,6 +38,7 @@ export class PostsPage implements OnInit, AfterViewInit {
     private complaintService: ComplaintService
   ) { }
   async ngOnInit() {
+    this.updateDate();
     await this.applicationService.getApplicationSettings();
     this.getCurrentUser();
     this.getPosts();
@@ -99,6 +101,12 @@ export class PostsPage implements OnInit, AfterViewInit {
         // downArrow.fadeOut();
       }, 1000);
     }, 1100)
+  }
+
+  updateDate() {
+    setInterval(() => {
+      this.currentDate = this.getDate(new Date);
+    }, 1000)
   }
 
   getDate(date: Date) {
