@@ -13,7 +13,7 @@
       <ion-item id="complaint{{complaint.id}}" *ngFor="let complaint of complaints">
         <ion-label>{{complaint.content}}</ion-label>
         <ion-buttons slot="end">
-          <ion-button (click)="goPost(complaint)" expand="block" fill="clear" shape="round">
+          <ion-button color="primary" (click)="goPost(complaint)" expand="block" fill="clear" shape="round">
             <ion-icon name="send-outline"></ion-icon>
           </ion-button>
           <ion-button color="danger" (click)="deleteComplaint(complaint)">
