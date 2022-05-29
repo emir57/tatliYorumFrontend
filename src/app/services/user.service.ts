@@ -41,15 +41,18 @@ export class UserService {
     })
   }
 
-  update(user: User, successCallBack: (response) => void, errorCallBack: () => void) {
+  async update(user: User, successCallBack: (response) => void, errorCallBack: () => void) {
+    await this.loadService.showLoading("");
     let url = `${this.baseUrl}/api/edituser`;
     this.httpClient.post<ResponseModel>(url, user).subscribe(async response => {
+      await this.loadService.closeLoading();
       if (response.success) {
         successCallBack(response);
       } else {
         errorCallBack();
       }
-    }, responseErr => {
+    }, async responseErr => {
+      await this.loadService.closeLoading();
       errorCallBack();
     })
   }
