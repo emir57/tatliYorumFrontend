@@ -35,7 +35,13 @@ export class UsersPage implements OnInit {
       component: EditUserPage,
       componentProps: { user: user }
     });
+
     return await modal.present();
+  }
+
+  updateUserInArray(user: User) {
+    let i = this.users.findIndex(u => u.id === user.id);
+    this.users[i] = user;
   }
 
 }
