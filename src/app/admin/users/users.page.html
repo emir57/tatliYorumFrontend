@@ -20,8 +20,15 @@
       </ion-card-header>
 
       <ion-card-content>
-        Admin: <ion-label *ngIf="user.isAdmin" color="success">Evet</ion-label>
-        <ion-label *ngIf="!user.isAdmin" color="danger">Hayır</ion-label>
+        <p>
+          Admin: <ion-label *ngIf="user.isAdmin" color="success">Evet</ion-label>
+          <ion-label *ngIf="!user.isAdmin" color="danger">Hayır</ion-label>
+        </p>
+        <p>
+          <ion-button (click)="editUser(user)">
+            <ion-icon name="create-outline"></ion-icon>&nbsp;Düzenle
+          </ion-button>
+        </p>
       </ion-card-content>
     </ion-card>
   </div>
