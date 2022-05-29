@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { UserService } from 'src/app/services/user.service';
 
@@ -9,9 +10,11 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class EditUserPage implements OnInit {
 
+  form: FormGroup;
   constructor(
     private modalController: ModalController,
-    private userService: UserService
+    private userService: UserService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit() {
