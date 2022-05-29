@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/models/user';
 
@@ -11,7 +12,8 @@ export class UsersPage implements OnInit {
 
   users: User[] = [];
   constructor(
-    private userService: UserService
+    private userService: UserService,
+    private modalController: ModalController
   ) { }
 
   ngOnInit() {
@@ -25,6 +27,14 @@ export class UsersPage implements OnInit {
       },
       () => { }
     );
+  }
+
+  async editUser(user: User) {
+    const modal = await this.modalController.create({
+      // component:,
+      componentProps: { user: user }
+    });
+    return await modal.present();
   }
 
 }
