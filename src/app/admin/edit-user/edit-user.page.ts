@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { UserService } from 'src/app/services/user.service';
-
+import { User } from "../../../models/user";
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.page.html',
@@ -10,6 +10,7 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class EditUserPage implements OnInit {
 
+  @Input() user: User;
   form: FormGroup;
   constructor(
     private modalController: ModalController,
