@@ -24,10 +24,10 @@ export class EditUserPage implements OnInit {
 
   createForm() {
     this.form = this.formBuilder.group({
-      id: [],
-      username: ["", [Validators.required, Validators.maxLength(30)]],
-      email: ["", [Validators.required, Validators.maxLength(50)]],
-      isAdmin: []
+      id: [this.user.id],
+      username: [this.user.username, [Validators.required, Validators.maxLength(30)]],
+      email: [this.user.email, [Validators.required, Validators.maxLength(50)]],
+      isAdmin: [this.user.isAdmin, []]
     })
   }
 
