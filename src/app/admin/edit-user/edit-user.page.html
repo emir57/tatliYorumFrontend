@@ -10,5 +10,12 @@
 </ion-header>
 
 <ion-content>
+  <div id="container">
+    <form [formGroup]="form">
 
+    </form>
+    <ion-button [disabled]="!form.valid" (click)="edit()" expand="block">
+      Kaydet
+    </ion-button>
+  </div>
 </ion-content>
