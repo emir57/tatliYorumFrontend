@@ -10,15 +10,15 @@ export class LoadingService {
     private loadingController: LoadingController
   ) { }
 
-  async showLoading(message: string) {
+  async showLoading(message?: string) {
     const loading = await this.loadingController.create({
-      message: message,
+      message: message ?? "Yükleniyor..",
       duration: 4000
     })
     return await loading.present();
   }
 
-  async closeLoading(){
+  async closeLoading() {
     return await this.loadingController.dismiss();
   }
 
