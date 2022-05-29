@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
+import { MessageService } from 'src/app/services/message.service';
 import { UserService } from 'src/app/services/user.service';
 import { User } from "../../../models/user";
 @Component({
@@ -15,7 +16,8 @@ export class EditUserPage implements OnInit {
   constructor(
     private modalController: ModalController,
     private userService: UserService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -29,6 +31,16 @@ export class EditUserPage implements OnInit {
       email: [this.user.email, [Validators.required, Validators.maxLength(50)]],
       isAdmin: [this.user.isAdmin, []]
     })
+  }
+  edit() {
+    if (this.form.valid) {
+      this.userService.update(this.form.value,
+        (response) => {
+          this.messageService.showMessage(response.message, {})
+        }, () => {
+          this.messageService.showMessage("Güncellenirken bir hata meydana geldi", {})
+        })
+    }
   }
 
   async close(data?: any) {
