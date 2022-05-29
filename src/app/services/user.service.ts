@@ -29,7 +29,7 @@ export class UserService {
   }
 
   async getAll(successCallBack?: (response: ResponseDataModel<User[]>) => void, errorCallBack?: () => void) {
-    await this.loadService.showLoading("");
+    await this.loadService.showLoading();
     let url = `${this.baseUrl}/api/users`;
     this.httpClient.get<ResponseDataModel<User[]>>(url).subscribe(async response => {
       if (response.success) {
@@ -42,7 +42,7 @@ export class UserService {
   }
 
   async update(user: User, successCallBack: (response) => void, errorCallBack: () => void) {
-    await this.loadService.showLoading("");
+    await this.loadService.showLoading();
     let url = `${this.baseUrl}/api/edituser`;
     this.httpClient.post<ResponseModel>(url, user).subscribe(async response => {
       await this.loadService.closeLoading();
