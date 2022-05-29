@@ -35,6 +35,11 @@ export class UsersPage implements OnInit {
       component: EditUserPage,
       componentProps: { user: user }
     });
+    modal.onDidDismiss().then(value => {
+      if (value.data) {
+        this.updateUserInArray(value.data);
+      }
+    })
 
     return await modal.present();
   }
