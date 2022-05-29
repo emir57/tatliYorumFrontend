@@ -35,8 +35,9 @@ export class EditUserPage implements OnInit {
   edit() {
     if (this.form.valid) {
       this.userService.update(this.form.value,
-        (response) => {
-          this.messageService.showMessage(response.message, {})
+        async (response) => {
+          this.messageService.showMessage(response.message, {});
+          await this.close(this.form.value);
         }, () => {
           this.messageService.showMessage("Güncellenirken bir hata meydana geldi", {})
         })
