@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-user',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditUserPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private modalController: ModalController
+  ) { }
 
   ngOnInit() {
+  }
+
+  async close(data?: any) {
+    this.modalController.dismiss(data);
   }
 
 }
