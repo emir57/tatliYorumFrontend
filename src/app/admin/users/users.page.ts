@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/models/user';
+import { EditUserPage } from '../edit-user/edit-user.page';
 
 @Component({
   selector: 'app-users',
@@ -31,7 +32,7 @@ export class UsersPage implements OnInit {
 
   async editUser(user: User) {
     const modal = await this.modalController.create({
-      // component:,
+      component: EditUserPage,
       componentProps: { user: user }
     });
     return await modal.present();
