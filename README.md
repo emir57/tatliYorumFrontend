@@ -19,11 +19,5 @@
 <img src="photos/admin_kullanicilar.png" />
 <img src="photos/admin_kullanici_duzenle.png" />
 <img src="photos/admin_sikayetler.png" />
-<img src="photos/categories.png" />
-<img src="photos/complaints.png" />
 <img src="photos/gonderi_begeniler.png" />
 <img src="photos/gonderi_sikayet.png" />
-<img src="photos/postComments.png" />
-<img src="photos/postLikes.png" />
-<img src="photos/posts.png" />
-<img src="photos/users.png" />
