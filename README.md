@@ -6,7 +6,7 @@
 <img src="photos/secenekler.png" />
 <img src="photos/gonderi.png" />
 <img src="photos/gonderi_Sil.png" />
-<img src="photos/gonderipaylas.png" />
+<img src="photos/gönderipaylas.png" />
 <img src="photos/yorumlar.png" />
 <img src="photos/admin_paneli.png" />
 <img src="photos/admin_gonderiler.png" />
