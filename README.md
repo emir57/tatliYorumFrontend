@@ -9,8 +9,8 @@
 <img src="photos/gönderipaylas.png" />
 <img src="photos/yorumlar.png" />
 <img src="photos/admin_paneli.png" />
-<img src="photos/admin_gonderiler.png" />
-<img src="photos/admin_gonderi_sil.png" />
+<img src="photos/admin_gönderiler.png" />
+<img src="photos/admin_gönderi_sil.png" />
 <img src="photos/admin_gonderi_duzenle.png" />
 <img src="photos/admin_kategoriler.png" />
 <img src="photos/admin_kategori_ekle.png" />
